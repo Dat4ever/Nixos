@@ -46,27 +46,30 @@
 
   # Home Packages
   home.packages = with pkgs; [
-    networkmanagerapplet # NetworkManager control applet
-    blueman              # Bluetooth manager
+    hyprland             # Dynamic tiling Wayland compositor
     hyprpolkitagent      # Policy kit agent for hyprland
-    yazi                 # File manager
     kitty                # Terminal
+    yazi                 # File manager
     quickshell           # Desktop shell toolkit
-    dunst                # Notification daemon
     rofi                 # Application launcher
     awww                 # Wallpaper daemon for wayland
+    networkmanagerapplet # NetworkManager control applet
+    blueman              # Bluetooth manager
     neovim               # Text editor
     firefox              # Web browser
+    vlc                  # Media player
     grim                 # Wayland screenshot utility
     slurp                # Wayland screenshot utility
     wl-clipboard         # Copy-paste for wayland desktop
     rsync                # File transfer utiity
-    zip                  # File compressor
-    unzip                # File decompressor
     mediainfo            # Informations about video and audio file
-    vlc                  # Media player
     heroic               # GOG, Epic, and Amazon game launcher
     steamcmd             # Steam CLI tools
     osu-lazer-bin        # OSU game
+    localsend            # Local file sender apppkgs.
+    libreoffice-fresh    # Office programs
+    yt-dlp               # Youtube audio/video downloader
+    qbittorrent          # BitTorrent client
+    caligula             # lightweight TUI for disk imaging
   ];
 }

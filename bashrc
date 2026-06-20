@@ -18,13 +18,13 @@ export EDITOR="nvim"
 HISTSIZE=5000
 HISTFILESIZE=10000
 
-# aliases
+# Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-# Settings
-bind "set completion-ignore-case on"    # Case-insensitive tab completion
-# up and down arrows to search through history
+# Case-insensitive tab completion
+bind "set completion-ignore-case on"
+# Up and down arrows to search through history
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 

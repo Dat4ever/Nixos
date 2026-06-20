@@ -43,6 +43,9 @@
     memoryPercent = 25;
   };
 
+  # Enable polkit
+  security.polkit.enable = true;
+
   # Enable touchpad support
   services.libinput.enable = true;
 
@@ -128,15 +131,17 @@
 
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
-    bash         # Shell
-    vim          # Text editor
-    wget         # Tool for retrieving files from webpages
-    curl         # Tool for transferring files with URL syntax
-    git          # Distributed version control system
-    nil          # Nix language
-    nixpkgs-fmt  # Nix package formatting tool
-    gcc          # Gnu compiler collection
-    solaar       # Logitech device manager
+    bash                 # Shell
+    vim                  # Text editor
+    wget                 # Tool for retrieving files from webpages
+    curl                 # Tool for transferring files with URL syntax
+    git                  # Distributed version control system
+    nil                  # Nix language
+    nixpkgs-fmt          # Nix package formatting tool
+    gcc                  # Gnu compiler collection
+    solaar               # Logitech device manager
+    zip                  # File compressor
+    unzip                # File decompressor
   ];
 
   nixpkgs.config.allowUnfree = true;
