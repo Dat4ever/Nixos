@@ -47,6 +47,7 @@
   # Home Packages
   home.packages = with pkgs; [
     hyprland             # Dynamic tiling Wayland compositor
+    hyprcursor           # Hyprland cursor library
     hyprpolkitagent      # Policy kit agent for hyprland
     kitty                # Terminal
     yazi                 # File manager
@@ -55,6 +56,7 @@
     awww                 # Wallpaper daemon for wayland
     networkmanagerapplet # NetworkManager control applet
     blueman              # Bluetooth manager
+    pulseaudio           # PulseAudio Volume Control
     neovim               # Text editor
     firefox              # Web browser
     vlc                  # Media player
