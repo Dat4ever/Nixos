@@ -12,12 +12,12 @@
   # Time zone
   time.timeZone = "Europe/Istanbul";
 
+  # Hostname
+  networking.hostName = "datLOQ"; 
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Hostname
-  networking.hostName = "datLOQ"; 
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
@@ -42,6 +42,9 @@
     algorithm = "zstd";
     memoryPercent = 25;
   };
+
+  # Enable touchpad support
+  services.libinput.enable = true;
 
   # Enable sound.
   services.pipewire = {
@@ -118,6 +121,11 @@
   # Enable CUPS sevice for printing
   services.printing.enable = true;
 
+  # List of packages containing udev rules
+  services.udev.packages = with pkgs; [ 
+    solaar       # Logitech device manager
+  ];
+
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     bash         # Shell
@@ -128,6 +136,7 @@
     nil          # Nix language
     nixpkgs-fmt  # Nix package formatting tool
     gcc          # Gnu compiler collection
+    solaar       # Logitech device manager
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -139,9 +148,6 @@
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable touchpad support (enabled default in most desktopManager)
-  # services.libinput.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions

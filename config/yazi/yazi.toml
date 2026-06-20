@@ -15,6 +15,11 @@ edit = [
   { run = 'nvim "$@"', block = true }
 ]
 
+[plugin]
+prepend_previewers = [
+    { mime = "audio/*",   run = "exifaudio"}
+]
+
 [[plugin.prepend_fetchers]]
 id    = "git" # Remove if Yazi > v26.1.22
 url   = "*"
