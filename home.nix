@@ -1,9 +1,12 @@
 { config, pkgs, ... }: {
+
+  # Home manager user
   home.username = "dat";
   home.homeDirectory = "/home/dat";
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 
+  # Git settings
   programs.git = {
     enable = true;
       settings.user = {
@@ -12,10 +15,12 @@
       };  
     };
 
+  # Xdg user dirs
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
 
+  # Xdg dirs locations
     download = "$HOME/Downloads";
     documents = "$HOME/Documents";
     pictures = "$HOME/Pictures";
@@ -26,17 +31,20 @@
     publicShare = "$HOME/Public";
   };
 
+  # Config files
   home.file.".bashrc".source = ./bashrc;
   home.file.".config/nvim".source = ./config/nvim;
   home.file.".config/yazi".source = ./config/yazi;
   home.file.".config/kitty".source = ./config/kitty;
   home.file.".config/quickshell".source = ./config/quickshell;
 
+  # Desktop enviroment
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = builtins.readFile ./config/hypr/hyprland.lua;
   };
 
+  # Home Packages
   home.packages = with pkgs; [
     networkmanagerapplet # NetworkManager control applet
     blueman              # Bluetooth manager
@@ -52,14 +60,11 @@
     grim                 # Wayland screenshot utility
     slurp                # Wayland screenshot utility
     wl-clipboard         # Copy-paste for wayland desktop
-    udisks               # Manipulate storage devices
     rsync                # File transfer utiity
     zip                  # File compressor
     unzip                # File decompressor
     vlc                  # Media player
-    steam                # Game platform
     heroic               # GOG, Epic, and Amazon game launcher
-    steam-run            # Steam run commands
     steamcmd             # Steam CLI tools
     osu-lazer-bin        # OSU game
   ];

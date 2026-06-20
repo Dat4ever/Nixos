@@ -28,39 +28,20 @@
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "disk" ];
   };
 
-  # Display manager and window manager
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  programs.hyprland.enable = true;
-
-  # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [
-    bash         # Shell
-    vim          # Text editor
-    wget         # Tool for retrieving files from webpages
-    curl         # Tool for transferring files with URL syntax
-    git          # Distributed version control system
-    nil          # Nix language
-    nixpkgs-fmt  # Nix package formatting tool
-    gcc          # Gnu compiler collection
-  ];
-
-  # Udisks
-  services.udisks2.enable = true;
-
-  # Run appimage
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-  };
-
-  # 
+  # NixOS /lib to /nix/store
   programs.nix-ld.enable = true;
 
   # Font
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
+
+  # Zram settings
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 25;
+  };
 
   # Enable sound.
   services.pipewire = {
@@ -71,11 +52,10 @@
     jack.enable = true;
   };
 
-  # Zram settings
-  zramSwap = {
+  # Bluetooth settings
+  hardware.bluetooth = {
     enable = true;
-    algorithm = "zstd";
-    memoryPercent = 25;
+    powerOnBoot = true;
   };
 
   # Nvidia
@@ -100,27 +80,71 @@
     };
   };
 
-  # Bluetooth settings
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
+  # Weekly garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
   };
 
-  # Enable the X11 windowing system.
+  # Symlinks same store files
+  nix.settings.auto-optimise-store = true;
+
+  # Run appimage
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
+  # Steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
+
+  # Display manager and window manager
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  programs.hyprland.enable = true;
+
+  # Enable Udisks service
+  services.udisks2.enable = true;
+
+  # Enable the OpenSSH daemon
+  services.openssh.enable = true;
+
+  # Enable CUPS sevice for printing
+  services.printing.enable = true;
+
+  # List packages installed in system profile
+  environment.systemPackages = with pkgs; [
+    bash         # Shell
+    vim          # Text editor
+    wget         # Tool for retrieving files from webpages
+    curl         # Tool for transferring files with URL syntax
+    git          # Distributed version control system
+    nil          # Nix language
+    nixpkgs-fmt  # Nix package formatting tool
+    gcc          # Gnu compiler collection
+  ];
+
+  nixpkgs.config.allowUnfree = true;
+  system.stateVersion = "26.05";
+
+  # Enable the X11 windowing system
   # services.xserver.enable = true;
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
+  # Enable touchpad support (enabled default in most desktopManager)
   # services.libinput.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
+  # started in user sessions
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
@@ -129,19 +153,9 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
+  # Open ports in the firewall
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-  nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "26.05";
 }
