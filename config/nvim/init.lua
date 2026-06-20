@@ -19,6 +19,9 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 0
 
+-- Copy paste integration
+vim.opt.clipboard = "unnamedplus"
+
 -- Terminal colors
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
