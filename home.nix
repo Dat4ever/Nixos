@@ -62,8 +62,8 @@
     wl-clipboard         # Copy-paste for wayland desktop
     rsync                # File transfer utiity
     zip                  # File compressor
-    unzip                # File decompressorA
-    exif                 # Utility to read EXIF data
+    unzip                # File decompressor
+    mediainfo            # Informations about video and audio file
     vlc                  # Media player
     heroic               # GOG, Epic, and Amazon game launcher
     steamcmd             # Steam CLI tools
