@@ -144,8 +144,8 @@
     unzip                # File decompressor
   ];
 
+  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "26.05";
 
   # Enable the X11 windowing system
   # services.xserver.enable = true;
@@ -169,4 +169,7 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # State version (Do not change)
+  system.stateVersion = "26.05";
 }

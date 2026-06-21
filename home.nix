@@ -6,15 +6,6 @@
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 
-  # Git settings
-  programs.git = {
-    enable = true;
-      settings.user = {
-        name = "Dat4ever";
-        email = "nemodat8777@gmail.com";
-      };  
-    };
-
   # Xdg user dirs
   xdg.userDirs = {
     enable = true;
@@ -31,8 +22,27 @@
     publicShare = "$HOME/Public";
   };
 
+  # Git settings
+  programs.git = {
+    enable = true;
+      settings.user = {
+        name = "Dat4ever";
+        email = "nemodat8777@gmail.com";
+    };
+  };
+
+  # Bash settings
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      nrs = "sudo nixos-rebuild switch --flake .#datLOQ";
+      ncg = "sudo nix-collect-garbage -d";
+    };
+    initExtra = builtins.readFile ./bashrc;
+  };
+
   # Config files
-  home.file.".bashrc".source = ./bashrc;
+  #home.file.".bashrc".source = ./bashrc;
   home.file.".config/nvim".source = ./config/nvim;
   home.file.".config/yazi".source = ./config/yazi;
   home.file.".config/kitty".source = ./config/kitty;
