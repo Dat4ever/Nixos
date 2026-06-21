@@ -15,6 +15,21 @@
   # Hostname
   networking.hostName = "datLOQ"; 
 
+  # Set the default keyboard layout for the TTY
+  console.keyMap = "trq";
+
+  # Systemd service to configure TTY keyboard repeat rate and delay
+  systemd.services.tty-kbdrate = {
+    description = "Set TTY keyboard rate and delay";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      # -d is delay (ms), -r is rate (characters/second)
+      ExecStart = "${pkgs.kbd}/bin/kbdrate -d 256 -r 32";
+      RemainAfterExit = true;
+    };
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -111,8 +126,7 @@
   };
 
   # Display manager and window manager
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.ly.enable = true;
   programs.hyprland.enable = true;
 
   # Enable Udisks service
