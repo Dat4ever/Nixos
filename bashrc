@@ -14,13 +14,19 @@ WHT="\033[0;37m"
 #export EDITOR="vim"
 export EDITOR="nvim"
 
+# Aliases
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
 # History
 HISTSIZE=5000
 HISTFILESIZE=10000
 
-# Aliases
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+# Shell options
+shopt -s histappend  # Append history
+shopt -s extglob     # Extended pattern matching
+shopt -s globstar    # recursive directory searching (**)
+shopt -s checkjobs   # warn about running jobs on exit
 
 # Case-insensitive tab completion
 bind "set completion-ignore-case on"
