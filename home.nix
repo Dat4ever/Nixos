@@ -63,7 +63,6 @@
     yazi                 # File manager
     quickshell           # Desktop shell toolkit
     rofi                 # Application launcher
-    awww                 # Wallpaper daemon for wayland
     networkmanagerapplet # NetworkManager control applet
     blueman              # Bluetooth manager
     pulseaudio           # PulseAudio Volume Control

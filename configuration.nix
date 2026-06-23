@@ -113,7 +113,7 @@
   # Stylix
   stylix = {
     enable = true;
-    image = .config/etc/miku.jpg;
+    image = ./config/etc/miku.jpg;
     base16Scheme = {
       base00 = "0f1926";
       base01 = "172538";
