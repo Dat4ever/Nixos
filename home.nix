@@ -46,6 +46,7 @@
   home.file.".config/kitty".source = ./config/kitty;
   home.file.".config/quickshell".source = ./config/quickshell;
   home.file.".config/hypr/colors.lua".source = ./config/hypr/colors.lua;
+  home.file.".config/etc".source = ./config/etc;
 
   # Desktop enviroment and its config file
   wayland.windowManager.hyprland = {
