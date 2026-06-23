@@ -113,6 +113,7 @@
   # Stylix
   stylix = {
     enable = true;
+    polarity = "dark";
     image = ./config/etc/treeMoon.jpg;
     base16Scheme = {
       base00 = "0f1926";

@@ -12,7 +12,6 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("nm-applet")
   hl.exec_cmd("blueman-applet")
   hl.exec_cmd("qs")
-  hl.exec_cmd("awww")
 end)
 
 ---- ENVIRONMENT VARIABLES ----
@@ -42,9 +41,9 @@ local c = require("colors")
 
 hl.config({
   general = {
-    gaps_in  = 5,
-    gaps_out = 20,
-    border_size = 2,
+    gaps_in  = 2,
+    gaps_out = 8,
+    border_size = 1,
 
     col = {
       active_border   = { colors = { c.active_green, c.active_blue }, angle = 45 },
@@ -125,21 +124,18 @@ hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "
 --     rounding    = 0,
 -- })
 
--- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
   dwindle = {
-    preserve_split = true, -- You probably want this
+    preserve_split = true,
   },
 })
 
--- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
 hl.config({
   master = {
     new_status = "master",
   },
 })
 
--- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
 hl.config({
   scrolling = {
     fullscreen_on_one_column = true,
@@ -180,13 +176,6 @@ hl.gesture({
   fingers = 3,
   direction = "horizontal",
   action = "workspace"
-})
-
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
-hl.device({
-  name        = "epic-mouse-v1",
-  sensitivity = -0.5,
 })
 
 ---- MY PROGRAMS ----
