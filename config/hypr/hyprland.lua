@@ -44,7 +44,7 @@ hl.config({
     border_size = 2,
 
     col = {
-      active_border   = { colors = { c.active_cyan, c.active_blue }, angle = 45 },
+      active_border   = { colors = { c.active_green, c.active_blue }, angle = 45 },
       inactive_border = c.inactive_border,
     },
 
@@ -80,7 +80,6 @@ hl.config({
   },
 })
 
--- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
 hl.curve("easeOutQuint",   { type = "bezier", points = { {0.23, 1},    {0.32, 1}    } })
 hl.curve("easeInOutCubic", { type = "bezier", points = { {0.65, 0.05}, {0.36, 1}    } })
 hl.curve("linear",         { type = "bezier", points = { {0, 0},       {1, 1}       } })

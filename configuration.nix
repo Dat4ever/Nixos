@@ -105,9 +105,32 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
-      # -d is delay (ms), -r is rate (characters/second)
-      ExecStart = "${pkgs.kbd}/bin/kbdrate -d 256 -r 32";
+      ExecStart = "${pkgs.kbd}/bin/kbdrate -d 256 -r 32"; # -d is delay (ms), -r is rate (characters/second)
       RemainAfterExit = true;
+    };
+  };
+
+  # Stylix
+  stylix = {
+    enable = true;
+    image = .config/etc/miku.jpg;
+    base16Scheme = {
+      base00 = "0f1926";
+      base01 = "172538";
+      base02 = "223a5e";
+      base03 = "4d5a6e";
+      base04 = "c5cdd8";
+      base05 = "e0e6ed";
+      base06 = "ffffff";
+      base07 = "00bcd4";
+      base08 = "ff5370";
+      base09 = "ffb74d";
+      base0A = "ffd54f";
+      base0B = "4db6ac";
+      base0C = "00bcd4";
+      base0D = "2196f3";
+      base0E = "f06292";
+      base0F = "f48fb1";
     };
   };
 
@@ -129,17 +152,17 @@
 
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
-    bash                 # Shell
-    vim                  # Text editor
-    wget                 # Tool for retrieving files from webpages
-    curl                 # Tool for transferring files with URL syntax
-    git                  # Distributed version control system
-    nil                  # Nix language
-    nixpkgs-fmt          # Nix package formatting tool
-    gcc                  # Gnu compiler collection
-    solaar               # Logitech device manager
-    zip                  # File compressor
-    unzip                # File decompressor
+    bash               # Shell
+    vim                # Text editor
+    wget               # Tool for retrieving files from webpages
+    curl               # Tool for transferring files with URL syntax
+    git                # Distributed version control system
+    nil                # Nix language
+    nixpkgs-fmt        # Nix package formatting tool
+    gcc                # Gnu compiler collection
+    solaar             # Logitech device manager
+    zip                # File compressor
+    unzip              # File decompressor
   ];
 
   # Steam
