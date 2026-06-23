@@ -81,6 +81,7 @@
     yt-dlp               # Youtube audio/video downloader
     qbittorrent          # BitTorrent client
     caligula             # lightweight TUI for disk imaging
+    obs-studio           # Video screen recording
   ];
 
   home.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
