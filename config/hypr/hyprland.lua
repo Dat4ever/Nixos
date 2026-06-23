@@ -35,6 +35,8 @@ hl.env("HYPRCURSOR_SIZE", "32")
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
 
 ---- LOOK AND FEEL ----
+local c = require("colors")
+
 hl.config({
   general = {
     gaps_in  = 5,
@@ -42,8 +44,8 @@ hl.config({
     border_size = 2,
 
     col = {
-      active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
-      inactive_border = "rgba(595959aa)",
+      active_border   = { colors = { c.active_cyan, c.active_blue }, angle = 45 },
+      inactive_border = c.inactive_border,
     },
 
     resize_on_border = false,
@@ -62,7 +64,7 @@ hl.config({
       enabled      = true,
       range        = 4,
       render_power = 3,
-      color        = 0xee1a1a1a,
+      color        = c.shadow,
     },
 
     blur = {

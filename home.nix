@@ -45,7 +45,6 @@
   home.file.".config/yazi".source = ./config/yazi;
   home.file.".config/kitty".source = ./config/kitty;
   home.file.".config/quickshell".source = ./config/quickshell;
-  home.file.".config/wal".source = ./config/wal;
 
   # Desktop enviroment and its config file
   wayland.windowManager.hyprland = {
@@ -61,7 +60,6 @@
     kitty                # Terminal
     yazi                 # File manager
     quickshell           # Desktop shell toolkit
-    pywal16              # Theme/Color switcher
     rofi                 # Application launcher
     awww                 # Wallpaper daemon for wayland
     networkmanagerapplet # NetworkManager control applet
