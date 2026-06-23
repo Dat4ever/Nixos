@@ -16,8 +16,11 @@ hl.on("hyprland.start", function ()
 end)
 
 ---- ENVIRONMENT VARIABLES ----
+-- Hyprcursor
 hl.env("XCURSOR_SIZE", "32")
 hl.env("HYPRCURSOR_SIZE", "32")
+-- QT setting
+hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
 
 ----- PERMISSIONS -----
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Permissions/
