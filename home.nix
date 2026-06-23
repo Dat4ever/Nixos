@@ -3,7 +3,6 @@
   # Home manager user
   home.username = "dat";
   home.homeDirectory = "/home/dat";
-  home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 
   # Xdg user dirs
@@ -35,20 +34,19 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake .#datLOQ";
+      nrsf = "sudo nixos-rebuild switch --flake .#datLOQ";
       ncg = "sudo nix-collect-garbage -d";
     };
     initExtra = builtins.readFile ./bashrc;
   };
 
   # Config files
-  #home.file.".bashrc".source = ./bashrc;
   home.file.".config/nvim".source = ./config/nvim;
   home.file.".config/yazi".source = ./config/yazi;
   home.file.".config/kitty".source = ./config/kitty;
   home.file.".config/quickshell".source = ./config/quickshell;
 
-  # Desktop enviroment
+  # Desktop enviroment and its config file
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = builtins.readFile ./config/hypr/hyprland.lua;
@@ -78,10 +76,12 @@
     heroic               # GOG, Epic, and Amazon game launcher
     steamcmd             # Steam CLI tools
     osu-lazer-bin        # OSU game
-    localsend            # Local file sender apppkgs.
+    localsend            # Local file sender
     libreoffice-fresh    # Office programs
     yt-dlp               # Youtube audio/video downloader
     qbittorrent          # BitTorrent client
     caligula             # lightweight TUI for disk imaging
   ];
+
+  home.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
 }

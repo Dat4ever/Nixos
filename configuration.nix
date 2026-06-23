@@ -6,29 +6,21 @@
       ./hardware-configuration.nix
     ];
 
-  # Enable Nix Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # General settings
+  nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enable Nix Flakes
+  nixpkgs.config.allowUnfree = true;                               # Allow unfree packages
+  nix.settings.auto-optimise-store = true;                         # Symlinks same store files
+  programs.nix-ld.enable = true;                                   # NixOS /lib to /nix/store
 
-  # Time zone
-  time.timeZone = "Europe/Istanbul";
+  # System settings
+  networking.hostName = "datLOQ";                # Hostname
+  time.timeZone = "Europe/Istanbul";             # Time zone
+  console.keyMap = "trq";                        # Set the default keyboard layout for the TTY
 
-  # Hostname
-  networking.hostName = "datLOQ"; 
-
-  # Set the default keyboard layout for the TTY
-  console.keyMap = "trq";
-
-  # Systemd service to configure TTY keyboard repeat rate and delay
-  systemd.services.tty-kbdrate = {
-    description = "Set TTY keyboard rate and delay";
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      # -d is delay (ms), -r is rate (characters/second)
-      ExecStart = "${pkgs.kbd}/bin/kbdrate -d 256 -r 32";
-      RemainAfterExit = true;
-    };
-  };
+  # Font
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -43,14 +35,6 @@
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "disk" ];
   };
 
-  # NixOS /lib to /nix/store
-  programs.nix-ld.enable = true;
-
-  # Font
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
   # Zram settings
   zramSwap = {
     enable = true;
@@ -58,11 +42,12 @@
     memoryPercent = 25;
   };
 
-  # Enable polkit
-  security.polkit.enable = true;
-
-  # Enable touchpad support
-  services.libinput.enable = true;
+  # Weekly garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 
   # Enable sound.
   services.pipewire = {
@@ -101,42 +86,41 @@
     };
   };
 
-  # Weekly garbage collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-
-  # Symlinks same store files
-  nix.settings.auto-optimise-store = true;
-
   # Run appimage
   programs.appimage = {
     enable = true;
     binfmt = true;
   };
 
-  # Steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    gamescopeSession.enable = true;
+  # Enable the X11 windowing system
+  # services.xserver.enable = true;
+
+  # Configure keymap in X11
+  # services.xserver.xkb.layout = "us";
+  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+
+  # Systemd service to configure TTY keyboard repeat rate and delay
+  systemd.services.tty-kbdrate = {
+    description = "Set TTY keyboard rate and delay";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      # -d is delay (ms), -r is rate (characters/second)
+      ExecStart = "${pkgs.kbd}/bin/kbdrate -d 256 -r 32";
+      RemainAfterExit = true;
+    };
   };
 
   # Display manager and window manager
   services.displayManager.ly.enable = true;
   programs.hyprland.enable = true;
 
-  # Enable Udisks service
-  services.udisks2.enable = true;
-
-  # Enable the OpenSSH daemon
-  services.openssh.enable = true;
-
-  # Enable CUPS sevice for printing
-  services.printing.enable = true;
+  # Services
+  security.polkit.enable = true;        # Enable polkit
+  services.libinput.enable = true;      # Enable touchpad support
+  services.udisks2.enable = true;       # Enable Udisks service
+  services.openssh.enable = true;       # Enable the OpenSSH service
+  services.printing.enable = true;      # Enable CUPS sevice for printing
 
   # List of packages containing udev rules
   services.udev.packages = with pkgs; [ 
@@ -158,15 +142,13 @@
     unzip                # File decompressor
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # Enable the X11 windowing system
-  # services.xserver.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+  # Steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions
@@ -176,14 +158,11 @@
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
-
   # Open ports in the firewall
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # State version (Do not change)
-  system.stateVersion = "26.05";
+  system.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
 }
