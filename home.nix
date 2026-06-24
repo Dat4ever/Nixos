@@ -65,10 +65,12 @@
     rofi                 # Application launcher
     networkmanagerapplet # NetworkManager control applet
     blueman              # Bluetooth manager
+    pavucontrol          # Volume control
     pulseaudio           # PulseAudio Volume Control
     neovim               # Text editor
     firefox              # Web browser
     vlc                  # Media player
+    mpv                  # Medıa player
     grim                 # Wayland screenshot utility
     slurp                # Wayland screenshot utility
     wl-clipboard         # Copy-paste for wayland desktop

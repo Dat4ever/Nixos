@@ -69,19 +69,31 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+      libva-vdpau-driver
+      libvdpau-va-gl
+    ];
   };
+
+  environment.sessionVariables = {
+    NVD_BACKEND = "direct";
+  };
+
   services.xserver.videoDrivers = [ "nvidia" ];
+
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
     open = true;
     nvidiaSettings = true;
     modesetting.enable = true;
     prime = { 
       intelBusId = "PCI:0@0:2:0";
       nvidiaBusId = "PCI:1@0:0:0";
-      offload = {
+      sync = {
+      #offload = {
         enable = true;
-        enableOffloadCmd = true;
+        #enableOffloadCmd = true;
       };
     };
   };
@@ -183,8 +195,8 @@
   # };
 
   # Open ports in the firewall
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 53317 ];
+  networking.firewall.allowedUDPPorts = [ 53317 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

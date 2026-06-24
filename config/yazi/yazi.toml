@@ -12,24 +12,58 @@ max_height = 1000
 
 [opener]
 edit = [
-  { run = 'nvim "$@"', block = true }
+  { run = 'nvim "$@"', block = true, desc = "Open with Neovim" },
 ]
 
-[plugin]
-  prepend_preloaders = [
-    { mime = "{audio,video,image}/*", run = "mediainfo" },
-    { mime = "application/{subrip,postscript,illustrator,dvb.ait,vnd.adobe.illustrator,eps,x-eps}", run = "mediainfo" },
-    { url = "*.{ai,eps,ait}", run = "mediainfo" }
-  ]
+reveal = [
+  { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal" },
+  { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF" },
+]
 
-  prepend_previewers = [
-    { mime = "{audio,video,image}/*", run = "mediainfo"},
-    { mime = "application/{subrip,postscript,illustrator,dvb.ait,vnd.adobe.illustrator,eps,x-eps}", run = "mediainfo" },
-    { url = "*.{ai,eps,ait}", run = "mediainfo" }
-  ]
+open = [
+  { run = 'xdg-open "$1"', desc = "Open" },
+]
+
+play = [
+  { run = 'mpv --player-operation-mode=pseudo-gui "$@"', orphan = true, desc = "Play with MPV" },
+  { run = 'vlc "$@"', orphan = true, desc = "Play with VLC" },
+  { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info" },
+]
+
+extract = [
+  { run = 'ya pub extract --list "$@"', desc = "Extract here", },
+]
+
+[open]
+rules = [
+  # Media
+  { mime = "video/*", use = ["play", "reveal"] },
+	{ mime = "audio/*", use = ["play", "reveal"] },
+
+  # Folder
+  { mime = "*/", use = ["edit", "open", "reveal"] },
+
+  # Extract
+  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = ["extract", "reveal"] },
+
+  # Fallback
+  { mime = "*", use = ["open", "reveal"] }
+]
+[plugin]
+prepend_preloaders = [
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/{subrip,postscript,illustrator,dvb.ait,vnd.adobe.illustrator,eps,x-eps}", run = "mediainfo" },
+  { url = "*.{ai,eps,ait}", run = "mediainfo" }
+]
+
+prepend_previewers = [
+  { mime = "{audio,video,image}/*", run = "mediainfo"},
+  { mime = "application/{subrip,postscript,illustrator,dvb.ait,vnd.adobe.illustrator,eps,x-eps}", run = "mediainfo" },
+  { url = "*.{ai,eps,ait}", run = "mediainfo" }
+]
 
 [tasks]
-  image_alloc      = 1073741824
+image_alloc      = 1073741824
 
 [[plugin.prepend_fetchers]]
 id    = "git"
