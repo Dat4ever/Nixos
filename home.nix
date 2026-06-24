@@ -68,6 +68,7 @@
     pavucontrol          # Volume control
     pulseaudio           # PulseAudio Volume Control
     neovim               # Text editor
+    tree-sitter          # Parser generator tool
     firefox              # Web browser
     vlc                  # Media player
     mpv                  # Medıa player
@@ -76,6 +77,7 @@
     wl-clipboard         # Copy-paste for wayland desktop
     rsync                # File transfer utiity
     mediainfo            # Informations about video and audio file
+    pfetch               # System information
     heroic               # GOG, Epic, and Amazon game launcher
     steamcmd             # Steam CLI tools
     osu-lazer-bin        # OSU game
