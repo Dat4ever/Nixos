@@ -146,6 +146,7 @@
       base0F = "5e81ac";
     };
   };
+
   # Display manager and window manager
   services.displayManager.ly.enable = true;
   programs.hyprland.enable = true;
