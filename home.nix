@@ -58,6 +58,7 @@
   home.packages = with pkgs; [
     hyprland             # Dynamic tiling Wayland compositor
     hyprcursor           # Hyprland cursor library
+    nordzy-cursor-theme  # Nordzy cursor
     hyprpolkitagent      # Policy kit agent for hyprland
     kitty                # Terminal
     yazi                 # File manager
@@ -89,6 +90,15 @@
     caligula             # lightweight TUI for disk imaging
     obs-studio           # Video screen recording
   ];
+
+  # Cursor
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.nordzy-cursor-theme;
+    name = "Nordzy-cursors"; # Temanın tam adı
+    size = 24;
+  };
 
   # QT settings
   qt = {

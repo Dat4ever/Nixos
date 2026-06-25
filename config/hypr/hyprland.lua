@@ -16,6 +16,8 @@ end)
 
 ---- ENVIRONMENT VARIABLES ----
 -- Hyprcursor
+hl.env("HYPRCURSOR_THEME", "Nordzy-cursors")
+hl.env("XCURSOR_THEME", "Nordzy-cursors")
 hl.env("XCURSOR_SIZE", "32")
 hl.env("HYPRCURSOR_SIZE", "32")
 -- QT setting
