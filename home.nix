@@ -70,6 +70,7 @@
     neovim               # Text editor
     tree-sitter          # Parser generator tool
     firefox              # Web browser
+    tor-browser          # Tor web browser
     vlc                  # Media player
     mpv                  # Medıa player
     grim                 # Wayland screenshot utility

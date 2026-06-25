@@ -90,10 +90,10 @@
     prime = { 
       intelBusId = "PCI:0@0:2:0";
       nvidiaBusId = "PCI:1@0:0:0";
-      sync = {
-      #offload = {
+      #sync = {
+      offload = {
         enable = true;
-        #enableOffloadCmd = true;
+        enableOffloadCmd = true;
       };
     };
   };
@@ -126,25 +126,24 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./config/etc/treeMoon.jpg;
+    image = ./config/etc/nordNixMinimal.jpg;
     base16Scheme = {
-      base00 = "0f1926";
-      base01 = "172538";
-      base02 = "223a5e";
-      base03 = "4d5a6e";
-      base04 = "c5cdd8";
-      base05 = "e0e6ed";
-      base06 = "ffffff";
-      base07 = "00bcd4";
-      base08 = "ff5370";
-      base09 = "ffb74d";
-      base0A = "ffd54f";
-      base0B = "4db6ac";
-      base0C = "00bcd4";
-      base0D = "2196f3";
-      base0E = "f06292";
-      base0F = "f48fb1";
-    };
+      base00 = "2e3440";
+      base01 = "3b4252";
+      base02 = "434c5e";
+      base03 = "4c566a";
+      base04 = "d8dee9";
+      base05 = "e5e9f0";
+      base06 = "eceff4";
+      base07 = "8fbcbb";
+      base08 = "bf616a";
+      base09 = "d08770";
+      base0A = "ebcb8b";
+      base0B = "a3be8c";
+      base0C = "88c0d0";
+      base0D = "81a1c1";
+      base0E = "b48ead";
+      base0F = "5e81ac";
   };
 
   # Display manager and window manager
