@@ -1,5 +1,5 @@
-[manager]
-show_hidden = true
+[mgr]
+show_hidden = false
 sort_by = "natural"
 sort_sensitive = false
 linemode = "size"
@@ -17,7 +17,6 @@ edit = [
 
 reveal = [
   { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal" },
-  { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF" },
 ]
 
 open = [
@@ -25,7 +24,7 @@ open = [
 ]
 
 play = [
-  { run = 'mpv --player-operation-mode=pseudo-gui "$@"', orphan = true, desc = "Play with MPV" },
+  { run = 'mpv "$@"', orphan = true, desc = "Play with MPV" },
   { run = 'vlc "$@"', orphan = true, desc = "Play with VLC" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info" },
 ]
