@@ -126,7 +126,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./config/etc/nordNixMinimal.jpg;
+    image = ./config/etc/nordAstronaut2.png;
     base16Scheme = {
       base00 = "2e3440";
       base01 = "3b4252";
@@ -141,11 +141,11 @@
       base0A = "ebcb8b";
       base0B = "a3be8c";
       base0C = "88c0d0";
-      base0D = "81a1c1";
+      base0D = "81a1c1";      
       base0E = "b48ead";
       base0F = "5e81ac";
+    };
   };
-
   # Display manager and window manager
   services.displayManager.ly.enable = true;
   programs.hyprland.enable = true;
@@ -194,8 +194,10 @@
   # };
 
   # Open ports in the firewall
-  networking.firewall.allowedTCPPorts = [ 53317 ];
-  networking.firewall.allowedUDPPorts = [ 53317 ];
+  networking.firewall = {
+    allowedTCPPorts = [ 53317 ];
+    allowedUDPPorts = [ 53317 ];
+  };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
