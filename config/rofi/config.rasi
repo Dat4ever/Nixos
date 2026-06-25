@@ -1,22 +1,21 @@
 configuration {
-    font: "JetbrainsMono Nerd Font";
-    line-margin: 12;
+    font: "JetBrainsMono Nerd Font 11";
+    show-icons: false;
 
-    display-ssh:    "";
-    display-run:    "";
-    display-drun:   "";
-    display-window: "";
-    display-combi:  "";
-    show-icons:     true;
+    display-ssh:    " ";
+    display-run:    " ";
+    display-drun:   " ";
+    display-window: " ";
+    display-combi:  " ";
 }
 
 @theme "~/.config/rofi/colors.rasi"
 
-listview {
-	lines: 6;
-	columns: 2;
+window {
+    width: 30%;
 }
 
-window {
-	width: 30%;
+listview {
+    lines: 7;
+    columns: 1;
 }
