@@ -29,6 +29,10 @@ play = [
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info" },
 ]
 
+extract = [
+	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch" },
+]
+
 [open]
 prepend_rules = [
 
@@ -49,6 +53,9 @@ prepend_rules = [
   { url = "*.yaml", use = ["edit", "reveal"] },
   { url = "*.yml",  use = ["edit", "reveal"] },
 
+# Archive
+  {mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", use = ["extract", "open", "reveal"]},
+
 # Fallback
   { url = "*", use = ["open", "reveal"] },
 ]
@@ -60,14 +67,11 @@ prepend_preloaders = [
 
 prepend_previewers = [
   { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch" }
 ]
 
 [tasks]
 image_alloc = 1073741824
-
-[[plugin.prepend_previewers]]
-mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}"
-run  = "ouch"
 
 [[plugin.prepend_fetchers]]
 id = "git"

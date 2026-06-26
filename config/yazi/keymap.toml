@@ -9,6 +9,11 @@ desc = "Chmod on selected files"
 un = "plugin mount"
 
 [[mgr.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch"
+desc = "Compress with ouch"
+
+[[mgr.prepend_keymap]]
 on   = [ "c", "a", "a" ]
 run  = "plugin compress"
 desc = "Archive selected files"
