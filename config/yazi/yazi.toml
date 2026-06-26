@@ -40,20 +40,27 @@ extract = [
 ]
 
 [open]
-rules = [
+prepend_rules = [
   # Media
   { mime = "video/*", use = ["play", "reveal"] },
-	{ mime = "audio/*", use = ["play", "reveal"] },
+  { mime = "audio/*", use = ["play", "reveal"] },
 
   # Folder
   { mime = "*/", use = ["edit", "open", "reveal"] },
 
   # Extract
-  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = ["extract", "reveal"] },
+  { mime = "application/zip", use = ["extract", "reveal"] },
+  { mime = "application/x-rar-compressed", use = ["extract", "reveal"] },
+  { mime = "application/x-7z-compressed", use = ["extract", "reveal"] },
+  { mime = "application/x-tar", use = ["extract", "reveal"] },
+  { mime = "application/gzip", use = ["extract", "reveal"] },
+  { mime = "application/x-bzip2", use = ["extract", "reveal"] },
+  { mime = "application/x-xz", use = ["extract", "reveal"] },
 
   # Fallback
   { mime = "*", use = ["open", "reveal"] }
 ]
+
 [plugin]
 prepend_preloaders = [
   { mime = "{audio,video,image}/*", run = "mediainfo" },
