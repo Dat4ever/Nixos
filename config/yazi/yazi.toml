@@ -30,7 +30,13 @@ play = [
 ]
 
 extract = [
-  { run = 'ya pub extract --list "$@"', desc = "Extract here", },
+  { mime = "application/zip", use = ["extract", "reveal"] },
+  { mime = "application/x-rar-compressed", use = ["extract", "reveal"] },
+  { mime = "application/x-7z-compressed", use = ["extract", "reveal"] },
+  { mime = "application/x-tar", use = ["extract", "reveal"] },
+  { mime = "application/gzip", use = ["extract", "reveal"] },
+  { mime = "application/x-bzip2", use = ["extract", "reveal"] },
+  { mime = "application/x-xz", use = ["extract", "reveal"] },
 ]
 
 [open]
