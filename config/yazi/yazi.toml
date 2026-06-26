@@ -24,67 +24,59 @@ open = [
 ]
 
 play = [
-  { run = 'mpv "$@"', orphan = true, desc = "Play with MPV" },
+  { run = 'mpv --force-window "$@"', orphan = true, desc = "Play with MPV" },
   { run = 'vlc "$@"', orphan = true, desc = "Play with VLC" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info" },
 ]
 
-extract = [
-  { mime = "application/zip", use = ["extract", "reveal"] },
-  { mime = "application/x-rar-compressed", use = ["extract", "reveal"] },
-  { mime = "application/x-7z-compressed", use = ["extract", "reveal"] },
-  { mime = "application/x-tar", use = ["extract", "reveal"] },
-  { mime = "application/gzip", use = ["extract", "reveal"] },
-  { mime = "application/x-bzip2", use = ["extract", "reveal"] },
-  { mime = "application/x-xz", use = ["extract", "reveal"] },
-]
-
 [open]
 prepend_rules = [
-  # Media
+
+# Media
   { mime = "video/*", use = ["play", "reveal"] },
   { mime = "audio/*", use = ["play", "reveal"] },
 
-  # Folder
-  { mime = "*/", use = ["edit", "open", "reveal"] },
+# Images
+  { mime = "image/*", use = ["open", "reveal"] },
 
-  # Extract
-  { mime = "application/zip", use = ["extract", "reveal"] },
-  { mime = "application/x-rar-compressed", use = ["extract", "reveal"] },
-  { mime = "application/x-7z-compressed", use = ["extract", "reveal"] },
-  { mime = "application/x-tar", use = ["extract", "reveal"] },
-  { mime = "application/gzip", use = ["extract", "reveal"] },
-  { mime = "application/x-bzip2", use = ["extract", "reveal"] },
-  { mime = "application/x-xz", use = ["extract", "reveal"] },
+# Directories
+  { mime = "inode/directory", use = ["edit", "open", "reveal"] },
 
-  # Fallback
-  { mime = "*", use = ["open", "reveal"] }
+# Text / config
+  { mime = "text/*", use = ["edit", "reveal"] },
+  { url = "*.toml", use = ["edit", "reveal"] },
+  { url = "*.json", use = ["edit", "reveal"] },
+  { url = "*.yaml", use = ["edit", "reveal"] },
+  { url = "*.yml",  use = ["edit", "reveal"] },
+
+# Fallback
+  { url = "*", use = ["open", "reveal"] },
 ]
 
 [plugin]
 prepend_preloaders = [
   { mime = "{audio,video,image}/*", run = "mediainfo" },
-  { mime = "application/{subrip,postscript,illustrator,dvb.ait,vnd.adobe.illustrator,eps,x-eps}", run = "mediainfo" },
-  { url = "*.{ai,eps,ait}", run = "mediainfo" }
 ]
 
 prepend_previewers = [
-  { mime = "{audio,video,image}/*", run = "mediainfo"},
-  { mime = "application/{subrip,postscript,illustrator,dvb.ait,vnd.adobe.illustrator,eps,x-eps}", run = "mediainfo" },
-  { url = "*.{ai,eps,ait}", run = "mediainfo" }
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
 ]
 
 [tasks]
-image_alloc      = 1073741824
+image_alloc = 1073741824
+
+[[plugin.prepend_previewers]]
+mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}"
+run  = "ouch"
 
 [[plugin.prepend_fetchers]]
-id    = "git"
-url   = "*"
-run   = "git"
+id = "git"
+url = "*"
+run = "git"
 group = "git"
 
 [[plugin.prepend_fetchers]]
-id    = "git"
-url   = "*/"
-run   = "git"
+id = "git"
+url = "*/"
+run = "git"
 group = "git"

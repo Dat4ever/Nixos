@@ -74,6 +74,7 @@
     firefox              # Web browser
     tor-browser          # Tor web browser
     vlc                  # Media player
+    ouch                 # File compressor/decompressor
     mpv                  # Medıa player
     grim                 # Wayland screenshot utility
     slurp                # Wayland screenshot utility
