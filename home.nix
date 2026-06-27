@@ -95,7 +95,7 @@
   # GTK settings
   gtk = {
     enable = true;
-  }
+  };
 
   # QT settings
   qt = {
