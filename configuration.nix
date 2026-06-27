@@ -172,10 +172,11 @@
 
   # Open ports in the firewall
   networking.firewall = {
+    enable = true;
     allowedTCPPorts = [ 53317 ];
     allowedUDPPorts = [ 53317 ];
   };
-  # Or disable the firewall altogether.
+  # Disable the firewall.
   # networking.firewall.enable = false;
 
   system.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
