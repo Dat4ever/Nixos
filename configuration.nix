@@ -4,10 +4,9 @@
  imports =
   [
     ./hardware-configuration.nix
-    ./font.nix
-    ./nvidia.nix
-    ./stylix.nix
-    ./packages-services.nix
+    ./config/font.nix
+    ./config/nvidia.nix
+    ./config/packages-services.nix
   ];
 
   # General settings

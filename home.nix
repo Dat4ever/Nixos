@@ -37,22 +37,21 @@
       nrsf = "sudo nixos-rebuild switch --flake .#datLOQ";
       ncg = "sudo nix-collect-garbage -d";
     };
-    initExtra = builtins.readFile ./config/bashrc;
+    initExtra = builtins.readFile ./home-dotconfig/bashrc;
   };
 
   # Config files
-  home.file.".config/nvim".source = ./config/nvim;
-  home.file.".config/yazi".source = ./config/yazi;
-  home.file.".config/kitty".source = ./config/kitty;
-  home.file.".config/quickshell".source = ./config/quickshell;
-  home.file.".config/rofi".source = ./config/rofi;
-  home.file.".config/hypr/colors.lua".source = ./config/hypr/colors.lua;
-  home.file.".config/etc".source = ./config/etc;
+  home.file.".config/nvim".source = ./home-dotconfig/nvim;
+  home.file.".config/yazi".source = ./home-dotconfig/yazi;
+  home.file.".config/kitty".source = ./home-dotconfig/kitty;
+  home.file.".config/quickshell".source = ./home-dotconfig/quickshell;
+  home.file.".config/rofi".source = ./home-dotconfig/rofi;
+  home.file.".config/hypr/colors.lua".source = ./home-dotconfig/hypr/colors.lua;
 
   # Desktop enviroment and its config file
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = builtins.readFile ./config/hypr/hyprland.lua;
+    extraConfig = builtins.readFile ./home-dotconfig/hypr/hyprland.lua;
   };
 
   # Home Packages
@@ -101,6 +100,41 @@
   qt = {
     enable = true;
     platformTheme.name = "qtct";
+  };
+
+  # Stylix
+  stylix = {
+    enable = true;
+    polarity = "dark";
+    image = ./home-dotconfig/WallPaper/nordAstronaut2.png;
+
+    base16Scheme = {
+      base00 = "2e3440";
+      base01 = "3b4252";
+      base02 = "434c5e";
+      base03 = "4c566a";
+      base04 = "d8dee9";
+      base05 = "e5e9f0";
+      base06 = "eceff4";
+      base07 = "8fbcbb";
+      base08 = "bf616a";
+      base09 = "d08770";
+      base0A = "ebcb8b";
+      base0B = "a3be8c";
+      base0C = "88c0d0";
+      base0D = "81a1c1";      
+      base0E = "b48ead";
+      base0F = "5e81ac";
+    };
+
+    cursor = {
+      name = "Nordzy-cursors";
+      size = 32;
+      package = pkgs.runCommand "nordzy-cursors-config" {} ''
+        mkdir -p $out/share/icons/Nordzy-cursors
+        cp -r ${./config/etc/Nordzy-cursors}/* $out/share/icons/Nordzy-cursors/
+      '';
+    };
   };
 
   home.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)

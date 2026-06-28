@@ -6,7 +6,7 @@
       pname = "jetbrains-mono-config";
       version = "1.0";
     
-      src = ./config/etc/JetBrainsMono; 
+      src = ./etc/JetBrainsMono; 
 
       installPhase = ''
         mkdir -p $out/share/fonts/truetype
