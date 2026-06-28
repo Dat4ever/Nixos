@@ -28,7 +28,7 @@
     cursor = {
       name = "Nordzy-cursors";
       size = 32;
-      package = pkgs.runCommand "local-nordzy-cursor" {} ''
+      package = pkgs.runCommand "nordzy-cursors-config" {} ''
         mkdir -p $out/share/icons/Nordzy-cursors
         cp -r ${./config/etc/Nordzy-cursors}/* $out/share/icons/Nordzy-cursors/
       '';

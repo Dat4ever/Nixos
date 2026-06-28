@@ -57,7 +57,7 @@ prepend_rules = [
   {mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", use = ["extract", "open", "reveal"]},
 
 # Fallback
-  { url = "*", use = ["open", "reveal"] },
+  { url = "*", use = ["open", "edit", "reveal"] },
 ]
 
 [plugin]
