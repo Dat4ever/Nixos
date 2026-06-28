@@ -4,6 +4,7 @@
  imports =
   [
     ./hardware-configuration.nix
+    ./font.nix
     ./nvidia.nix
     ./stylix.nix
   ];
