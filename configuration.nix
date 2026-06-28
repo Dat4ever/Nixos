@@ -20,11 +20,6 @@
   time.timeZone = "Europe/Istanbul";             # Time zone
   console.keyMap = "trq";                        # Set the default keyboard layout for the TTY
 
-  # Font
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
