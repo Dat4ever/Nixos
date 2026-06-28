@@ -37,7 +37,7 @@
       nrsf = "sudo nixos-rebuild switch --flake .#datLOQ";
       ncg = "sudo nix-collect-garbage -d";
     };
-    initExtra = builtins.readFile ./bashrc;
+    initExtra = builtins.readFile ./config/bashrc;
   };
 
   # Config files
