@@ -1,5 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: 
 
+{
   # Home manager user
   home.username = "dat";
   home.homeDirectory = "/home/dat";
@@ -73,6 +74,7 @@
     pulseaudio           # PulseAudio Volume Control
     neovim               # Text editor
     tree-sitter          # Parser generator tool
+    tmux                 # Terminal multiplexer
     firefox              # Web browser
     tor-browser          # Tor web browser
     vlc                  # Media player
@@ -82,6 +84,7 @@
     slurp                # Wayland screenshot utility
     wl-clipboard         # Copy-paste for wayland desktop
     rsync                # File transfer utiity
+    pastel               # CLI tool to analyze colors
     mediainfo            # Informations about video and audio file
     pfetch               # System information
     heroic               # GOG, Epic, and Amazon game launcher
@@ -110,7 +113,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./WallPapers/nordAstronaut2.png;
+    image = ./etc/WallPapers/nordAstronaut2.png;
 
     base16Scheme = {
       base00 = "2e3440";

@@ -1,76 +1,86 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
-import Quickshell.Wayland
 import Quickshell.Hyprland
+import "."
 
 ShellRoot {
-  Variants {
-    matrix: [ Quickshell.screens ]
-  }
+  PanelWindow {
+    id: panel
 
-  WlrWindow {
-    id: window
-    anchors.top: true
-    anchors.left: true
-    anchors.right: true
-    exclusionMode: WlrWindow.Exclusive
-        
+    anchors {
+      top: true
+      left: true
+      right: true
+    }
+
+    margins {
+      top: 10
+      left: 12
+      right: 12
+    }
+
+    implicitHeight: 32
+    color: "transparent"
+
     Rectangle {
-      color: "transparent" 
-      implicitHeight: 26
-      width: parent.width
+      anchors.fill: parent
+
+      color: Theme.background
+      radius: 8
+
+      border {
+        width: 2
+        color: Theme.blue
+      }
 
       RowLayout {
-        anchors.fill: parent
-        anchors.leftMargin: 20
-        anchors.rightMargin: 20
+        anchors {
+          left: parent.left
+          leftMargin: 16
+          verticalCenter: parent.verticalCenter
+        }
 
-        RowLayout {
-          spacing: 8
-                    
-          Repeater {
-            model: 5
-                        
-            Rectangle {
-              readonly property int wsId: index + 1
-              readonly property bool isActive: Hyprland.focusedWorkspace && Hyprland.focusedWorkspace.id === wsId
+        spacing: 8
 
-              implicitWidth: isActive ? 16 : 6
-              implicitHeight: 6
-              radius: 3
-                            
-              color: isActive ? "#cdd6f4" : "#45475a"
+        Repeater {
+          model: 5
 
-              Behavior on implicitWidth {
-                NumberAnimation { duration: 150 }
-              }
+          Text {
+            property bool isActive:
+              Hyprland.focusedWorkspace &&
+              Hyprland.focusedWorkspace.id === (index + 1)
 
-              MouseArea {
-                anchors.fill: parent
-                onClicked: Hyprland.dispatch("workspace", wsId.toString())
-              }
+            text: index + 1
+            color: isActive ? Theme.cyan : Theme.foreground
+
+            font {
+              family: Theme.font
+              pixelSize: 14
+              weight: 600
             }
           }
         }
-
-          Item { Layout.fillWidth: true }
-
-          Text {
-            id: clockText
-            text: Qt.formatDateTime(new Date(), "hh:mm")
-            color: "#a6e3a1"
-            font.pixelSize: 11
-            font.weight: Font.Medium
-                    
-            Timer {
-              interval: 1000
-              running: true
-              repeat: true
-              onTriggered: clockText.text = Qt.formatDateTime(new Date(), "hh:mm")
-            }
-          }
       }
+
+      Text {
+        anchors.centerIn: parent
+
+        text: Qt.formatDateTime(clock.date, "hh:mm")
+        color: Theme.foreground
+
+        font {
+          family: Theme.font
+          pixelSize: 14
+          weight: 600
+          letterSpacing: -1
+        }
+      }
+    }
+
+    SystemClock {
+      id: clock
+      precision: SystemClock.Minutes
     }
   }
 }

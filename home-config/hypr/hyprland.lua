@@ -32,10 +32,10 @@ hl.config({
   general = {
     gaps_in  = 4,
     gaps_out = 12,
-    border_size = 1,
+    border_size = 2,
 
     col = {
-      active_border   = { colors = { c.active_green, c.active_blue }, angle = 45 },
+      active_border   = { colors = { c.active_cyan, c.active_blue }, angle = 45 },
       inactive_border = c.inactive_border,
     },
 

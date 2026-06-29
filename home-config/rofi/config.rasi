@@ -9,7 +9,7 @@ configuration {
   display-combi:  " ";
 }
 
-@theme "~/.config/rofi/colors.rasi"
+@theme "~/.config/rofi/theme.rasi"
 
 window {
   width: 30%;
