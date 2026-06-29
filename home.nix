@@ -54,6 +54,9 @@
     extraConfig = builtins.readFile ./home-dotconfig/hypr/hyprland.lua;
   };
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # Home Packages
   home.packages = with pkgs; [
     hyprland             # Dynamic tiling Wayland compositor

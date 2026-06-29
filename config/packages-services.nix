@@ -1,6 +1,10 @@
 { config, pkgs, ... }: 
 
+
 {
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # Display manager and window manager
   services.displayManager.ly.enable = true;
   programs.hyprland.enable = true;
@@ -21,6 +25,7 @@
   environment.systemPackages = with pkgs; [
     bash               # Shell
     vim                # Text editor
+    brightnessctl      # Screen brightness
     wget               # Tool for retrieving files from webpages
     curl               # Tool for transferring files with URL syntax
     git                # Distributed version control system

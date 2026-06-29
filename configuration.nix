@@ -11,7 +11,6 @@
 
   # General settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enable Nix Flakes
-  nixpkgs.config.allowUnfree = true;                               # Allow unfree packages
   nix.settings.auto-optimise-store = true;                         # Symlinks same store files
   programs.nix-ld.enable = true;                                   # NixOS /lib to /nix/store
 
@@ -94,6 +93,11 @@
   };
   # Disable the firewall
   # networking.firewall.enable = false;
+
+  # TTL setting
+  networking.firewall.extraCommands = ''
+    iptables -t mangle -A PREROUTING -j TTL --ttl-set 65
+  '';
 
   system.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
 }
