@@ -4,9 +4,10 @@
  imports =
   [
     ./hardware-configuration.nix
-    ./config/font.nix
-    ./config/nvidia.nix
-    ./config/packages-services.nix
+    ./nix-config/font.nix
+    ./nix-config/nvidia.nix
+    ./nix-config/packages-services.nix
+    ./nix-config/network.nix
   ];
 
   # General settings
@@ -17,7 +18,6 @@
   # System settings
   networking.hostName = "datLOQ";                # Hostname
   time.timeZone = "Europe/Istanbul";             # Time zone
-  console.keyMap = "trq";                        # Set the default keyboard layout for the TTY
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -46,35 +46,8 @@
     options = "--delete-older-than 7d";
   };
 
-  # Enable sound.
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
-  # Bluetooth settings
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-
-  # Run appimage
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-  };
-
-  # Enable the X11 windowing system
-  # services.xserver.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
   # Systemd service to configure TTY keyboard repeat rate and delay
+  console.keyMap = "trq";                                 # Set the default keyboard layout for the TTY
   systemd.services.tty-kbdrate = {
     description = "Set TTY keyboard rate and delay";
     wantedBy = [ "multi-user.target" ];
@@ -84,20 +57,6 @@
       RemainAfterExit = true;
     };
   };
-
-  # Open ports in the firewall
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 53317 ];
-    allowedUDPPorts = [ 53317 ];
-  };
-  # Disable the firewall
-  # networking.firewall.enable = false;
-
-  # TTL setting
-  networking.firewall.extraCommands = ''
-    iptables -t mangle -A PREROUTING -j TTL --ttl-set 65
-  '';
 
   system.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
 }

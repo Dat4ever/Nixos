@@ -34,24 +34,25 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      nrsf = "sudo nixos-rebuild switch --flake .#datLOQ";
+      nrsf = "sudo nixos-rebuild switch --flake .";
       ncg = "sudo nix-collect-garbage -d";
+      nfu-nrsf = "nix flake update && sudo nixos-rebuild switch --flake .";
     };
-    initExtra = builtins.readFile ./home-dotconfig/bashrc;
+    initExtra = builtins.readFile ../home-config/bashrc;
   };
 
   # Config files
-  home.file.".config/nvim".source = ./home-dotconfig/nvim;
-  home.file.".config/yazi".source = ./home-dotconfig/yazi;
-  home.file.".config/kitty".source = ./home-dotconfig/kitty;
-  home.file.".config/quickshell".source = ./home-dotconfig/quickshell;
-  home.file.".config/rofi".source = ./home-dotconfig/rofi;
-  home.file.".config/hypr/colors.lua".source = ./home-dotconfig/hypr/colors.lua;
+  home.file.".config/nvim".source = ../home-config/nvim;
+  home.file.".config/yazi".source = ../home-config/yazi;
+  home.file.".config/kitty".source = ../home-config/kitty;
+  home.file.".config/quickshell".source = ../home-config/quickshell;
+  home.file.".config/rofi".source = ../home-config/rofi;
+  home.file.".config/hypr/colors.lua".source = ../home-config/hypr/colors.lua;
 
   # Desktop enviroment and its config file
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = builtins.readFile ./home-dotconfig/hypr/hyprland.lua;
+    extraConfig = builtins.readFile ../home-config/hypr/hyprland.lua;
   };
 
   # Allow unfree packages
@@ -109,7 +110,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./home-dotconfig/WallPaper/nordAstronaut2.png;
+    image = ./WallPapers/nordAstronaut2.png;
 
     base16Scheme = {
       base00 = "2e3440";
@@ -135,7 +136,7 @@
       size = 32;
       package = pkgs.runCommand "nordzy-cursors-config" {} ''
         mkdir -p $out/share/icons/Nordzy-cursors
-        cp -r ${./config/etc/Nordzy-cursors}/* $out/share/icons/Nordzy-cursors/
+        cp -r ${./etc/Nordzy-cursors}/* $out/share/icons/Nordzy-cursors/
       '';
     };
   };

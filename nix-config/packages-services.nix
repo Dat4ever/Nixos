@@ -5,9 +5,31 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Enable sound.
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
+  # Bluetooth settings
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
   # Display manager and window manager
   services.displayManager.ly.enable = true;
   programs.hyprland.enable = true;
+
+  # Enable the X11 windowing system
+  # services.xserver.enable = true;
+
+  # Configure keymap in X11
+  # services.xserver.xkb.layout = "us";
+  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Other services
   security.polkit.enable = true;        # Enable polkit
@@ -51,4 +73,10 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  # Run appimage
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 }
