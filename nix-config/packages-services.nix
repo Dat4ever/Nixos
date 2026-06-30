@@ -58,17 +58,28 @@
     unzip              # File decompressor
   ];
 
+  # Run unpatched dynamic binaries on NixOS
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    zlib
+    openssl
+    icu
+    SDL2
+    vulkan-loader
+  ];
+
+  # Run appimage
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
   # Steam
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     gamescopeSession.enable = true;
-  };
-
-  # Run appimage
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
   };
 }

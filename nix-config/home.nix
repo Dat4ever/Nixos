@@ -85,6 +85,7 @@
     wl-clipboard         # Copy-paste for wayland desktop
     rsync                # File transfer utiity
     pastel               # CLI tool to analyze colors
+    jq                   # command-line JSON processor
     mediainfo            # Informations about video and audio file
     pfetch               # System information
     heroic               # GOG, Epic, and Amazon game launcher
@@ -98,7 +99,7 @@
     obs-studio           # Video screen recording
   ];
 
-  # GTK settings
+   # GTK settings
   gtk = {
     enable = true;
   };

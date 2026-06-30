@@ -1,10 +1,37 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
+import Quickshell.Io
 import Quickshell.Hyprland
 import "."
 
 ShellRoot {
+  id: root
+
+  property string keyboardLayout: "us"
+
+  Process {
+    id: keyboardProcess
+    command: [
+      "sh",
+      "-c",
+      "hyprctl devices -j | jq -r '.keyboards[] | select(.main==true) | .active_keymap'"
+    ]
+
+    stdout: StdioCollector {
+      onStreamFinished: {
+        let txt = text.trim().toLowerCase()
+
+        if (txt.includes("english"))
+          root.keyboardLayout = "us"
+        else if (txt.includes("turkish"))
+          root.keyboardLayout = "trq"
+        else
+          root.keyboardLayout = txt
+      }
+    }
+  }
+
   PanelWindow {
     id: panel
 
@@ -46,18 +73,32 @@ ShellRoot {
         Repeater {
           model: 5
 
-          Text {
+          Column {
+            spacing: 2
+
             property bool isActive:
               Hyprland.focusedWorkspace &&
               Hyprland.focusedWorkspace.id === (index + 1)
 
-            text: index + 1
-            color: isActive ? Theme.cyan : Theme.foreground
+            Text {
+              anchors.horizontalCenter: parent.horizontalCenter
+              text: index + 1
+              color: parent.isActive ? Theme.cyan : Theme.foreground
 
-            font {
-              family: Theme.font
-              pixelSize: 14
-              weight: 600
+              font {
+                family: Theme.font
+                pixelSize: 14
+                weight: 600
+              }
+            }
+
+            Rectangle {
+              anchors.horizontalCenter: parent.horizontalCenter
+              width: 14
+              height: 2
+              radius: 1
+              color: Theme.cyan
+              visible: parent.isActive
             }
           }
         }
@@ -76,11 +117,38 @@ ShellRoot {
           letterSpacing: -1
         }
       }
+
+      Text {
+        anchors {
+          right: parent.right
+          rightMargin: 16
+          verticalCenter: parent.verticalCenter
+        }
+
+        text: root.keyboardLayout
+        color: Theme.foreground
+
+        font {
+          family: Theme.font
+          pixelSize: 14
+          weight: 600
+        }
+      }
     }
 
     SystemClock {
       id: clock
       precision: SystemClock.Minutes
+    }
+
+    Timer {
+      interval: 1000
+      running: true
+      repeat: true
+
+      onTriggered: {
+        keyboardProcess.running = true
+      }
     }
   }
 }
