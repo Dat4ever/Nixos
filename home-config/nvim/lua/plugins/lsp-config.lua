@@ -4,6 +4,31 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    {
+      "Saghen/blink.cmp",
+      version = "*",
+      dependencies = {
+        "saghen/blink.lib",
+        "rafamadriz/friendly-snippets",
+      },
+      opts = {
+        keymap = { preset = "default" },
+        appearance = {
+          use_nvim_cmp_as_default = true,
+          nerd_font_variant = "mono",
+        },
+        fuzzy = {
+          implementation = "lua",
+        },
+        sources = {
+          default = { "lsp", "path", "snippets", "buffer" },
+        },
+        completion = {
+          menu = { border = "rounded" },
+          documentation = { window = { border = "rounded" } },
+        },
+      },
+    },
   },
   config = function()
     require("mason").setup({
@@ -11,6 +36,8 @@ return {
         border = "rounded",
       },
     })
+
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     require("mason-lspconfig").setup({
       ensure_installed = {
@@ -26,11 +53,14 @@ return {
       },
       handlers = {
         function(server_name)
-          require("lspconfig")[server_name].setup({})
+          require("lspconfig")[server_name].setup({
+            capabilities = capabilities,
+          })
         end,
 
         ["lua_ls"] = function()
           require("lspconfig").lua_ls.setup({
+            capabilities = capabilities,
             settings = {
               Lua = {
                 diagnostics = {
@@ -48,17 +78,16 @@ return {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
         local opts = { buffer = ev.buf, silent = true }
-
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Tanıma Git" }))
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Referansları Listele" }))
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Dokümantasyon Göster" }))
-        vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Değişken Adını Değiştir" }))
-        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Kod Aksiyonları (Hızlı Çözüm)" }))
-        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Deklarasyona Git" }))
-        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Implementasyona Git" }))
-        vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Satırdaki Hatayı Pencerede Göster" }))
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "Önceki Hataya Git" }))
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Sonraki Hataya Git" }))
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to Definition" }))
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Go to References" }))
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover Documentation" }))
+        vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename Symbol" }))
+        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code Action" }))
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to Declaration" }))
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Go to Implementation" }))
+        vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Line Diagnostics (Float)" }))
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "Previous Diagnostic" }))
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Next Diagnostic" }))
       end,
     })
 
@@ -72,5 +101,8 @@ return {
       opts.border = opts.border or "rounded"
       return orig_util_open_floating_preview(contents, syntax, opts, ...)
     end
+
+    vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = "NONE", fg = "NONE", bold = true, reverse = true })
   end,
 }

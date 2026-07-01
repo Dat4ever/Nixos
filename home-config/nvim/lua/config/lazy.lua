@@ -36,4 +36,7 @@ require("lazy").setup({
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
+
+  -- blink.cmp wants this
+  build = function() require('blink.cmp').build():pwait() end
 })
