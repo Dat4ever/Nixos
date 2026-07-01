@@ -14,7 +14,7 @@ return {
 
     require("mason-lspconfig").setup({
       ensure_installed = {
-        -- Install this language servers
+        -- Install language servers
         "vimls",
         "lua_ls",
         "bashls",
@@ -43,12 +43,12 @@ return {
       },
     })
 
+    -- gd (go to definition), gD (go to Declaration), gr (go to references), gi (go to implementation), K (hover documentation), ]d (go to next diagnostic), [d (go to previous diagnostic), <leader>cd (code diagnostic float), <leader>cr (code rename), <leader>ca (code action)
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
         local opts = { buffer = ev.buf, silent = true }
 
-        -- gd (go to definition), gD (go to Declaration), gr (go to references), gi (go to implementation), K (hover documentation), ]d (go to next diagnostic), [d (go to previous diagnostic), <leader>cd (code diagnostic float), <leader>cr (code rename), <leader>ca (code action)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Tanıma Git" }))
         vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Referansları Listele" }))
         vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Dokümantasyon Göster" }))
@@ -62,7 +62,15 @@ return {
       end,
     })
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signatureHelp, { border = "rounded" })
+    vim.diagnostic.config({
+      float = { border = "rounded" },
+    })
+
+    local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+    function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+      opts = opts or {}
+      opts.border = opts.border or "rounded"
+      return orig_util_open_floating_preview(contents, syntax, opts, ...)
+    end
   end,
 }
