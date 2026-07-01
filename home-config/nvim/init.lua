@@ -17,6 +17,10 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 0
 
+-- Default mapleader is "/" but " " is better
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Copy paste integration
 vim.opt.clipboard = "unnamedplus"
 

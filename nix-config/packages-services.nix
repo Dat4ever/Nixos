@@ -50,8 +50,12 @@
     wget               # Tool for retrieving files from webpages
     curl               # Tool for transferring files with URL syntax
     git                # Distributed version control system
-    nil                # Nix language
+    nil                # Nix language server
+    nixd               # Nix language server
     nixpkgs-fmt        # Nix package formatting tool
+    rustup             # Rust toolchain installer
+    nodejs             # V8 JavaScript engine
+    python3            # Programming language
     gcc                # Gnu compiler collection
     gnumake            # Tool for compiling
     solaar             # Logitech device manager
