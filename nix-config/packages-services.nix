@@ -53,6 +53,7 @@
     nil                # Nix language
     nixpkgs-fmt        # Nix package formatting tool
     gcc                # Gnu compiler collection
+    gnumake            # Tool for compiling
     solaar             # Logitech device manager
     zip                # File compressor
     unzip              # File decompressor

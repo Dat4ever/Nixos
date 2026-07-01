@@ -1,19 +1,19 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      -- Eğer ensure_installed tablosu yoksa, boş bir tablo olarak başlat
-      if not opts.ensure_installed then
-        opts.ensure_installed = {}
-      end
-      
-      -- İstediğin dilleri güvenle ekle
-      vim.list_extend(opts.ensure_installed, {
-        "bash",
-        "lua",
-        "nix",
-        "rust",
-      })
-    end,
+  'nvim-treesitter/nvim-treesitter',
+  lazy = false,
+  priority = 1000, 
+  opts = {
+    highlight = { 
+      enable = true,
+      additional_vim_regex_highlighting = false,
+    },
+    indent = { enable = true },
   },
+  config = function(_, opts)
+    local status, ts = pcall(require, "nvim-treesitter.configs")
+    if not status then 
+      return 
+    end
+    ts.setup(opts)
+  end
 }

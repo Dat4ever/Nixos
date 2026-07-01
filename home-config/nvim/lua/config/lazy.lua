@@ -15,11 +15,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
+-- default mapleader is "/" but " " is better
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -27,11 +24,13 @@ require("lazy").setup({
     -- import your plugins
     { import = "plugins" },
   },
+
   -- NixOS luarocks error fix
   rocks = {
     enabled = false,
     hererocks = false,
   },
+
   lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates

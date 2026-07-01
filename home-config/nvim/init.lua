@@ -1,8 +1,9 @@
 require("config.lazy")
 
--- Enable line numbers and relative numbers to jump to other lines on the screen using relative counts
+-- Enable line numbers and relative numbers to jump to other lines on the screen using relative counts and cursorline for standing line
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
 -- Undo changes after exiting and reopening the file
 vim.opt.undofile = true
@@ -10,9 +11,6 @@ vim.opt.undofile = true
 -- Improved window-splitting behavior
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-
--- The default leader key is \, but using the Space bar is way more convenient
-vim.g.mapleader = " "
 
 -- 2 spaces for tab size, and tab key to insert spaces instead
 vim.opt.expandtab = true
