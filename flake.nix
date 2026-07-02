@@ -34,7 +34,7 @@
           home-manager.users.dat = {
             imports = [
               stylix.homeModules.stylix 
-              ./nix-config/home.nix
+              ./home-config/home.nix
             ];
           };
         }

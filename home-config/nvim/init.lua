@@ -31,3 +31,8 @@ vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
+-- For float borders
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+vim.api.nvim_set_hl(0, "LazyNormal", { bg = "none" })
+vim.api.nvim_set_hl(0, "LazyBorder", { bg = "none" })

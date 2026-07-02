@@ -13,6 +13,7 @@ max_height = 1000
 [opener]
 edit = [
   { run = 'nvim "$@"', block = true, desc = "Open with Neovim" },
+  { run = 'vim "$@"', block = true, desc = "Open with Vim" },
 ]
 
 reveal = [
