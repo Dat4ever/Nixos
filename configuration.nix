@@ -4,10 +4,8 @@
  imports =
   [
     ./hardware-configuration.nix
-    ./nix-config/font.nix
-    ./nix-config/nvidia.nix
-    ./nix-config/packages-services.nix
-    ./nix-config/network.nix
+    ./nvidia.nix
+    ./packages-services.nix
   ];
 
   # General settings
@@ -57,6 +55,33 @@
       RemainAfterExit = true;
     };
   };
+
+  # Fonts 
+  fonts.packages = with pkgs; [
+    (pkgs.stdenv.mkDerivation {
+      pname = "jetbrains-mono-config";
+      version = "1.0";
+      src = ./config.d/JetBrainsMono; 
+      installPhase = ''
+        mkdir -p $out/share/fonts/truetype
+        cp -r $src/*.{ttf,otf} $out/share/fonts/truetype/
+      '';
+    })
+  ];
+
+  # Open ports in the firewall
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 443 53317 ];
+    allowedUDPPorts = [ 53317 ];
+  };
+  # Disable the firewall
+  # networking.firewall.enable = false;
+
+  # TTL setting
+  networking.firewall.extraCommands = ''
+    iptables -t mangle -A PREROUTING -j TTL --ttl-set 65
+  '';
 
   system.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
 }

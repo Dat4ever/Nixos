@@ -1,40 +1,15 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
-import Quickshell.Io
-import Quickshell.Hyprland
-import "."
+import Quickshell.Wayland
+import "." as Local
 
 ShellRoot {
   id: root
 
-  property string keyboardLayout: "us"
-
-  Process {
-    id: keyboardProcess
-    command: [
-      "sh",
-      "-c",
-      "hyprctl devices -j | jq -r '.keyboards[] | select(.main==true) | .active_keymap'"
-    ]
-
-    stdout: StdioCollector {
-      onStreamFinished: {
-        let txt = text.trim().toLowerCase()
-
-        if (txt.includes("english"))
-          root.keyboardLayout = "us"
-        else if (txt.includes("turkish"))
-          root.keyboardLayout = "trq"
-        else
-          root.keyboardLayout = txt
-      }
-    }
-  }
-
   PanelWindow {
-    id: panel
-
+    id: bar
+    WlrLayershell.namespace: "quickshell-bar"
     anchors {
       top: true
       left: true
@@ -51,8 +26,8 @@ ShellRoot {
     color: "transparent"
 
     Rectangle {
+      id: barContainer
       anchors.fill: parent
-
       color: Theme.background
       radius: 8
 
@@ -61,93 +36,58 @@ ShellRoot {
         color: Theme.blue
       }
 
+      Local.ClockBar {
+        anchors.centerIn: parent
+        z: 1
+      }
+
       RowLayout {
-        anchors {
-          left: parent.left
-          leftMargin: 16
-          verticalCenter: parent.verticalCenter
-        }
+        anchors.fill: parent
+        anchors.leftMargin: 16
+        anchors.rightMargin: 16
+        spacing: 16
 
-        spacing: 8
+        RowLayout {
+          spacing: 16
+          Layout.fillWidth: true 
+          Layout.maximumWidth: (parent.width / 2) - 80 
 
-        Repeater {
-          model: 5
-
-          Column {
-            spacing: 2
-
-            property bool isActive:
-              Hyprland.focusedWorkspace &&
-              Hyprland.focusedWorkspace.id === (index + 1)
-
-            Text {
-              anchors.horizontalCenter: parent.horizontalCenter
-              text: index + 1
-              color: parent.isActive ? Theme.cyan : Theme.foreground
-
-              font {
-                family: Theme.font
-                pixelSize: 14
-                weight: 600
-              }
-            }
-
-            Rectangle {
-              anchors.horizontalCenter: parent.horizontalCenter
-              width: 14
-              height: 2
-              radius: 1
-              color: Theme.cyan
-              visible: parent.isActive
-            }
+          Local.WorkspaceBar {
+            Layout.alignment: Qt.AlignVCenter
+          }
+          
+          Local.TitleBar {
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignVCenter
           }
         }
-      }
 
-      Text {
-        anchors.centerIn: parent
-
-        text: Qt.formatDateTime(clock.date, "hh:mm")
-        color: Theme.foreground
-
-        font {
-          family: Theme.font
-          pixelSize: 14
-          weight: 600
-          letterSpacing: -1
-        }
-      }
-
-      Text {
-        anchors {
-          right: parent.right
-          rightMargin: 16
-          verticalCenter: parent.verticalCenter
+        Item {
+          Layout.fillWidth: true
         }
 
-        text: root.keyboardLayout
-        color: Theme.foreground
+        RowLayout {
+          spacing: 16
+          Layout.alignment: Qt.AlignVCenter
 
-        font {
-          family: Theme.font
-          pixelSize: 14
-          weight: 600
+          RowLayout {
+            spacing: 8
+            Local.BluetoothBar {
+              Layout.alignment: Qt.AlignVCenter
+            }
+          
+            Local.NetworkBar {
+              Layout.alignment: Qt.AlignVCenter
+            }
+          }
+          Local.LanguageBar {
+            Layout.alignment: Qt.AlignVCenter
+          }
+          
+          Local.BatteryBar {
+            Layout.alignment: Qt.AlignVCenter
+          }
         }
-      }
-    }
-
-    SystemClock {
-      id: clock
-      precision: SystemClock.Minutes
-    }
-
-    Timer {
-      interval: 1000
-      running: true
-      repeat: true
-
-      onTriggered: {
-        keyboardProcess.running = true
       }
     }
   }

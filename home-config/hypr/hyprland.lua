@@ -20,49 +20,50 @@ hl.env("HYPRCURSOR_THEME", "Nordzy-cursors")
 hl.env("XCURSOR_THEME", "Nordzy-cursors")
 hl.env("XCURSOR_SIZE", "32")
 hl.env("HYPRCURSOR_SIZE", "32")
--- QT setting
+-- QT settings
 hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
+-- GTK settings
 
 ----- PERMISSIONS -----
 
 ---- LOOK AND FEEL ----
-local c = require("colors")
-
 hl.config({
   general = {
-    gaps_in  = 4,
-    gaps_out = 12,
+    gaps_in     = 4,
+    gaps_out    = 12,
     border_size = 0,
 
-    col = {
-      active_border   = { colors = { c.active_cyan, c.active_blue }, angle = 45 },
-      inactive_border = c.inactive_border,
+    ["col.active_border"] = {
+        colors = { "rgba(81a1c1ee)", "rgba(8fbcbbee)" },
+        angle = 45
     },
+    ["col.inactive_border"] = "rgba(4c566aaa)",
 
     resize_on_border = false,
-    allow_tearing = false,
-
-    layout = "dwindle",
+    allow_tearing    = false,
+    layout           = "dwindle",
   },
 
   decoration = {
-    rounding       = 8,
-    rounding_power = 2,
-    active_opacity   = 1.0,
-    inactive_opacity = 0.9,
+    rounding         = 8,
+    rounding_power   = 2,
+    active_opacity   = 0.9,
+    inactive_opacity = 0.75,
 
     shadow = {
       enabled      = true,
       range        = 4,
       render_power = 3,
-      color        = c.shadow,
+      color        = "rgba(2e3440ee)",
     },
 
     blur = {
-      enabled   = true,
-      size      = 3,
-      passes    = 1,
-      vibrancy  = 0.1696,
+      enabled  = true,
+      size     = 8,
+      passes   = 3,
+      new_optimizations = true,
+      xray = false,
+      vibrancy = 0.1696,
     },
   },
 
@@ -77,6 +78,7 @@ hl.curve("linear",         { type = "bezier", points = { {0, 0},       {1, 1}   
 hl.curve("almostLinear",   { type = "bezier", points = { {0.5, 0.5},   {0.75, 1}    } })
 hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1}     } })
 hl.curve("easy",           { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
+
 hl.animation({ leaf = "global",        enabled = true,  speed = 10,   bezier = "default" })
 hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
 hl.animation({ leaf = "windows",       enabled = true,  speed = 4.79, spring = "easy" })
@@ -113,6 +115,13 @@ hl.config({
   },
 })
 
+-- Quickshell Blur
+hl.layer_rule({
+    match = { namespace = "quickshell-bar" },
+    blur = true,
+    ignore_alpha = 0.2
+})
+
 ----  MISC  ----
 hl.config({
   misc = {
@@ -125,16 +134,16 @@ hl.config({
 hl.config({
   input = {
     --keyboard
-    kb_layout  = "tr,us",
-    kb_variant = "",
-    kb_model   = "",
-    kb_options = "grp:shift_caps_toggle",
-    kb_rules   = "",
+    kb_layout    = "tr,us",
+    kb_variant   = "",
+    kb_model     = "",
+    kb_options   = "grp:shift_caps_toggle",
+    kb_rules     = "",
     repeat_delay = 256,
-    repeat_rate = 32,
+    repeat_rate  = 32,
     --mouse
     follow_mouse = 1,
-    sensitivity = 0.25,
+    sensitivity  = 0.25,
     --touchpad
     touchpad = {
       natural_scroll = false,
@@ -143,9 +152,9 @@ hl.config({
 })
 
 hl.gesture({
-  fingers = 3,
+  fingers   = 3,
   direction = "horizontal",
-  action = "workspace"
+  action    = "workspace"
 })
 
 ---- MY PROGRAMS ----
