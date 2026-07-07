@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ./nvidia.nix
     ./packages-services.nix
+    ./disko.nix
   ];
 
   # General settings
@@ -31,11 +32,11 @@
   };
 
   # Zram settings
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-    memoryPercent = 25;
-  };
+  #zramSwap = {
+    #enable = true;
+    #algorithm = "zstd";
+    #memoryPercent = 25;
+  #};
 
   # Weekly garbage collection
   nix.gc = {

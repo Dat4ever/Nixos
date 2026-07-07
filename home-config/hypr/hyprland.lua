@@ -115,13 +115,6 @@ hl.config({
   },
 })
 
--- Quickshell Blur
-hl.layer_rule({
-    match = { namespace = "quickshell-bar" },
-    blur = true,
-    ignore_alpha = 0.2
-})
-
 ----  MISC  ----
 hl.config({
   misc = {

@@ -44,25 +44,21 @@
 
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
-    bash               # Shell
-    vim                # Text editor
-    brightnessctl      # Screen brightness
-    wget               # Tool for retrieving files from webpages
-    curl               # Tool for transferring files with URL syntax
-    git                # Distributed version control system
-    nil                # Nix language server
-    nixd               # Nix language server
-    nixpkgs-fmt        # Nix package formatting tool
-    rustup             # Rust toolchain installer
-    nodejs             # V8 JavaScript engine
-    python3            # Programming language
-    openjdk            # Opensource Java dev kit
-    gcc                # Gnu compiler collection
-    gnumake            # Tool for compiling
-    glib               # C library of programming buildings blocks
-    solaar             # Logitech device manager
-    zip                # File compressor
-    unzip              # File decompressor
+    bash                 # Shell
+    vim                  # Text editor
+    brightnessctl        # Screen brightness
+    wget                 # Tool for retrieving files from webpages
+    curl                 # Tool for transferring files with URL syntax
+    git                  # Distributed version control system
+    zip                  # File compressor
+    unzip                # File decompressor
+    nixfmt               # Nix formatting tool
+    gnumake              # Tool make
+    solaar               # Logitech device manager
+    bash-language-server # Bash LSP
+    nixd                 # Nix LSP
+    pyright              # Python LSP
+    marksman             # markdown LSP
   ];
 
   # Run unpatched dynamic binaries on NixOS

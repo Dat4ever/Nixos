@@ -15,17 +15,24 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Disko
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: {
+  # Outputs section
+  outputs = { self, nixpkgs, home-manager, stylix, disko, ... }@inputs: {
     nixosConfigurations.datLOQ = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      
       specialArgs = { inherit inputs; }; 
-
       modules = [
         ./hardware-configuration.nix
         ./configuration.nix
+        disko.nixosModules.disko
+        ./disko.nix
 
         # Home Manager
         home-manager.nixosModules.home-manager {

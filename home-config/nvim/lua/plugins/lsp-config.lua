@@ -73,7 +73,7 @@ return {
       },
     })
 
-    -- gd (go to definition), gD (go to Declaration), gr (go to references), gi (go to implementation), K (hover documentation), ]d (go to next diagnostic), [d (go to previous diagnostic), <leader>cd (code diagnostic float), <leader>cr (code rename), <leader>ca (code action)
+    -- gd (go to definition), gD (go to Declaration), gr (go to references), gi (go to implementation), K (hover documentation), ]d (go to next diagnostic), <leader>cd (code diagnostic float), <leader>cr (code rename), <leader>ca (code action)
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
@@ -86,8 +86,7 @@ return {
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to Declaration" }))
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Go to Implementation" }))
         vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Line Diagnostics (Float)" }))
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "Previous Diagnostic" }))
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Next Diagnostic" }))
+        vim.keymap.set("n", "]d", vim.diagnostic.jump, vim.tbl_extend("force", opts, { desc = "Next Diagnostic" }))
       end,
     })
 

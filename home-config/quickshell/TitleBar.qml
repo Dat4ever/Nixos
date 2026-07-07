@@ -3,7 +3,7 @@ import Quickshell.Hyprland
 import "."
 
 Text {
-  text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : "Masaüstü"
+  text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : "Desktop"
   color: Theme.blue
   
   elide: Text.ElideRight 

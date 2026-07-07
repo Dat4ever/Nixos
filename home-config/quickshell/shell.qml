@@ -9,7 +9,6 @@ ShellRoot {
 
   PanelWindow {
     id: bar
-    WlrLayershell.namespace: "quickshell-bar"
     anchors {
       top: true
       left: true
