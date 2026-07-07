@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ./nvidia.nix
     ./packages-services.nix
+    ./stylix.nix
     ./disko.nix
   ];
 

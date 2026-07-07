@@ -29,21 +29,21 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; }; 
       modules = [
-        ./hardware-configuration.nix
         ./configuration.nix
+        ./hardware-configuration.nix
+
+        stylix.nixosModules.stylix
+        ./stylix.nix
+
         disko.nixosModules.disko
         ./disko.nix
 
-        # Home Manager
-        home-manager.nixosModules.home-manager {
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs; }; 
-          home-manager.users.dat = {
-            imports = [
-              stylix.homeModules.stylix 
-              ./home.nix
-            ];
-          };
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.users.dat = import ./home.nix;
         }
       ];
     };

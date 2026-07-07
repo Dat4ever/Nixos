@@ -46,7 +46,7 @@ return {
         "lua_ls",
         "bashls",
         "marksman",
-        "nil_ls",
+        "nixd",
         "pyright",
         "rust_analyzer",
         "clangd",
