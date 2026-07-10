@@ -2,7 +2,7 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-  property color background: Qt.rgba(0.18, 0.20, 0.25, 0.80)
+  property color background: Qt.rgba(0.18, 0.20, 0.25, 0.85)
   property color foreground: "#d8dee9"
 
   property color black: "#4c566a"

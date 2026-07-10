@@ -56,7 +56,7 @@
     gnumake              # Tool make
     solaar               # Logitech device manager
     bash-language-server # Bash LSP
-    nixd                 # Nix LSP
+    nil                  # Nix LSP
     pyright              # Python LSP
     marksman             # markdown LSP
   ];

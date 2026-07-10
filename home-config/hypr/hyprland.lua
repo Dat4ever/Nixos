@@ -30,7 +30,7 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
 hl.config({
   general = {
     gaps_in     = 4,
-    gaps_out    = 12,
+    gaps_out    = 8,
     border_size = 0,
 
     ["col.active_border"] = {

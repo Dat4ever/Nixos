@@ -16,9 +16,9 @@ ShellRoot {
     }
 
     margins {
-      top: 10
-      left: 12
-      right: 12
+      top: 8
+      left: 8
+      right: 8
     }
 
     implicitHeight: 32
@@ -28,7 +28,7 @@ ShellRoot {
       id: barContainer
       anchors.fill: parent
       color: Theme.background
-      radius: 8
+      radius: 16
 
       border {
         width: 2
