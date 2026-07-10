@@ -54,6 +54,11 @@
     unzip                # File decompressor
     nixfmt               # Nix formatting tool
     gnumake              # Tool make
+    gcc                  # C
+    clib                 # C library
+    rustup               # Rust
+    rustc                # Rust
+    cargo                # Rust
     solaar               # Logitech device manager
     bash-language-server # Bash LSP
     nil                  # Nix LSP
