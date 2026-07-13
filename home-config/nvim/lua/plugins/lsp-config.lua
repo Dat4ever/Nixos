@@ -47,7 +47,6 @@ return {
         "bashls",
         "marksman",
         "nil_ls",
-        "pyright",
         "rust_analyzer",
         "clangd",
       },

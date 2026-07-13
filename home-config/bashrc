@@ -34,6 +34,9 @@ bind "set completion-ignore-case on"
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
+# Devenv
+eval "$(devenv hook bash)"
+
 # extract bash function
 function extract () {
   if [ $# -eq 0 ]; then

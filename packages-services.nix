@@ -45,19 +45,21 @@
     git                  # Distributed version control system
     zip                  # File compressor
     unzip                # File decompressor
+    gcc                  # GNU c compiler
+    gnumake              # C language tool 'make'
+    rustc                # Rust tools
+    cargo                # Rust package manager
     nixfmt               # Nix formatting tool
-    gnumake              # Tool make
-    gcc                  # C
-    clib                 # C library
-    cargo                # Rust
-    rustc                # Rust
+    devenv               # Development enviroment for Nix
     solaar               # Logitech device manager
-    nodejs               # Nodejs
+    nodejs               # Framework for the V8 JavaScript engine
     bash-language-server # Bash LSP
     nil                  # Nix LSP
     pyright              # Python LSP
     marksman             # markdown LSP
   ];
+
+  programs.direnv.enable = true;   # Direnv Program
 
   # Run unpatched dynamic binaries on NixOS
   programs.nix-ld = {
@@ -68,6 +70,7 @@
       zlib
       glibc
       libGL
+      openssl
       libxkbcommon
       libX11
       libXcursor
