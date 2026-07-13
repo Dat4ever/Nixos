@@ -97,9 +97,7 @@
     jq                   # command-line JSON processor
     mediainfo            # Informations about video and audio file
     pfetch               # System information
-    heroic               # GOG, Epic, and Amazon game launcher
     steamcmd             # Steam CLI tools
-    osu-lazer-bin        # OSU game
     localsend            # Local file sender
     libreoffice-fresh    # Office programs
     yt-dlp               # Youtube audio/video downloader

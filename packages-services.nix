@@ -23,13 +23,6 @@
   services.displayManager.ly.enable = true;
   programs.hyprland.enable = true;
 
-  # Enable the X11 windowing system
-  # services.xserver.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
   # Other services
   security.polkit.enable = true;        # Enable polkit
   services.libinput.enable = true;      # Enable touchpad support
@@ -56,10 +49,10 @@
     gnumake              # Tool make
     gcc                  # C
     clib                 # C library
-    rustup               # Rust
-    rustc                # Rust
     cargo                # Rust
+    rustc                # Rust
     solaar               # Logitech device manager
+    nodejs               # Nodejs
     bash-language-server # Bash LSP
     nil                  # Nix LSP
     pyright              # Python LSP
@@ -67,20 +60,42 @@
   ];
 
   # Run unpatched dynamic binaries on NixOS
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc
-    zlib
-    openssl
-    icu
-    SDL2
-    vulkan-loader
-  ];
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc
+      icu
+      zlib
+      glibc
+      libGL
+      libxkbcommon
+      libX11
+      libXcursor
+      libXext
+      libXfixes
+      libXi
+      libXrandr
+      libXrender
+      libXScrnSaver
+      libxcb
+      alsa-lib
+      pulseaudio
+      libtheora
+      SDL
+      SDL2
+      glib
+      gtk3
+      gsettings-desktop-schemas
+    ];
+  };
 
-  # Run appimage
+  # Run Appimage
   programs.appimage = {
     enable = true;
     binfmt = true;
+    package = pkgs.appimage-run.override {
+      extraPkgs = pkgs: [ pkgs.icu ]; 
+    };
   };
 
   # Steam

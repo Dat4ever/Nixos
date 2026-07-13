@@ -1,6 +1,7 @@
 import Quickshell
 import QtQuick
-import "." 
+import "./Colors.qml" 
+import "./bar"
 
 ShellRoot {
   Bar {}

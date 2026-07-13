@@ -36,26 +36,32 @@ bind '"\e[B": history-search-forward'
 
 # extract bash function
 function extract () {
-  if [ -f "$1" ] ; then
-    case "$1" in
-      *.tar.bz2)   tar xjvf "$1"    ;;
-      *.tar.gz)    tar xzvf "$1"    ;;
-      *.tar.xz)    tar xvf "$1"     ;;
-      *.bz2)       bzip2 -d "$1"    ;;
-      *.rar)       unrar x "$1"     ;;
-      *.gz)        gunzip "$1"      ;;
-      *.tar)       tar xf "$1"      ;;
-      *.tbz2)      tar xjf "$1"     ;;
-      *.tgz)       tar xzf "$1"     ;;
-      *.zip)       unzip "$1"       ;;
-      *.Z)         uncompress "$1"  ;;
-      *.7z)        7z x "$1"        ;;
-      *.ace)       unace x "$1"     ;;
-      *)           echo "'$1' cannot be extracted via extract()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
+  if [ $# -eq 0 ]; then
+    echo "Usage: extract <file1> <file2> ..."
+    return 1
   fi
+  for arg in "$@"; do
+    if [ -f "$arg" ] ; then
+      case "$arg" in
+        *.tar.bz2)   tar xjvf "$arg"    ;;
+        *.tar.gz)    tar xzvf "$arg"    ;;
+        *.tar.xz)    tar xvf "$arg"     ;;
+        *.bz2)       bzip2 -d "$arg"    ;;
+        *.rar)       unrar x "$arg"     ;;
+        *.gz)        gunzip "$arg"      ;;
+        *.tar)       tar xf "$arg"      ;;
+        *.tbz2)      tar xjf "$arg"     ;;
+        *.tgz)       tar xzf "$arg"     ;;
+        *.zip)       unzip "$arg"       ;;
+        *.Z)         uncompress "$arg"  ;;
+        *.7z)        7z x "$arg"        ;;
+        *.ace)       unace x "$arg"     ;;
+        *)           echo "'$arg' extract() cannot sorted files" ;;
+      esac
+    else
+      echo "'$arg' not a valid file"
+    fi
+  done
 }
 
 # Git status
