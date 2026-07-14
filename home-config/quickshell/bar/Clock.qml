@@ -1,6 +1,6 @@
 import QtQuick
-import ".."
-import "../.." 
+import "."
+import ".." 
 
 Item {
   anchors.fill: parent
@@ -10,7 +10,7 @@ Item {
   Text {
     id: clockText
     anchors.centerIn: parent
-    color: Colors.nord_white
+    color: Colors.nord_blue
     font.family: Colors.fontName
     font.pixelSize: 12
     font.bold: true

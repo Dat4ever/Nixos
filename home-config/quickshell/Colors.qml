@@ -15,7 +15,7 @@ QtObject {
   readonly property color nord_cyan: "#88c0d0"        
   readonly property color nord_bright_cyan: "#8fbcbb" 
   readonly property color nord_magenta: "#b48ead"     
-  readonly property color background: nord_black
+  readonly property color background: nord_dark_gray
   readonly property color foreground: nord_light_gray
   readonly property color selection_background: nord_cyan
   readonly property color active_tab_background: nord_blue

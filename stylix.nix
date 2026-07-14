@@ -4,7 +4,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./config.d/WallPapers/nordBridge.png;
+    image = ./config.d/WallPapers/nordAstronaut2.png;
 
     base16Scheme = {
       base00 = "2e3440";

@@ -1,6 +1,7 @@
 import Quickshell
 import Quickshell.Wayland
 import QtQuick
+import "." 
 import ".." 
 
 PanelWindow {
@@ -34,13 +35,13 @@ PanelWindow {
       width: 110
       height: 24
       color: Colors.background
-      radius: 8
-      border.color: Colors.nord_dark_gray
-      border.width: 1
+      radius: 12
+      border.color: Colors.nord_cyan
+      border.width: 2
 
       Loader {
         anchors.fill: parent
-        source: Qt.resolvedUrl("left/Workspace.qml")
+        source: Qt.resolvedUrl("Workspace.qml")
       }
     }
 
@@ -53,13 +54,13 @@ PanelWindow {
       width: 64
       height: 24
       color: Colors.background
-      radius: 8
-      border.color: Colors.nord_dark_gray
-      border.width: 1
+      radius: 12
+      border.color: Colors.nord_blue
+      border.width: 2
 
       Loader {
         anchors.fill: parent
-        source: Qt.resolvedUrl("center/Clock.qml")
+        source: Qt.resolvedUrl("Clock.qml")
       }
     }
 
@@ -73,13 +74,13 @@ PanelWindow {
       width: 80
       height: 24
       color: Colors.background
-      radius: 8
-      border.color: Colors.nord_dark_gray
-      border.width: 1
+      radius: 12
+      border.color: Colors.nord_yellow
+      border.width: 2
 
       Loader {
         anchors.fill: parent
-        source: Qt.resolvedUrl("right/Battery.qml")
+        source: Qt.resolvedUrl("Battery.qml")
       }
     }
 
@@ -93,13 +94,13 @@ PanelWindow {
       width: 60
       height: 24
       color: Colors.background
-      radius: 8
-      border.color: Colors.nord_dark_gray
-      border.width: 1
+      radius: 12
+      border.color: Colors.nord_green
+      border.width: 2
 
       Loader {
         anchors.fill: parent
-        source: Qt.resolvedUrl("right/Keyboard.qml")
+        source: Qt.resolvedUrl("Keyboard.qml")
       }
     }
   }

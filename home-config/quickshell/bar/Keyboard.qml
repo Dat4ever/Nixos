@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell.Io
-import "../.." 
+import "." 
+import ".." 
 
 Item {
   anchors.fill: parent

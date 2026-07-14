@@ -1,7 +1,7 @@
 import QtQuick
 import Quickshell.Hyprland
+import "."
 import ".."
-import "../.."
 
 Item {
   anchors.fill: parent
@@ -23,9 +23,9 @@ Item {
         radius: 4 
 
         color: {
-          if (isActive) return Colors.nord_blue;       
-          if (wsData) return Colors.nord_light_gray;   
-          return Colors.nord_dark_gray;               
+          if (isActive) return Colors.nord_cyan;
+          if (wsData) return Colors.nord_white;
+          return Colors.nord_gray;
         }
 
         Behavior on implicitWidth {

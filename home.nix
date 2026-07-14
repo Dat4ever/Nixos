@@ -20,7 +20,7 @@
     videos = "$HOME/Videos";
     music = "$HOME/Music";
     desktop = "$HOME/Desktop";
-    templates = "$HOME/Public/Templates";
+    templates = "$HOME/Documents";
     publicShare = "$HOME/Public";
   };
 
