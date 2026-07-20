@@ -99,6 +99,7 @@
     git                  # Distributed version control system
     zip                  # File compressor
     unzip                # File decompressor
+    nixos-anywhere       # Install nixos everywhere via ssh
     gcc                  # GNU c compiler
     gnumake              # C language tool 'make'
     rustc                # Rust tools
