@@ -36,21 +36,26 @@
   };
 
   stylix.fonts = {
-    serif = {
-      package = pkgs.nerd-fonts.fira-code;
-      name = "Maple Mono NL NF CN";
-    };
     sansSerif = {
-      package = pkgs.nerd-fonts.fira-code;
-      name = "Maple Mono NL NF CN";
+      package = pkgs.roboto;
+      name = "Roboto";
     };
+
+    serif = {
+      package = pkgs.roboto-serif;
+      name = "Roboto Serif";
+    };
+
     monospace = {
-      package = pkgs.nerd-fonts.fira-code;
-      name = "Maple Mono NL NF CN";
+      #package = pkgs.nerd-fonts.roboto-mono;
+      #name = "RobotoMono Nerd Font";
+      package = pkgs.nerd-fonts.jetbrains-mono;
+      name = "JetBrainsMono Nerd Font";
     };
+
     emoji = {
-      package = pkgs.noto-fonts-color-emoji;
-      name = "Noto Color Emoji";
+      package = pkgs.openmoji-color;
+      name = "OpenMoji Color";
     };
   };
 }

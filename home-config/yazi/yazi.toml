@@ -25,8 +25,8 @@ open = [
 ]
 
 play = [
-  { run = 'mpv --force-window "$@"', orphan = true, desc = "Play with MPV" },
   { run = 'vlc "$@"', orphan = true, desc = "Play with VLC" },
+  { run = 'mpv --force-window "$@"', orphan = true, desc = "Play with MPV" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info" },
 ]
 

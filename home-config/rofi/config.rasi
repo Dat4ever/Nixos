@@ -1,5 +1,5 @@
 configuration {
-  font: "Maple Mono NL NF CN 11";
+  font: "JetBrainsMono Nerd Font 11";
   show-icons: false;
 
   display-ssh:    " ";

@@ -53,9 +53,11 @@
   # Font packages 
   fonts.enableDefaultPackages = false;
   fonts.packages = with pkgs; [
-    maple-mono.NL-NF-CN
+    roboto
+    roboto-serif
+    nerd-fonts.roboto-mono
     nerd-fonts.jetbrains-mono
-    noto-fonts-color-emoji
+    openmoji-color
   ];
 
   # Enable sound.
@@ -106,7 +108,6 @@
     cargo                # Rust package manager
     nixfmt               # Nix formatting tool
     devenv               # Development enviroment for Nix
-    solaar               # Logitech device manager
     nodejs               # Framework for the V8 JavaScript engine
   ];
 

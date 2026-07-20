@@ -98,6 +98,7 @@
     jq                   # command-line JSON processor
     mediainfo            # Informations about video and audio file
     pfetch               # System information
+    pokeget-rs           # Pokeget cli
     steamcmd             # Steam CLI tools
     localsend            # Local file sender
     libreoffice-fresh    # Office programs
