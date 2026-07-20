@@ -34,4 +34,23 @@
       '';
     };
   };
+
+  stylix.fonts = {
+    serif = {
+      package = pkgs.nerd-fonts.fira-code;
+      name = "Maple Mono NL NF CN";
+    };
+    sansSerif = {
+      package = pkgs.nerd-fonts.fira-code;
+      name = "Maple Mono NL NF CN";
+    };
+    monospace = {
+      package = pkgs.nerd-fonts.fira-code;
+      name = "Maple Mono NL NF CN";
+    };
+    emoji = {
+      package = pkgs.noto-fonts-color-emoji;
+      name = "Noto Color Emoji";
+    };
+  };
 }

@@ -7,6 +7,7 @@
   programs.home-manager.enable = true;
   home.stateVersion = "26.05"; 
   home.pointerCursor.enable = true;
+  xdg.enable = true;
 
   # Xdg user dirs
   xdg.userDirs = {

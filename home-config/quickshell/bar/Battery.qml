@@ -1,10 +1,15 @@
 import QtQuick
 import Quickshell.Io
-import "." 
-import ".." 
+import ".."
 
-Item {
-  anchors.fill: parent
+Rectangle {
+  id: batteryWidget
+  implicitWidth: textDisplay.implicitWidth + 16
+  implicitHeight: 24
+  radius: 12
+  border.width: 2
+  border.color: Colors.nord_yellow
+  color: Colors.nord_dark_gray
 
   property string batteryPercent: "100"
   property string batteryStatus: "Discharging"
@@ -12,44 +17,40 @@ Item {
   Process {
     id: readCapacity
     command: ["cat", "/sys/class/power_supply/BAT1/capacity"]
-    running: true
+    running: false
     stdout: SplitParser {
       onRead: data => {
         var cleanData = data.toString().replace(/[\r\n\s]+/g, "");
-        if (cleanData.length > 0) {
-          batteryPercent = cleanData;
-        }
+        if (cleanData.length > 0) batteryPercent = cleanData;
       }
     }
-    onRunningChanged: if (!running) running = true
   }
 
   Process {
     id: readStatus
     command: ["cat", "/sys/class/power_supply/BAT1/status"]
-    running: true
+    running: false
     stdout: SplitParser {
       onRead: data => {
         var cleanData = data.toString().replace(/[\r\n\s]+/g, "");
-        if (cleanData.length > 0) {
-          batteryStatus = cleanData;
-        }
+        if (cleanData.length > 0) batteryStatus = cleanData;
       }
     }
-    onRunningChanged: if (!running) running = true
   }
 
   Timer {
-    interval: 30000
+    interval: 10000
     running: true
     repeat: true
+    triggeredOnStart: true
     onTriggered: {
-      readCapacity.running = false
-      readStatus.running = false
+      readCapacity.running = true
+      readStatus.running = true
     }
   }
 
   Text {
+    id: textDisplay
     anchors.centerIn: parent
     font.family: Colors.fontName
     font.pixelSize: 12
@@ -59,15 +60,12 @@ Item {
     text: {
       var icon = " ";
       var pct = parseInt(batteryPercent) || 0;
-      
       if (pct <= 20) icon = " ";
       else if (pct <= 40) icon = " ";
       else if (pct <= 60) icon = " ";
       else if (pct <= 80) icon = " ";
-      
       var isPlugged = (batteryStatus !== "Discharging");
       var chargingState = isPlugged ? " 󱐋" : "";
-      
       return icon + " " + batteryPercent + "%" + chargingState;
     }
   }

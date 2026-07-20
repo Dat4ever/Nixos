@@ -12,6 +12,7 @@
   # General settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enable Nix Flakes
   nix.settings.auto-optimise-store = true;                         # Symlinks same store files
+  nixpkgs.config.allowUnfree = true;                               # Allow unfree packages
 
   # System settings
   networking.hostName = "datLOQ";                # Hostname
@@ -29,13 +30,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "disk" ];
   };
-
-  # Zram settings
-  #zramSwap = {
-    #enable = true;
-    #algorithm = "zstd";
-    #memoryPercent = 25;
-  #};
 
   # Weekly garbage collection
   nix.gc = {
@@ -56,21 +50,13 @@
     };
   };
 
-  # Fonts 
+  # Font packages 
+  fonts.enableDefaultPackages = false;
   fonts.packages = with pkgs; [
-    (pkgs.stdenv.mkDerivation {
-      pname = "jetbrains-mono-config";
-      version = "1.0";
-      src = ./config.d/JetBrainsMono; 
-      installPhase = ''
-        mkdir -p $out/share/fonts/truetype
-        cp -r $src/*.{ttf,otf} $out/share/fonts/truetype/
-      '';
-    })
+    maple-mono.NL-NF-CN
+    nerd-fonts.jetbrains-mono
+    noto-fonts-color-emoji
   ];
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # Enable sound.
   services.pipewire = {
