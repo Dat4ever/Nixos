@@ -49,9 +49,10 @@ ShellRoot {
       }
       spacing: 8
       
+      Keyboard {}
       Bluetooth {}
       Network {}
-      Keyboard {}
+      Volume {}
       Battery {}
       Power {}
     }

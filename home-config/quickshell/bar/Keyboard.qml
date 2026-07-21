@@ -8,7 +8,7 @@ Rectangle {
   implicitHeight: 24
   radius: 12
   border.width: 2
-  border.color: Colors.nord_green
+  border.color: Colors.nord_magenta
   color: Colors.nord_dark_gray
 
   property string rawLayout: "US"
@@ -47,7 +47,7 @@ Rectangle {
     font.family: Colors.fontName
     font.pixelSize: 12
     font.bold: true
-    color: Colors.nord_green
+    color: Colors.nord_magenta
     text: "  " + rawLayout
   }
 }
