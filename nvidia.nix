@@ -14,11 +14,8 @@
 
   environment.sessionVariables = {
     NVD_BACKEND = "direct";
-
-  #LD_LIBRARY_PATH="/run/opengl-driver/lib:/run/opengl-driver-32/lib"
-  __NV_PRIME_RENDER_OFFLOAD = "1";
-  __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-  __VK_LAYER_NV_optimus = "NVIDIA_only";
+    __NV_PRIME_RENDER_OFFLOAD = "1";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -27,14 +24,18 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     open = true;
     nvidiaSettings = true;
+    powerManagement = {
+      enable = true;
+      finegrained = false;
+    };
     modesetting.enable = true;
     prime = { 
       intelBusId = "PCI:0@0:2:0";
       nvidiaBusId = "PCI:1@0:0:0";
-      #sync = {
-      offload = {
+      sync = {
+      #offload = {
         enable = true;
-        enableOffloadCmd = true;
+        #enableOffloadCmd = true;
       };
     };
   };

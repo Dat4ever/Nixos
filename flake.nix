@@ -31,13 +31,10 @@
       modules = [
         ./configuration.nix
         ./hardware-configuration.nix
-
         stylix.nixosModules.stylix
         ./stylix.nix
-
         disko.nixosModules.disko
         ./disko.nix
-
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

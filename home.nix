@@ -78,8 +78,6 @@
     yazi                 # File manager
     quickshell           # Desktop shell toolkit
     rofi                 # Application launcher
-    networkmanagerapplet # NetworkManager control applet
-    blueman              # Bluetooth manager
     pavucontrol          # Volume control
     pulseaudio           # PulseAudio Volume Control
     neovim               # Text editor

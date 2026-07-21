@@ -42,7 +42,8 @@ Rectangle {
     font.pixelSize: 12
     font.bold: true
     visible: clockWidget.state === "date"
-    text: Qt.formatDateTime(new Date(), "dd MMM")
+    
+    text: Qt.formatDateTime(new Date(), "dd MMMM yyyy dddd")
   }
 
   Timer {
@@ -61,7 +62,7 @@ Rectangle {
     },
     State {
       name: "date"
-      PropertyChanges { target: clockWidget; implicitWidth: dateText.implicitWidth + 16 }
+      PropertyChanges { target: clockWidget; implicitWidth: dateText.implicitWidth + 20 }
       PropertyChanges { target: clockWidget; implicitHeight: 24 }
     }
   ]
@@ -70,10 +71,10 @@ Rectangle {
     anchors.fill: parent
     z: 99
     cursorShape: Qt.PointingHandCursor
-    
+
     onClicked: {
       if (clockWidget.state === "time") {
-        dateText.text = Qt.formatDateTime(new Date(), "dd MMM")
+        dateText.text = Qt.formatDateTime(new Date(), "dd MMMM yyyy dddd")
         clockWidget.state = "date"
         autoReturnTimer.restart()
       } else {

@@ -48,10 +48,12 @@ ShellRoot {
         rightMargin: 12
       }
       spacing: 8
-
+      
+      Bluetooth {}
       Network {}
       Keyboard {}
       Battery {}
+      Power {}
     }
   }
 }

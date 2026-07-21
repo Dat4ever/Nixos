@@ -5,7 +5,7 @@ import ".."
 
 Rectangle {
   id: networkWidget
-  implicitWidth: textDisplay.implicitWidth + 16 
+  implicitWidth: textDisplay.implicitWidth + 20
   implicitHeight: 24
   radius: 12
   border.width: 2
@@ -13,7 +13,7 @@ Rectangle {
   color: Colors.nord_dark_gray
 
   property string netStatus: "Checking..."
-  property string netIcon: "   "
+  property string netIcon: "󰤅"
 
   Timer {
     interval: 5000
@@ -21,37 +21,69 @@ Rectangle {
     repeat: true
     triggeredOnStart: true
     onTriggered: {
-      netCheck.running = false
-      netCheck.running = true
+      if (!netCheck.running) {
+        netCheck.running = true
+      }
     }
   }
 
   Process {
     id: netCheck
-    command: ["nmcli", "-t", "-f", "CONNECTIVITY", "g"]
+    command: ["nmcli", "-t", "-f", "TYPE,STATE", "device"]
     running: false
-    onRunningChanged: {
-      if (!running) {
-        var output = stdout.text.trim();
-        if (output && output.includes("full")) {
+
+    stdout: StdioCollector {
+      onTextChanged: {
+        var lines = text.trim().split("\n");
+        var hasEthernet = false;
+        var hasWifi = false;
+
+        for (var i = 0; i < lines.length; i++) {
+          var parts = lines[i].split(":");
+          var type = parts[0];
+          var state = parts[1];
+
+          if (state === "connected") {
+            if (type === "ethernet") {
+              hasEthernet = true;
+            } else if (type === "wifi") {
+              hasWifi = true;
+            }
+          }
+        }
+
+        if (hasEthernet) {
+          networkWidget.netStatus = "Wired";
+          networkWidget.netIcon = "󰲟";
+        } else if (hasWifi) {
           networkWidget.netStatus = "Online";
-          networkWidget.netIcon = "   ";
-        } else if (output && output.includes("limited")) {
-          networkWidget.netStatus = "No Internet";
-          networkWidget.netIcon = "   ";
+          networkWidget.netIcon = "󰤨";
         } else {
           networkWidget.netStatus = "Offline";
-          networkWidget.netIcon = "   ";
+          networkWidget.netIcon = "󰤮";
         }
       }
     }
-    stdout: StdioCollector {}
+  }
+
+  Process {
+    id: launchNmtui
+    command: ["kitty", "-e", "nmtui"]
+    running: false
+  }
+
+  MouseArea {
+    anchors.fill: parent
+    cursorShape: Qt.PointingHandCursor
+    onClicked: {
+      launchNmtui.running = true
+    }
   }
 
   Text {
     id: textDisplay
-    anchors.centerIn: parent 
-    text: networkWidget.netIcon + " " + networkWidget.netStatus
+    anchors.centerIn: parent
+    text: networkWidget.netIcon + "  " + networkWidget.netStatus
     color: Colors.nord_cyan
     font.family: Colors.fontName
     font.pixelSize: 12
