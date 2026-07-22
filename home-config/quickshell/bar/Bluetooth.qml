@@ -69,7 +69,7 @@ Rectangle {
 
   Process {
     id: launchBt
-    command: ["kitty", "-e", "bluetoothctl"]
+    command: ["kitty", "-e", "bluetui"]
     running: false
   }
 

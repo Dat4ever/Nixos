@@ -101,6 +101,7 @@
     git                  # Distributed version control system
     zip                  # File compressor
     unzip                # File decompressor
+    bluetui              # Bluetooth tui
     nixos-anywhere       # Install nixos everywhere via ssh
     gcc                  # GNU c compiler
     gnumake              # C language tool 'make'
