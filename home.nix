@@ -45,6 +45,12 @@
     initExtra = builtins.readFile ./home-config/bashrc;
   };
 
+  # Btop settings
+  programs.btop = {
+    enable = true;
+    extraConfig = builtins.readFile ./home-config/btop/btop.conf;
+  };
+
   # Config files
   home.file.".config/nvim".source = ./home-config/nvim;
   home.file.".config/yazi".source = ./home-config/yazi;

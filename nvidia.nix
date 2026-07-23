@@ -1,16 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      nvidia-vaapi-driver
-      intel-media-driver
-      libva-vdpau-driver
-      libvdpau-va-gl
-    ];
-  };
+  hardware.graphics.extraPackages = lib.mkAfter (with pkgs; [
+    nvidia-vaapi-driver
+    libva-vdpau-driver
+    libvdpau-va-gl
+  ]);
 
   services.xserver.videoDrivers = [ "nvidia" ];
 

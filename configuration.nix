@@ -18,6 +18,15 @@
   networking.hostName = "datLOQ";                # Hostname
   time.timeZone = "Europe/Istanbul";             # Time zone
 
+  # System language
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "tr_TR.UTF-8/UTF-8"
+    ];
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -39,7 +48,7 @@
   };
 
   # Systemd service to configure TTY keyboard repeat rate and delay
-  console.keyMap = "trq";                                 # Set the default keyboard layout for the TTY
+  console.keyMap = "trq"; # Set the default keyboard layout for the TTY
   systemd.services.tty-kbdrate = {
     description = "Set TTY keyboard rate and delay";
     wantedBy = [ "multi-user.target" ];
@@ -59,6 +68,15 @@
     nerd-fonts.jetbrains-mono
     openmoji-color
   ];
+  
+  # Hardware
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+  };
 
   # Enable sound.
   services.pipewire = {
@@ -69,7 +87,7 @@
     jack.enable = true;
   };
 
-  # Bluetooth settings
+  # Bluetooth
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -178,7 +196,7 @@
   # Nameservers
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
-  # Extra TTL setting
+  # Extra TTL
   networking.firewall.extraCommands = ''
     iptables -t mangle -A PREROUTING -j TTL --ttl-set 65
   '';
