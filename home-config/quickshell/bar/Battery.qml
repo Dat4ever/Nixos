@@ -99,9 +99,9 @@ Rectangle {
     
     onWheel: wheel => {
       if (wheel.angleDelta.y > 0) {
-        batteryWidget.changeBrightness("+5%");
+        batteryWidget.changeBrightness("+2%");
       } else if (wheel.angleDelta.y < 0) {
-        batteryWidget.changeBrightness("5%-");
+        batteryWidget.changeBrightness("2%-");
       }
       batteryWidget.showBrightness = true;
       brightnessDisplayTimer.restart();
@@ -118,12 +118,12 @@ Rectangle {
 
     text: {
       if (batteryWidget.showBrightness) {
-        return "󰃠 " + batteryWidget.brightnessPercent + "%";
+        return "󰃠  " + batteryWidget.brightnessPercent + "%";
       }
 
       var icon = " ";
       var pct = parseInt(batteryPercent) || 0;
-      if (pct <= 20) icon = " ";
+      if (pct <= 20) icon = "";
       else if (pct <= 40) icon = " ";
       else if (pct <= 60) icon = " ";
       else if (pct <= 80) icon = " ";

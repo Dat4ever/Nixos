@@ -41,6 +41,7 @@
       nrsf = "sudo nixos-rebuild switch --flake .";
       ncg = "sudo nix-collect-garbage -d";
       nfu-nrsf = "nix flake update && sudo nixos-rebuild switch --flake .";
+      llama-qwen2dot5coder = "llama-cli -hf Qwen/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M -ngl 99 -cnv";
     };
     initExtra = builtins.readFile ./home-config/bashrc;
   };
@@ -110,5 +111,7 @@
     qbittorrent          # BitTorrent client
     caligula             # lightweight TUI for disk imaging
     obs-studio           # Video screen recording
+    (llama-cpp.override { cudaSupport = true; }) # Llama c++ AI cli
+    (stable-diffusion-cpp.override { cudaSupport = true; }) # Stable diffusion AI cli
   ];
 }

@@ -62,13 +62,11 @@
   # Font packages 
   fonts.enableDefaultPackages = false;
   fonts.packages = with pkgs; [
-    roboto
-    roboto-serif
-    nerd-fonts.roboto-mono
-    nerd-fonts.jetbrains-mono
-    openmoji-color
+    geist-font
+    nerd-fonts.commit-mono
+    noto-fonts-color-emoji
   ];
-  
+
   # Hardware
   hardware.graphics = {
     enable = true;

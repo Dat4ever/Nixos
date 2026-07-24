@@ -1,5 +1,5 @@
 configuration {
-  font: "JetBrainsMono Nerd Font 11";
+  font: "CommitMono Nerd Font 11";
   show-icons: false;
 
   display-ssh:    " ";
