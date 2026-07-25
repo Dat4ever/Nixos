@@ -40,6 +40,7 @@
       package = pkgs.geist-font;
       name = "Geist";
     };
+
     serif = config.stylix.fonts.sansSerif;
 
     monospace = {

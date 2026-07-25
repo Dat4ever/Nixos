@@ -5,7 +5,7 @@
   home.username = "dat";
   home.homeDirectory = "/home/dat";
   programs.home-manager.enable = true;
-  home.stateVersion = "26.05"; 
+  home.stateVersion = "26.05";
   home.pointerCursor.enable = true;
   xdg.enable = true;
 
