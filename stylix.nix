@@ -1,11 +1,12 @@
-{ config, lib, pkgs, ...}:
+{ pkgs, config, ... }:
 
 {
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./config.d/WallPapers/nordAstronaut2.png;
+    image = ./WallPapers/nordCity.jpg;
 
+  # Colors
     base16Scheme = {
       base00 = "2e3440";
       base01 = "3b4252";
@@ -25,32 +26,31 @@
       base0F = "5e81ac";
     };
 
+  # Cursor
     cursor = {
       name = "Nordzy-cursors";
       size = 32;
-      package = pkgs.runCommand "Nordzy-cursors" {} ''
-        mkdir -p $out/share/icons/Nordzy-cursors
-        cp -r ${./config.d/Nordzy-cursors}/* $out/share/icons/Nordzy-cursors/
-      '';
-    };
-  };
-
-  stylix.fonts = {
-    sansSerif = {
-      package = pkgs.geist-font;
-      name = "Geist";
+      package = pkgs.nordzy-cursor-theme;
     };
 
-    serif = config.stylix.fonts.sansSerif;
+  # Fonts
+    fonts = {
+      sansSerif = {
+        package = pkgs.geist-font;
+        name = "Geist";
+      };
 
-    monospace = {
-      package = pkgs.nerd-fonts.commit-mono;
-      name = "CommitMono Nerd Font";
-    };
+      serif = config.stylix.fonts.sansSerif;
 
-    emoji = {
-      package = pkgs.noto-fonts-color-emoji;
-      name = "Noto Color Emoji";
+      monospace = {
+        package = pkgs.nerd-fonts.commit-mono;
+        name = "CommitMono Nerd Font";
+      };
+
+      emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+      };
     };
   };
 }

@@ -5,7 +5,6 @@
   home.username = "dat";
   home.homeDirectory = "/home/dat";
   programs.home-manager.enable = true;
-  home.stateVersion = "26.05";
   home.pointerCursor.enable = true;
   xdg.enable = true;
 
@@ -112,6 +111,7 @@
     caligula             # lightweight TUI for disk imaging
     obs-studio           # Video screen recording
     (llama-cpp.override { cudaSupport = true; }) # Llama c++ AI cli
-    (stable-diffusion-cpp.override { cudaSupport = true; }) # Stable diffusion AI cli
   ];
+
+  home.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
 }

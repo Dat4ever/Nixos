@@ -9,8 +9,6 @@ hl.monitor({
 ---- AUTOSTART ----
 hl.on("hyprland.start", function ()
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
-  hl.exec_cmd("nm-applet")
-  hl.exec_cmd("blueman-applet")
   hl.exec_cmd("qs")
 end)
 
@@ -47,7 +45,7 @@ hl.config({
   decoration = {
     rounding         = 8,
     rounding_power   = 2,
-    active_opacity   = 0.9,
+    active_opacity   = 1,
     inactive_opacity = 0.75,
 
     shadow = {

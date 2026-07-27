@@ -78,17 +78,17 @@ Rectangle {
 
     onClicked: mouse => {
       if (mouse.button === Qt.LeftButton) {
-        volumeWidget.toggleMute();
-      } else if (mouse.button === Qt.RightButton) {
         launchMixer.running = true;
+      } else if (mouse.button === Qt.RightButton) {
+        volumeWidget.toggleMute();  // Sağ tık: Sesi susturur/açar
       }
     }
 
     onWheel: wheel => {
       if (wheel.angleDelta.y > 0) {
-        volumeWidget.changeVolume("5%+");
+        volumeWidget.changeVolume("2%+");
       } else if (wheel.angleDelta.y < 0) {
-        volumeWidget.changeVolume("5%-");
+        volumeWidget.changeVolume("2%-");
       }
     }
   }
