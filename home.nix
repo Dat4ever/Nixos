@@ -99,7 +99,6 @@
     nodejs               # JavaScript runtime
     nixfmt               # Nix code formatter
     # GUI Applications
-    pavucontrol          # Audio mixer
     firefox              # Web browser
     tor-browser          # Privacy-focused browser
     vlc                  # Media player
