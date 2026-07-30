@@ -20,6 +20,10 @@ reveal = [
   { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal" },
 ]
 
+run = [
+	{ run = './"$1"', orphan = true, desc = "Run executable" },
+]
+
 open = [
   { run = 'xdg-open "$1"', desc = "Open" },
 ]
@@ -44,6 +48,9 @@ prepend_rules = [
 # Images
   { mime = "image/*", use = ["open", "reveal"] },
 
+# AppImage
+	{ mime = "*.AppImage", use = ["run", "reveal"] },
+
 # Directories
   { mime = "inode/directory", use = ["edit", "open", "reveal"] },
 
@@ -58,7 +65,7 @@ prepend_rules = [
   {mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", use = ["extract", "open", "reveal"]},
 
 # Fallback
-  { url = "*", use = ["open", "edit", "reveal"] },
+  { url = "*", use = ["open", "edit", "run", "reveal"] },
 ]
 
 [plugin]

@@ -67,7 +67,7 @@ Rectangle {
 
   Process {
     id: launchMixer
-    command: ["pavucontrol"]
+    command: ["kitty", "-e", "wiremix"]
     running: false
   }
 
@@ -80,7 +80,7 @@ Rectangle {
       if (mouse.button === Qt.LeftButton) {
         launchMixer.running = true;
       } else if (mouse.button === Qt.RightButton) {
-        volumeWidget.toggleMute();  // Sağ tık: Sesi susturur/açar
+        volumeWidget.toggleMute();
       }
     }
 

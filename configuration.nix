@@ -31,8 +31,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
 
-  # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dat = {
@@ -111,24 +109,15 @@
   environment.systemPackages = with pkgs; [
     bash                 # Shell
     vim                  # Text editor
-    brightnessctl        # Screen brightness
-    wget                 # Tool for retrieving files from webpages
-    curl                 # Tool for transferring files with URL syntax
-    git                  # Distributed version control system
+    brightnessctl        # Screen brightness control
+    wget                 # Web file retriever
+    curl                 # URL file transfer utility
+    git                  # Version control
+    rsync                # System-level file sync & backups
     zip                  # File compressor
     unzip                # File decompressor
-    bluetui              # Bluetooth tui
-    nixos-anywhere       # Install nixos everywhere via ssh
-    gcc                  # GNU c compiler
-    gnumake              # C language tool 'make'
-    rustc                # Rust tools
-    cargo                # Rust package manager
-    nixfmt               # Nix formatting tool
-    devenv               # Development enviroment for Nix
-    nodejs               # Framework for the V8 JavaScript engine
+    nixos-anywhere       # NixOS installation via SSH
   ];
-
-  programs.direnv.enable = true;   # Direnv Program
 
   # Podman
   virtualisation.podman = {
@@ -140,12 +129,45 @@
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
+      # C / System
       stdenv.cc.cc
-      icu
-      zlib
       glibc
+      zlib
+      zstd
+      icu
+      util-linux
+      # GUI (Electron / GTK)
+      glib
+      gtk3
+      atk
+      dbus
+      gsettings-desktop-schemas
+      systemd
+      # Font & Render
+      fontconfig
+      freetype
+      pango
+      gdk-pixbuf
+      expat
+      libxml2
+      cairo
+      # Voice & Game
+      alsa-lib
+      pulseaudio
+      SDL
+      SDL2
+      libtheora
+      # Graphics / OpenGL
+      libdrm
+      libgbm
+      mesa
       libGL
+      # Security & Web
       openssl
+      nss
+      nspr
+      cups
+      # Xorg
       libxkbcommon
       libX11
       libXcursor
@@ -156,14 +178,8 @@
       libXrender
       libXScrnSaver
       libxcb
-      alsa-lib
-      pulseaudio
-      libtheora
-      SDL
-      SDL2
-      glib
-      gtk3
-      gsettings-desktop-schemas
+      libXcomposite
+      libXdamage
     ];
   };
 
@@ -184,20 +200,22 @@
     gamescopeSession.enable = true;
   };
 
-  # Open ports in the firewall
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 22 443 53317 ];
-    allowedUDPPorts = [ 53317 ];
-  };
-
-  # Nameservers
-  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+  # Networking
+  networking = {
+    networkmanager.enable = true; # nmcli or nmtui
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 22 443 53317 ];
+      allowedUDPPorts = [ 53317 ];
 
   # Extra TTL
-  networking.firewall.extraCommands = ''
-    iptables -t mangle -A PREROUTING -j TTL --ttl-set 65
-  '';
+      extraCommands = ''
+        iptables -t mangle -A PREROUTING -j TTL --ttl-set 65
+      '';
+    };
+
+    nameservers = [ "1.1.1.1" "8.8.8.8" ];
+  };
 
   system.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
 }

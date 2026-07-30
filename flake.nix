@@ -21,6 +21,8 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Other flake packages 
   };
 
   # Outputs section

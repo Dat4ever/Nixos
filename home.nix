@@ -77,40 +77,51 @@
 
   # Home Packages
   home.packages = with pkgs; [
-    hyprland             # Dynamic tiling Wayland compositor
+    # Wayland / Hyprland Desktop Environment
+    hyprland             # Wayland compositor
     hyprcursor           # Hyprland cursor library
-    hyprpolkitagent      # Policy kit agent for hyprland
-    kitty                # Terminal
-    yazi                 # File manager
+    hyprpolkitagent      # Authentication agent
     quickshell           # Desktop shell toolkit
     rofi                 # Application launcher
-    pavucontrol          # Volume control
-    pulseaudio           # PulseAudio Volume Control
+    # Wayland Utilities
+    grim                 # Screenshot tool
+    slurp                # Screen region selector
+    wl-clipboard         # Clipboard manager
+    # Terminal & Development Tools
+    kitty                # Terminal emulator
     neovim               # Text editor
-    tree-sitter          # Parser generator tool
     tmux                 # Terminal multiplexer
+    tree-sitter          # Parsing tool
+    gcc                  # C/C++ compiler
+    gnumake              # Build automation tool
+    rustc                # Rust compiler
+    cargo                # Rust package manager
+    nodejs               # JavaScript runtime
+    nixfmt               # Nix code formatter
+    # GUI Applications
+    pavucontrol          # Audio mixer
     firefox              # Web browser
-    tor-browser          # Tor web browser
+    tor-browser          # Privacy-focused browser
     vlc                  # Media player
-    ouch                 # File compressor/decompressor
-    mpv                  # Media player
-    grim                 # Wayland screenshot utility
-    slurp                # Wayland screenshot utility
-    wl-clipboard         # Copy-paste for wayland desktop
-    rsync                # File transfer utility
-    pastel               # CLI tool to analyze colors
-    jq                   # command-line JSON processor
-    mediainfo            # Informations about video and audio file
-    pfetch               # System information
-    pokeget-rs           # Pokeget cli
-    steamcmd             # Steam CLI tools
-    localsend            # Local file sender
-    libreoffice-fresh    # Office programs
-    yt-dlp               # Youtube audio/video downloader
-    qbittorrent          # BitTorrent client
-    caligula             # lightweight TUI for disk imaging
-    obs-studio           # Video screen recording
-    (llama-cpp.override { cudaSupport = true; }) # Llama c++ AI cli
+    mpv                  # Lightweight media player
+    obs-studio           # Screen recorder & streaming
+    libreoffice-fresh    # Office suite
+    qbittorrent          # Torrent client
+    localsend            # Local network file sharing
+    # CLI / TUI Utilities
+    yazi                 # Terminal file manager
+    jq                   # Command-line JSON processor
+    mediainfo            # Media file metadata viewer
+    ouch                 # Archive compressor/decompressor
+    pastel               # Color analysis CLI tool
+    pfetch               # System info fetcher
+    pokeget-rs           # Pokemon sprites in terminal
+    steamcmd             # Steam command-line client
+    yt-dlp               # Media downloader
+    caligula             # TUI disk imager
+    bluetui              # Bluetooth TUI
+    wiremix              # PipeWire TUI mixer
+    (llama-cpp.override { cudaSupport = true; }) # Local AI runner with CUDA support
   ];
 
   home.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
