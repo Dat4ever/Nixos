@@ -111,10 +111,6 @@
     curl                 # URL file transfer utility
     git                  # Version control
     rsync                # System-level file sync & backups
-    zip                  # .zip compression
-    unzip                # .zip extraction
-    unrar                # .rar extraction
-    p7zip                # .7z extraction
     nixos-anywhere       # NixOS installation via SSH
   ];
 
@@ -201,7 +197,7 @@
 
   # Networking
   networking = {
-    networkmanager.enable = true; # nmcli or nmtui
+    networkmanager.enable = true; # nmcli and nmtui
     firewall = {
       enable = true;
       allowedTCPPorts = [ 22 443 53317 ];

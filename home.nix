@@ -60,6 +60,8 @@
   home.file.".config/yazi/keymap.toml".source = ./home-config/yazi/keymap.toml;
   home.file.".config/yazi/init.lua".source = ./home-config/yazi/init.lua;
   home.activation.yaziPkgUpgrade = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    $DRY_RUN_CMD install -Dm644 ${./home-config/yazi/package.toml} "$HOME/.config/yazi/package.toml"
+    export PATH="${pkgs.git}/bin:$PATH"
     $DRY_RUN_CMD ${pkgs.yazi}/bin/ya pkg upgrade || true
   '';
 
@@ -105,6 +107,14 @@
     cargo                # Rust package manager
     nodejs               # JavaScript runtime
     nixfmt               # Nix code formatter
+    # Language servers
+    vim-language-server   # LSP: Vimscript
+    lua-language-server   # LSP: Lua
+    bash-language-server  # LSP: Bash
+    marksman              # LSP: Markdown
+    nil                   # LSP: Nix
+    rust-analyzer         # LSP: Rust
+    clang-tools           # LSP: C/C++ (clangd)
     # GUI Applications
     firefox              # Web browser
     tor-browser          # Privacy-focused browser
@@ -119,6 +129,10 @@
     jq                   # Command-line JSON processor
     mediainfo            # Media file metadata viewer
     ouch                 # Archive compressor/decompressor
+    zip                  # .zip compression
+    unzip                # .zip extraction
+    unrar                # .rar extraction
+    p7zip                # .7z extraction
     pastel               # Color analysis CLI tool
     pfetch               # System info fetcher
     pokeget-rs           # Pokemon sprites in terminal

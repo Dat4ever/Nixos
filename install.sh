@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-# Get configurations from github
-git clone https://github.com/Dat4ever/Nixos /tmp/nixos-configurations
-cd /tmp/nixos-configurations
-
 # Create hardware-configuration
 nixos-generate-config --no-filesystems --dir /tmp/new-hardware
 cp /tmp/new-hardware/hardware-configuration.nix /tmp/nixos-configurations/hardware-configuration.nix

@@ -1,17 +1,6 @@
 # datLOQ — My NixOS Setup
 
-A flake-based NixOS configuration: Hyprland (Lua config) + Quickshell bar, Stylix theming (Nord), Home Manager, and disko for declarative disk partitioning.
-
-## Stack
-
-| Layer         | Tool                              |
-| ------------- | ---------------------------------- |
-| Window manager| [Hyprland](https://hyprland.org) |
-| Bar / shell   | [Quickshell](https://quickshell.org) |
-| Theming       | [Stylix](https://github.com/nix-community/stylix) (Nord palette) |
-| Dotfiles      | [Home Manager](https://github.com/nix-community/home-manager) |
-| Disk layout   | [disko](https://github.com/nix-community/disko) |
-| File manager  | [yazi](https://yazi-rs.github.io) |
+My flake-based NixOS configuration: Hyprland (Lua config) + Quickshell bar, Stylix theming (Nord), Home Manager, and disko for declarative disk partitioning.
 
 ## Quick install (fresh machine)
 
@@ -21,6 +10,7 @@ A flake-based NixOS configuration: Hyprland (Lua config) + Quickshell bar, Styli
 Boot a NixOS minimal ISO on the target machine, make sure it has network access, then run:
 
 ```sh
+sudo -i
 git clone https://github.com/Dat4ever/Nixos /tmp/nixos-configurations
 cd /tmp/nixos-configurations
 bash install.sh
@@ -41,22 +31,4 @@ Reboot once it finishes.
 ```sh
 nrsf          # sudo nixos-rebuild switch --flake .
 nfu-nrsf      # nix flake update && sudo nixos-rebuild switch --flake .
-```
-
-## Layout
-
-```
-.
-├── configuration.nix       # system config
-├── hardware-configuration.nix
-├── disko.nix                # disk layout
-├── nvidia.nix                # GPU config
-├── stylix.nix                # theme
-├── home.nix                  # home-manager entry point
-├── home-config/              # dotfiles sourced by home.nix
-│   ├── hypr/                 # Hyprland (Lua config)
-│   ├── quickshell/            # bar/shell (QML)
-│   ├── nvim/, kitty/, rofi/, btop/, yazi/, bashrc
-├── install.sh                 # fresh-install script (see above)
-└── flake.nix
 ```

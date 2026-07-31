@@ -2,8 +2,6 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
     {
       "Saghen/blink.cmp",
       version = "*",
@@ -31,46 +29,22 @@ return {
     },
   },
   config = function()
-    require("mason").setup({
-      ui = {
-        border = "rounded",
-      },
-    })
-
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-    require("mason-lspconfig").setup({
-      ensure_installed = {
-        -- Install language servers
-        "vimls",
-        "lua_ls",
-        "bashls",
-        "marksman",
-        "nil_ls",
-        "rust_analyzer",
-        "clangd",
-      },
-      handlers = {
-        function(server_name)
-          require("lspconfig")[server_name].setup({
-            capabilities = capabilities,
-          })
-        end,
+    -- Language servers are provided by Nix (see home.nix); no Mason needed.
+    vim.lsp.config("*", { capabilities = capabilities })
 
-        ["lua_ls"] = function()
-          require("lspconfig").lua_ls.setup({
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { "vim" },
-                },
-              },
-            },
-          })
-        end,
+    vim.lsp.config("lua_ls", {
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+        },
       },
     })
+
+    vim.lsp.enable({ "vimls", "bashls", "marksman", "nil_ls", "rust_analyzer", "clangd", "lua_ls" })
 
     -- gd (go to definition), gD (go to Declaration), gr (go to references), gi (go to implementation), K (hover documentation), ]d (go to next diagnostic), <leader>cd (code diagnostic float), <leader>cr (code rename), <leader>ca (code action)
     vim.api.nvim_create_autocmd("LspAttach", {
