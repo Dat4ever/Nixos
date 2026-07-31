@@ -6,7 +6,6 @@ run = "plugin mount"
 on   = [ "c", "m" ]
 run  = "plugin chmod"
 desc = "Chmod on selected files"
-un = "plugin mount"
 
 [[mgr.prepend_keymap]]
 on = ["C"]

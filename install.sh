@@ -11,16 +11,16 @@ cp /tmp/new-hardware/hardware-configuration.nix /tmp/nixos-configurations/hardwa
 git add hardware-configuration.nix
 
 # Partition with disko
-nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode zap_create_mount ./disko.nix
+nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode destroy,format,mount --yes-wipe-all-disks ./disko.nix
 
 # Place configurations
 mkdir -p /mnt/etc/nixos
-cp -r /tmp/nixos-configurations/* /mnt/etc/nixos/
+cp -r /tmp/nixos-configurations/. /mnt/etc/nixos/
 
 # Install packages
 nixos-install --flake /mnt/etc/nixos#datLOQ
 
 # User password
-passwd dat
+nixos-enter --root /mnt -c 'passwd dat'
 
 echo "Done!"

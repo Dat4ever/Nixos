@@ -3,10 +3,7 @@
 {
  imports =
   [
-    ./hardware-configuration.nix
     ./nvidia.nix
-    ./stylix.nix
-    ./disko.nix
   ];
 
   # General settings
@@ -114,8 +111,10 @@
     curl                 # URL file transfer utility
     git                  # Version control
     rsync                # System-level file sync & backups
-    zip                  # File compressor
-    unzip                # File decompressor
+    zip                  # .zip compression
+    unzip                # .zip extraction
+    unrar                # .rar extraction
+    p7zip                # .7z extraction
     nixos-anywhere       # NixOS installation via SSH
   ];
 
@@ -207,13 +206,14 @@
       enable = true;
       allowedTCPPorts = [ 22 443 53317 ];
       allowedUDPPorts = [ 53317 ];
-
-  # Extra TTL
+      # Extra TTL
       extraCommands = ''
         iptables -t mangle -A PREROUTING -j TTL --ttl-set 65
       '';
+      extraStopCommands = ''
+        iptables -t mangle -D PREROUTING -j TTL --ttl-set 65 2>/dev/null || true
+      '';
     };
-
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
   };
 

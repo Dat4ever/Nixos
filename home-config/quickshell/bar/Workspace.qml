@@ -19,7 +19,7 @@ Rectangle {
     spacing: 8
 
     Repeater {
-      model: 5 
+      model: 5
 
       Rectangle {
         id: wsDot

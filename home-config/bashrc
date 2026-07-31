@@ -55,7 +55,6 @@ function extract () {
         *.zip)       unzip "$arg"       ;;
         *.Z)         uncompress "$arg"  ;;
         *.7z)        7z x "$arg"        ;;
-        *.ace)       unace x "$arg"     ;;
         *)           echo "'$arg' extract() cannot sorted files" ;;
       esac
     else

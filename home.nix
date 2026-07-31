@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, lib, ... }:
 
 {
   # Home manager user
@@ -29,7 +29,7 @@
     enable = true;
     settings = {
       user.name = "Dat4ever";
-      user.email = "nemodat8777@gmail.com";
+      user.email = "dat4ever87@gmail.com";
     };
   };
 
@@ -53,10 +53,15 @@
 
   # Config files
   home.file.".config/nvim".source = ./home-config/nvim;
-  home.file.".config/yazi".source = ./home-config/yazi;
   home.file.".config/kitty".source = ./home-config/kitty;
   home.file.".config/quickshell".source = ./home-config/quickshell;
   home.file.".config/rofi".source = ./home-config/rofi;
+  home.file.".config/yazi/yazi.toml".source = ./home-config/yazi/yazi.toml;
+  home.file.".config/yazi/keymap.toml".source = ./home-config/yazi/keymap.toml;
+  home.file.".config/yazi/init.lua".source = ./home-config/yazi/init.lua;
+  home.activation.yaziPkgUpgrade = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    $DRY_RUN_CMD ${pkgs.yazi}/bin/ya pkg upgrade || true
+  '';
 
   # Desktop enviroment and its config file
   wayland.windowManager.hyprland = {
@@ -79,6 +84,7 @@
   home.packages = with pkgs; [
     # Wayland / Hyprland Desktop Environment
     hyprland             # Wayland compositor
+    hyprpaper            # Wallpaper manager
     hyprcursor           # Hyprland cursor library
     hyprpolkitagent      # Authentication agent
     quickshell           # Desktop shell toolkit
@@ -92,6 +98,7 @@
     neovim               # Text editor
     tmux                 # Terminal multiplexer
     tree-sitter          # Parsing tool
+    ripgrep              # Fast grep
     gcc                  # C/C++ compiler
     gnumake              # Build automation tool
     rustc                # Rust compiler
@@ -120,6 +127,7 @@
     caligula             # TUI disk imager
     bluetui              # Bluetooth TUI
     wiremix              # PipeWire TUI mixer
+    claude-code          # TUI agentic coding tool
     (llama-cpp.override { cudaSupport = true; }) # Local AI runner with CUDA support
   ];
 

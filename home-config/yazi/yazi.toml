@@ -49,7 +49,7 @@ prepend_rules = [
   { mime = "image/*", use = ["open", "reveal"] },
 
 # AppImage
-	{ mime = "*.AppImage", use = ["run", "reveal"] },
+	{ url = "*.AppImage", use = ["run", "reveal"] },
 
 # Directories
   { mime = "inode/directory", use = ["edit", "open", "reveal"] },
