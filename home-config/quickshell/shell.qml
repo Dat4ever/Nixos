@@ -7,7 +7,7 @@ import "./bar"
 ShellRoot {
   PanelWindow {
     id: mainBar
-    exclusiveZone: 24
+    exclusiveZone: 32
     color: "transparent"
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.keyboardFocus: WlrLayershell.None
@@ -19,42 +19,101 @@ ShellRoot {
 
     margins {
       top: 8
+      left: 8
+      right: 8
     }
 
-    implicitHeight: 24
-    Workspace {
-      anchors {
-        verticalCenter: parent.verticalCenter
-        left: parent.left
-        leftMargin: 12
+    implicitHeight: 28
+
+    Rectangle {
+      id: barBackground
+      anchors.fill: parent
+      radius: 16
+      color: Colors.nord_dark_gray
+      border.width: 2
+      border.color: Colors.nord_blue
+
+      Item {
+        id: leftCluster
+        anchors {
+          verticalCenter: parent.verticalCenter
+          left: parent.left
+          leftMargin: 16
+        }
+        height: parent.height
+        width: rowL.implicitWidth
+
+        Row {
+          id: rowL
+          anchors.verticalCenter: parent.verticalCenter
+          spacing: 0
+
+          Launcher {}
+
+          Text {
+            text: "│"
+            color: Colors.nord_gray
+            font.family: Colors.fontName
+            font.pixelSize: 14
+            leftPadding: 12
+            rightPadding: 12
+          }
+
+          Workspace {}
+
+          Text {
+            text: "│"
+            color: Colors.nord_gray
+            font.family: Colors.fontName
+            font.pixelSize: 14
+            leftPadding: 12
+            rightPadding: 12
+          }
+
+          ActiveWindow {}
+        }
       }
-    }
 
-    Item {
-      anchors.centerIn: parent
-      width: centralClock.width
-      height: parent.height
-
-      Clock {
-        id: centralClock
+      Item {
+        id: centerCluster
         anchors.centerIn: parent
-      }
-    }
+        height: parent.height
+        width: centralClock.width
 
-    Row {
-      anchors {
-        verticalCenter: parent.verticalCenter
-        right: parent.right
-        rightMargin: 12
+        Clock {
+          id: centralClock
+          anchors.centerIn: parent
+        }
       }
-      spacing: 8
-      
-      Keyboard {}
-      Bluetooth {}
-      Network {}
-      Volume {}
-      Battery {}
-      Power {}
+
+      Item {
+        id: rightCluster
+        anchors {
+          verticalCenter: parent.verticalCenter
+          right: parent.right
+          rightMargin: 16
+        }
+        height: parent.height
+        width: rowR.implicitWidth
+
+        Row {
+          id: rowR
+          anchors.verticalCenter: parent.verticalCenter
+          spacing: 0
+
+          Keyboard {}
+          Text { text: "│"; color: Colors.nord_gray; font.family: Colors.fontName; font.pixelSize: 14; leftPadding: 10; rightPadding: 10 }
+          Bluetooth {}
+          Text { text: "│"; color: Colors.nord_gray; font.family: Colors.fontName; font.pixelSize: 14; leftPadding: 10; rightPadding: 10 }
+          Network {}
+          Text { text: "│"; color: Colors.nord_gray; font.family: Colors.fontName; font.pixelSize: 14; leftPadding: 10; rightPadding: 10 }
+          Volume {}
+          Text { text: "│"; color: Colors.nord_gray; font.family: Colors.fontName; font.pixelSize: 14; leftPadding: 10; rightPadding: 10 }
+          Battery {}
+          Text { text: "│"; color: Colors.nord_gray; font.family: Colors.fontName; font.pixelSize: 14; leftPadding: 10; rightPadding: 10 }
+          Power {}
+        }
+      }
     }
   }
 }

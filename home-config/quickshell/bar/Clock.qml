@@ -1,15 +1,11 @@
 import QtQuick
 import ".."
 
-Rectangle {
+Item {
   id: clockWidget
 
   width: implicitWidth
   height: implicitHeight
-  radius: 12
-  border.width: 2
-  border.color: Colors.nord_blue
-  color: Colors.nord_dark_gray
 
   state: "time"
   Behavior on implicitWidth {
@@ -19,9 +15,9 @@ Rectangle {
   Text {
     id: timeText
     anchors.centerIn: parent
-    color: Colors.nord_blue
+    color: Colors.nord_cyan
     font.family: Colors.fontName
-    font.pixelSize: 12
+    font.pixelSize: 13
     font.bold: true
     visible: clockWidget.state === "time"
     text: Qt.formatDateTime(new Date(), "HH:mm")
@@ -37,9 +33,9 @@ Rectangle {
   Text {
     id: dateText
     anchors.centerIn: parent
-    color: Colors.nord_blue
+    color: Colors.nord_cyan
     font.family: Colors.fontName
-    font.pixelSize: 12
+    font.pixelSize: 13
     font.bold: true
     visible: clockWidget.state === "date"
     
@@ -57,12 +53,12 @@ Rectangle {
   states: [
     State {
       name: "time"
-      PropertyChanges { target: clockWidget; implicitWidth: timeText.implicitWidth + 16 }
+      PropertyChanges { target: clockWidget; implicitWidth: timeText.implicitWidth }
       PropertyChanges { target: clockWidget; implicitHeight: 24 }
     },
     State {
       name: "date"
-      PropertyChanges { target: clockWidget; implicitWidth: dateText.implicitWidth + 20 }
+      PropertyChanges { target: clockWidget; implicitWidth: dateText.implicitWidth }
       PropertyChanges { target: clockWidget; implicitHeight: 24 }
     }
   ]

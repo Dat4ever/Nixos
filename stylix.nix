@@ -4,7 +4,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./WallPapers/nordCity.jpg;
+    image = ./home-config/hypr/nordAstronaut2.png;
 
   # Colors
     base16Scheme = {

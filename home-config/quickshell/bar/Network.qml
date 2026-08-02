@@ -3,14 +3,10 @@ import Quickshell
 import Quickshell.Io
 import ".."
 
-Rectangle {
+Item {
   id: networkWidget
-  implicitWidth: textDisplay.implicitWidth + 20
+  implicitWidth: textDisplay.implicitWidth
   implicitHeight: 24
-  radius: 12
-  border.width: 2
-  border.color: Colors.nord_cyan
-  color: Colors.nord_dark_gray
 
   property string netStatus: "Checking..."
   property string netIcon: "󰤅"
@@ -22,7 +18,7 @@ Rectangle {
     triggeredOnStart: true
     onTriggered: {
       if (!netCheck.running) {
-        netCheck.running = true
+        netCheck.running = true;
       }
     }
   }
@@ -86,7 +82,7 @@ Rectangle {
     text: networkWidget.netIcon + "  " + networkWidget.netStatus
     color: Colors.nord_cyan
     font.family: Colors.fontName
-    font.pixelSize: 12
+    font.pixelSize: 13
     font.bold: true
   }
 }

@@ -3,19 +3,15 @@ import Quickshell.Hyprland
 import "."
 import ".."
 
-Rectangle {
+Item {
   id: workspaceWidget
-  
-  implicitWidth: internalRow.implicitWidth + 16 
+
+  implicitWidth: internalRow.implicitWidth
   implicitHeight: 24
-  radius: 12
-  color: Colors.nord_dark_gray
-  border.width: 2
-  border.color: Colors.nord_cyan
 
   Row {
     id: internalRow
-    anchors.centerIn: parent 
+    anchors.centerIn: parent
     spacing: 8
 
     Repeater {
@@ -29,7 +25,7 @@ Rectangle {
 
         width: isActive ? 22 : 8
         height: 8
-        radius: 4 
+        radius: 4
 
         color: {
           if (isActive) return Colors.nord_cyan;

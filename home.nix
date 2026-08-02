@@ -59,10 +59,8 @@
   home.file.".config/yazi/yazi.toml".source = ./home-config/yazi/yazi.toml;
   home.file.".config/yazi/keymap.toml".source = ./home-config/yazi/keymap.toml;
   home.file.".config/yazi/init.lua".source = ./home-config/yazi/init.lua;
-  home.activation.yaziPkgUpgrade = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.yaziPkgInstall = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     $DRY_RUN_CMD install -Dm644 ${./home-config/yazi/package.toml} "$HOME/.config/yazi/package.toml"
-    export PATH="${pkgs.git}/bin:$PATH"
-    $DRY_RUN_CMD ${pkgs.yazi}/bin/ya pkg upgrade || true
   '';
 
   # Desktop enviroment and its config file
@@ -141,8 +139,8 @@
     caligula             # TUI disk imager
     bluetui              # Bluetooth TUI
     wiremix              # PipeWire TUI mixer
+    opencode             # AI terminal coding agent
     claude-code          # TUI agentic coding tool
-    (llama-cpp.override { cudaSupport = true; }) # Local AI runner with CUDA support
   ];
 
   home.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)

@@ -3,14 +3,10 @@ import Quickshell
 import Quickshell.Io
 import ".."
 
-Rectangle {
+Item {
   id: bluetoothWidget
-  implicitWidth: textDisplay.implicitWidth + 20
+  implicitWidth: textDisplay.implicitWidth
   implicitHeight: 24
-  radius: 12
-  border.width: 2
-  border.color: Colors.nord_blue
-  color: Colors.nord_dark_gray
 
   property string btStatus: "Checking..."
   property string btIcon: "󰂯"
@@ -23,7 +19,7 @@ Rectangle {
     triggeredOnStart: true
     onTriggered: {
       if (!btCheck.running) {
-        btCheck.running = true
+        btCheck.running = true;
       }
     }
   }
@@ -106,7 +102,7 @@ Rectangle {
     text: bluetoothWidget.btIcon + " " + bluetoothWidget.btStatus
     color: Colors.nord_blue
     font.family: Colors.fontName
-    font.pixelSize: 12
+    font.pixelSize: 13
     font.bold: true
   }
 }

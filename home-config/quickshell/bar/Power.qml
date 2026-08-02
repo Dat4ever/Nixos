@@ -3,14 +3,10 @@ import Quickshell
 import Quickshell.Io
 import ".."
 
-Rectangle {
+Item {
   id: powerWidget
-  implicitWidth: textDisplay.implicitWidth + 20
+  implicitWidth: textDisplay.implicitWidth
   implicitHeight: 24
-  radius: 12
-  border.width: 2
-  border.color: Colors.nord_red
-  color: Colors.nord_dark_gray
 
   Process {
     id: confirmLogout
@@ -47,10 +43,10 @@ Rectangle {
   Text {
     id: textDisplay
     anchors.centerIn: parent
-    text: "󰐥"
+    text: "⏻"
     color: Colors.nord_red
     font.family: Colors.fontName
-    font.pixelSize: 14
+    font.pixelSize: 15
     font.bold: true
   }
 }

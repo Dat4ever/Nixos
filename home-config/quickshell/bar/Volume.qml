@@ -3,14 +3,10 @@ import Quickshell
 import Quickshell.Io
 import ".."
 
-Rectangle {
+Item {
   id: volumeWidget
-  implicitWidth: textDisplay.implicitWidth + 20
+  implicitWidth: textDisplay.implicitWidth
   implicitHeight: 24
-  radius: 12
-  border.width: 2
-  border.color: Colors.nord_green
-  color: Colors.nord_dark_gray
 
   property int volLevel: 0
   property bool isMuted: false
@@ -22,7 +18,7 @@ Rectangle {
     triggeredOnStart: true
     onTriggered: {
       if (!volCheck.running) {
-        volCheck.running = true
+        volCheck.running = true;
       }
     }
   }
@@ -97,7 +93,7 @@ Rectangle {
     id: textDisplay
     anchors.centerIn: parent
     font.family: Colors.fontName
-    font.pixelSize: 12
+    font.pixelSize: 13
     font.bold: true
     color: Colors.nord_green
 
