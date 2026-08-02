@@ -37,10 +37,9 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      nrsf = "sudo nixos-rebuild switch --flake .";
+      nrsf-l = "sudo nixos-rebuild switch --flake .#datLOQ";
       ncg = "sudo nix-collect-garbage -d";
-      nfu-nrsf = "nix flake update && sudo nixos-rebuild switch --flake .";
-      llama-qwen2dot5coder = "llama-cli -hf Qwen/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M -ngl 99 -cnv";
+      nfu-nrsf-l = "nix flake update && sudo nixos-rebuild switch --flake .#datLOQ";
     };
     initExtra = builtins.readFile ./home-config/bashrc;
   };

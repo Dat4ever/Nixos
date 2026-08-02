@@ -27,22 +27,43 @@
 
   # Outputs section
   outputs = { self, nixpkgs, home-manager, stylix, disko, ... }@inputs: {
+
+    # datLOQ's outputs
     nixosConfigurations.datLOQ = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; }; 
       modules = [
-        ./configuration.nix
-        ./hardware-configuration.nix
+        ./hosts/datLOQ/configuration.nix
+        ./hosts/datLOQ/hardware-configuration.nix
+        ./hosts/datLOQ/disko.nix
         stylix.nixosModules.stylix
-        ./stylix.nix
+        ./hosts/datLOQ/stylix.nix
         disko.nixosModules.disko
-        ./disko.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.dat = import ./home.nix;
+          home-manager.users.dat = import ./hosts/datLOQ/home.nix;
+        }
+      ];
+    };
+
+    # datSV's outputs
+    nixosConfigurations.datSV = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; }; 
+      modules = [
+        ./hosts/datSV/configuration.nix
+        ./hosts/datSV/hardware-configuration.nix
+        ./hosts/datSV/disko.nix
+        disko.nixosModules.disko
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.users.dat = import ./hosts/datSV/home.nix;
         }
       ];
     };
