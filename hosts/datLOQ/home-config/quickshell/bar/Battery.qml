@@ -117,12 +117,12 @@ Item {
         return "󰃠 " + batteryWidget.brightnessPercent + "%";
       }
 
-      var icon = " ";
+      var icon = "";
       var pct = parseInt(batteryPercent) || 0;
-      if (pct <= 20) icon = " ";
-      else if (pct <= 40) icon = " ";
-      else if (pct <= 60) icon = " ";
-      else if (pct <= 80) icon = " ";
+      if (pct <= 20) icon = "";
+      else if (pct <= 40) icon = "";
+      else if (pct <= 60) icon = "";
+      else if (pct <= 80) icon = "";
       var isPlugged = (batteryStatus !== "Discharging");
       var chargingState = isPlugged ? " 󱐋" : "";
       return icon + " " + batteryPercent + "%" + chargingState;

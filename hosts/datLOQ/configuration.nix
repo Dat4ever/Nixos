@@ -57,8 +57,8 @@
   # Font packages 
   fonts.enableDefaultPackages = false;
   fonts.packages = with pkgs; [
-    geist-font
-    nerd-fonts.commit-mono
+    ibm-plex
+    nerd-fonts.blex-mono
     noto-fonts-color-emoji
   ];
 

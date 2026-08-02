@@ -26,7 +26,7 @@ sudo -i
 nix-shell -p git
 git clone https://github.com/Dat4ever/Nixos /tmp/nixos-configurations
 cd /tmp/nixos-configurations
-bash install.sh datLOQ
+bash install.sh <HOSTNAME> (only datLOQ works right now)
 ```
 
 ## Updating an existing install

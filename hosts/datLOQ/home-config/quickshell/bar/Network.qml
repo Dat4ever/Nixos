@@ -79,7 +79,7 @@ Item {
   Text {
     id: textDisplay
     anchors.centerIn: parent
-    text: networkWidget.netIcon + "  " + networkWidget.netStatus
+    text: networkWidget.netIcon + " " + networkWidget.netStatus
     color: Colors.nord_cyan
     font.family: Colors.fontName
     font.pixelSize: 13
