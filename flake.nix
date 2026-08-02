@@ -49,23 +49,23 @@
       ];
     };
 
-    # datSV's outputs
-    nixosConfigurations.datSV = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; }; 
-      modules = [
-        ./hosts/datSV/configuration.nix
-        ./hosts/datSV/hardware-configuration.nix
-        ./hosts/datSV/disko.nix
-        disko.nixosModules.disko
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.dat = import ./hosts/datSV/home.nix;
-        }
-      ];
-    };
+    ## datSV's outputs (WIP — uncomment once hosts/datSV/ is tracked by git)
+    # nixosConfigurations.datSV = nixpkgs.lib.nixosSystem {
+    #   system = "x86_64-linux";
+    #   specialArgs = { inherit inputs; }; 
+    #   modules = [
+    #     ./hosts/datSV/configuration.nix
+    #     ./hosts/datSV/hardware-configuration.nix
+    #     ./hosts/datSV/disko.nix
+    #     disko.nixosModules.disko
+    #     home-manager.nixosModules.home-manager
+    #     {
+    #       home-manager.useGlobalPkgs = true;
+    #       home-manager.useUserPackages = true;
+    #       home-manager.extraSpecialArgs = { inherit inputs; };
+    #       home-manager.users.dat = import ./hosts/datSV/home.nix;
+    #     }
+    #   ];
+    # };
   };
 }
