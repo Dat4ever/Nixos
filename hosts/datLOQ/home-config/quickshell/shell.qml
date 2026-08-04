@@ -18,12 +18,12 @@ ShellRoot {
     }
 
     margins {
-      top: 8
-      left: 8
-      right: 8
+      top: 12
+      left: 32
+      right: 32
     }
 
-    implicitHeight: 28
+    implicitHeight: 30
 
     Rectangle {
       id: barBackground
@@ -46,30 +46,13 @@ ShellRoot {
         Row {
           id: rowL
           anchors.verticalCenter: parent.verticalCenter
+          anchors.verticalCenterOffset: 1 
           spacing: 0
 
           Launcher {}
-
-          Text {
-            text: "│"
-            color: Colors.nord_gray
-            font.family: Colors.fontName
-            font.pixelSize: 14
-            leftPadding: 12
-            rightPadding: 12
-          }
-
+          Separator {}
           Workspace {}
-
-          Text {
-            text: "│"
-            color: Colors.nord_gray
-            font.family: Colors.fontName
-            font.pixelSize: 14
-            leftPadding: 12
-            rightPadding: 12
-          }
-
+          Separator {}
           ActiveWindow {}
         }
       }
@@ -83,6 +66,7 @@ ShellRoot {
         Clock {
           id: centralClock
           anchors.centerIn: parent
+          anchors.verticalCenterOffset: 1
         }
       }
 
@@ -99,18 +83,19 @@ ShellRoot {
         Row {
           id: rowR
           anchors.verticalCenter: parent.verticalCenter
+          anchors.verticalCenterOffset: 1 
           spacing: 0
 
           Keyboard {}
-          Text { text: "│"; color: Colors.nord_gray; font.family: Colors.fontName; font.pixelSize: 14; leftPadding: 10; rightPadding: 10 }
+          Separator {}
           Bluetooth {}
-          Text { text: "│"; color: Colors.nord_gray; font.family: Colors.fontName; font.pixelSize: 14; leftPadding: 10; rightPadding: 10 }
+          Separator {}
           Network {}
-          Text { text: "│"; color: Colors.nord_gray; font.family: Colors.fontName; font.pixelSize: 14; leftPadding: 10; rightPadding: 10 }
+          Separator {}
           Volume {}
-          Text { text: "│"; color: Colors.nord_gray; font.family: Colors.fontName; font.pixelSize: 14; leftPadding: 10; rightPadding: 10 }
+          Separator {}
           Battery {}
-          Text { text: "│"; color: Colors.nord_gray; font.family: Colors.fontName; font.pixelSize: 14; leftPadding: 10; rightPadding: 10 }
+          Separator {}
           Power {}
         }
       }

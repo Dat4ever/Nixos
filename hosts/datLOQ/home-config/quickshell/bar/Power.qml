@@ -46,7 +46,7 @@ Item {
     text: "⏻"
     color: Colors.nord_red
     font.family: Colors.fontName
-    font.pixelSize: 15
+    font.pixelSize: 14
     font.bold: true
   }
 }

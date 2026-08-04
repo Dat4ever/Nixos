@@ -1,6 +1,6 @@
 # datLOQ — My NixOS Setup
 
-Flake-based NixOS config (Hyprland + QuickShell + Stylix Nord + Home Manager + disko).
+My flake-based NixOS config
 
 ## Hosts
 
@@ -13,7 +13,7 @@ Flake-based NixOS config (Hyprland + QuickShell + Stylix Nord + Home Manager + d
 
 ```sh
 sudo nixos-rebuild switch --flake .#datLOQ
-# veya: nrsf-l
+# or: nrsf-l
 ```
 
 ## Fresh install

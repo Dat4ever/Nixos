@@ -1,5 +1,5 @@
 {
-  description = "datLOQ";
+  description = "dat's flake.nix";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -22,7 +22,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Other flake packages 
+    # Other flake packages
   };
 
   # Outputs section
@@ -35,10 +35,10 @@
       modules = [
         ./hosts/datLOQ/configuration.nix
         ./hosts/datLOQ/hardware-configuration.nix
-        ./hosts/datLOQ/disko.nix
         stylix.nixosModules.stylix
         ./hosts/datLOQ/stylix.nix
         disko.nixosModules.disko
+        ./hosts/datLOQ/disko.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

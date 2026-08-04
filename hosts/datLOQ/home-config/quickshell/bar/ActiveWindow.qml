@@ -35,39 +35,14 @@ Item {
             var cls = activeWindowWidget.windowClass;
             var icon = "";
             switch (cls.toLowerCase()) {
-              case "kitty":           icon = "󰄛"; break;
-              case "firefox":         icon = "󰇹"; break;
-              case "chromium":        icon = "󰊫"; break;
-              case "chromium-browser":icon = "󰊫"; break;
-              case "google-chrome":   icon = "󰊫"; break;
-              case "code":            icon = "󰨞"; break;
-              case "code-oss":        icon = "󰨞"; break;
-              case "neovide":         icon = "󰆼"; break;
-              case "nvim":            icon = "󰆼"; break;
-              case "discord":        icon = "󰙯"; break;
-              case "vesktop":         icon = "󰙯"; break;
-              case "spotify":         icon = "󰓇"; break;
-              case "telegramdesktop": icon = "󰭻"; break;
-              case "thunar":          icon = "󰝰"; break;
-              case "dolphin":         icon = "󰝰"; break;
-              case "nautilus":        icon = "󰝰"; break;
-              case "gimp":            icon = "󰋉"; break;
-              case "blender":         icon = "󰂫"; break;
+              case "kitty":           icon = ""; break;
+              case "firefox":         icon = "󰈹"; break;
               case "steam":           icon = "󰓓"; break;
-              case "obs":             icon = "󰄛"; break;
-              case "obsproject":      icon = "󰄛"; break;
               case "mpv":             icon = "󰝚"; break;
               case "vlc":             icon = "󰕼"; break;
               case "rofi":            icon = "󰀻"; break;
-              case "yazi":            icon = "󰇁"; break;
-              case "feh":             icon = "󰋩"; break;
-              case "imv":             icon = "󰋩"; break;
-              case "wireshark":       icon = "󰇀"; break;
-              case "transmission-gtk": icon = "󰇚"; break;
-              case "qbittorrent":     icon = "󰇚"; break;
-              case "wiremix":         icon = "󰕿"; break;
-              case "wpctl":           icon = "󰕿"; break;
-              case "bluetui":         icon = "󰂯"; break;
+              case "pokerogue":       icon = "󰐝"; break;
+              case "osu!":            icon = ""; break;
               default:                icon = "󰓩"; break;
             }
 
@@ -75,7 +50,7 @@ Item {
             if (rawTitle.length > 38) {
               rawTitle = rawTitle.substring(0, 35) + "...";
             }
-            activeWindowWidget.displayText = icon + "  " + (rawTitle.length > 0 ? rawTitle : cls);
+            activeWindowWidget.displayText = icon + " " + (rawTitle.length > 0 ? rawTitle : cls);
           } else {
             activeWindowWidget.displayText = "Desktop";
           }

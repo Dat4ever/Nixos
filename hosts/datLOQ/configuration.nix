@@ -57,8 +57,9 @@
   # Font packages 
   fonts.enableDefaultPackages = false;
   fonts.packages = with pkgs; [
-    ibm-plex
-    nerd-fonts.blex-mono
+    inter
+    nerd-fonts.commit-mono
+    noto-fonts-cjk-sans
     noto-fonts-color-emoji
   ];
 

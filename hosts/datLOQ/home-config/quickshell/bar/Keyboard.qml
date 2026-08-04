@@ -44,6 +44,6 @@ Item {
     font.pixelSize: 13
     font.bold: true
     color: Colors.nord_magenta
-    text: "  " + rawLayout
+    text: " " + rawLayout
   }
 }

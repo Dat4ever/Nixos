@@ -36,15 +36,15 @@
   # Fonts
     fonts = {
       sansSerif = {
-        package = pkgs.ibm-plex;
-        name = "IBM Plex Sans";
+        package = pkgs.inter;
+        name = "Inter";
       };
 
       serif = config.stylix.fonts.sansSerif;
 
       monospace = {
-        package = pkgs.nerd-fonts.blex-mono;
-        name = "BlexMono Nerd Font";
+        package = pkgs.nerd-fonts.commit-mono;
+        name = "CommitMono Nerd Font";
       };
 
       emoji = {

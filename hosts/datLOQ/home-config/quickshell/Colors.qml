@@ -21,5 +21,5 @@ QtObject {
   readonly property color active_tab_background: nord_blue
   readonly property color inactive_tab_background: nord_dark_gray
 
-  readonly property string fontName: "BlexMono Nerd Font Propo"
+  readonly property string fontName: "CommitMono Nerd Font Propo"
 }
