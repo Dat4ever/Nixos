@@ -14,11 +14,11 @@ vim.opt.expandtab = true
 -- Copy paste integration
 vim.opt.clipboard = "unnamedplus"
 
--- Leader key
-vim.g.mapleader = " "
-
 -- Other settings
+require("keymap")
 require("lsp")
 require("terminalcolor")
 require("netrw")
 require("statusline")
+require("find")
+require("grep")
