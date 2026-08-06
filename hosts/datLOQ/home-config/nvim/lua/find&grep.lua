@@ -1,3 +1,4 @@
+-- find
 local ignore_patterns = {
 	"node_modules",
 	"%.git",
@@ -28,3 +29,7 @@ function _G.native_find(text, _)
 	return vim.fn.matchfuzzy(result, text)
 end
 vim.opt.findfunc = "v:lua.native_find"
+
+-- grep
+vim.opt.grepprg = "rg --vimgrep --smart-case --hidden"
+vim.opt.grepformat = "%f:%l:%c:%m"
