@@ -13,7 +13,7 @@ My flake-based NixOS config
 
 ```sh
 sudo nixos-rebuild switch --flake .#datLOQ
-# or: nrsf-l
+# or: nrsf
 ```
 
 ## Fresh install
@@ -32,6 +32,6 @@ bash install.sh <HOSTNAME> (only datLOQ works right now)
 ## Updating an existing install
 
 ```sh
-nrsf-l          # sudo nixos-rebuild switch --flake .#datLOQ
-nfu-nrsf-l      # nix flake update && sudo nixos-rebuild switch --flake .#datLOQ
+nrsf          # sudo nixos-rebuild switch --flake .#datLOQ
+nfu-nrsf      # nix flake update && sudo nixos-rebuild switch --flake .#datLOQ
 ```

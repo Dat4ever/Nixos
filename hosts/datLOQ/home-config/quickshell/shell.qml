@@ -19,11 +19,11 @@ ShellRoot {
 
     margins {
       top: 12
-      left: 32
-      right: 32
+      left: 24
+      right: 24
     }
 
-    implicitHeight: 30
+    implicitHeight: 28
 
     Rectangle {
       id: barBackground
@@ -46,7 +46,6 @@ ShellRoot {
         Row {
           id: rowL
           anchors.verticalCenter: parent.verticalCenter
-          anchors.verticalCenterOffset: 1 
           spacing: 0
 
           Launcher {}
@@ -66,7 +65,6 @@ ShellRoot {
         Clock {
           id: centralClock
           anchors.centerIn: parent
-          anchors.verticalCenterOffset: 1
         }
       }
 
@@ -83,7 +81,6 @@ ShellRoot {
         Row {
           id: rowR
           anchors.verticalCenter: parent.verticalCenter
-          anchors.verticalCenterOffset: 1 
           spacing: 0
 
           Keyboard {}

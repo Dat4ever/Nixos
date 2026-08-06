@@ -9,5 +9,4 @@ Text {
     leftPadding: 12
     rightPadding: 12
     anchors.verticalCenter: parent.verticalCenter
-    //anchors.verticalCenterOffset: 1
 }

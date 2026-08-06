@@ -59,6 +59,7 @@
   fonts.packages = with pkgs; [
     inter
     nerd-fonts.commit-mono
+    nerd-fonts.jetbrains-mono
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
   ];
