@@ -102,16 +102,15 @@
     gnumake 							# C Build automation tool
     rustc 								# Rust compiler
     cargo 								# Rust package manager
-    nodejs								# JavaScript runtime
-    lua-language-server 	# Lua LSP
-    rust-analyzer         # Rust LSP
-    clang-tools           # C/C++ LSP
-    nixd                  # Nix LSP
-    bash-language-server  # Bash LSP
-    vim-language-server   # Vim LSP
-    pyright               # Python LSP
-    gopls                 # Go LSP
-    jdtls                 # Java LSP
+    vim-language-server   # Vim LSP 'vimls'
+    lua-language-server 	# Lua LSP 'lua_ls'
+    rust-analyzer         # Rust LSP 'rust_analyzer'
+    clang-tools           # C/C++ LSP 'clangd'
+    nixd                  # Nix LSP 'nixd'
+    bash-language-server  # Bash LSP 'bashls'
+    pyright               # Python LSP 'pyright'
+    gopls                 # Go LSP 'gopls'
+    jdt-language-server   # Java LSP 'jdtls'
     # GUI Applications
     firefox 							# Web browser
     tor-browser 					# Privacy-focused browser
