@@ -15,7 +15,7 @@ vim.opt.expandtab = true
 vim.opt.clipboard = "unnamedplus"
 
 -- Leader key
-vim.g.mapleader = " "
+vim.g.mapleader = " " -- Space
 
 -- Ctrl + h/j/k/l and Ctrl + arrow keys to change focus
 vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -58,5 +58,6 @@ end, { silent = true })
 require("lsp")
 require("terminalcolor")
 require("netrw")
+require("treesitter")
 require("statusline")
 require("find&grep")

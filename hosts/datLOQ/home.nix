@@ -62,6 +62,19 @@
     $DRY_RUN_CMD install -Dm644 ${./home-config/yazi/package.toml} "$HOME/.config/yazi/package.toml"
   '';
 
+  # Treesitter parsers for the languages configured in nvim config
+  home.file.".local/share/nvim/site/parser/vim.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-vim}/parser";
+  home.file.".local/share/nvim/site/parser/lua.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-lua}/parser";
+  home.file.".local/share/nvim/site/parser/rust.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-rust}/parser";
+  home.file.".local/share/nvim/site/parser/c.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-c}/parser";
+  home.file.".local/share/nvim/site/parser/cpp.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-cpp}/parser";
+  home.file.".local/share/nvim/site/parser/objc.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-objc}/parser";
+  home.file.".local/share/nvim/site/parser/nix.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-nix}/parser";
+  home.file.".local/share/nvim/site/parser/bash.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-bash}/parser";
+  home.file.".local/share/nvim/site/parser/python.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-python}/parser";
+  home.file.".local/share/nvim/site/parser/go.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-go}/parser";
+  home.file.".local/share/nvim/site/parser/java.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-java}/parser";
+
   # Desktop enviroment and its config file
   wayland.windowManager.hyprland = {
     enable = true;
@@ -92,7 +105,7 @@
     grim 									# Screenshot tool
     slurp 								# Screen region selector
     wl-clipboard 					# Clipboard manager
-    # Terminal & Development Tools & language servers & debuggers
+    # Terminal & Development Tools & language servers
     kitty 								# Terminal
     neovim 								# Text editor
     tmux 									# Terminal multiplexer
