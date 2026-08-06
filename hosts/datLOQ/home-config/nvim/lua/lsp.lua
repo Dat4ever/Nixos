@@ -5,6 +5,9 @@ vim.lsp.enable({
 	"clangd",        -- C / C++
 	"nixd",          -- Nix
 	"bashls",        -- Bash
+	"pyright",       -- Python
+	"gopls",         -- Go
+	"jdtls",         -- Java
 })
 
 vim.o.updatetime = 300

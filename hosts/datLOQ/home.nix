@@ -109,6 +109,9 @@
     nixd                  # Nix LSP
     bash-language-server  # Bash LSP
     vim-language-server   # Vim LSP
+    pyright               # Python LSP
+    gopls                 # Go LSP
+    jdtls                 # Java LSP
     # GUI Applications
     firefox 							# Web browser
     tor-browser 					# Privacy-focused browser
