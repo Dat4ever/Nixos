@@ -40,8 +40,13 @@ vim.keymap.set("n", "<leader>g", function()
 	end)
 end, { silent = true })
 
--- <Leader> + f for find
-vim.keymap.set("n", "<leader>f", ":find ", { silent = false })
+-- <Leader> + f for format
+vim.keymap.set("n", "<leader>f", function()
+	vim.lsp.buf.format({ async = true })
+end, { silent = true })
+
+-- <Leader> + s for find (search)
+vim.keymap.set("n", "<leader>s", ":find ", { silent = false })
 
 -- <Leader> + d for diagnostics
 vim.keymap.set("n", "<leader>d", function()
