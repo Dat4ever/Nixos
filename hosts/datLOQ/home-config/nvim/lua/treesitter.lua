@@ -1,5 +1,3 @@
--- Parsers are installed declaratively via home-manager into `~/.local/share/nvim/site/parser/*.so` (see tree-sitter-grammars packages referenced in home.nix).
-
 -- Map filetypes whose parser name differs from the filetype.
 local parser_aliases = {
 	objc = "objc",

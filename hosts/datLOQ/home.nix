@@ -7,6 +7,7 @@
   programs.home-manager.enable = true;
   home.pointerCursor.enable = true;
   xdg.enable = true;
+  home.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
 
   # Xdg user dirs
   xdg.userDirs = {
@@ -129,7 +130,6 @@
     tor-browser 					# Privacy-focused browser
     vlc 									# Media player
     mpv 									# Lightweight media player
-    obs-studio 						# Screen recorder & streaming
     libreoffice-fresh 		# Office suite
     qbittorrent 					# Torrent client
     localsend 						# Local network file sharing
@@ -154,5 +154,11 @@
     claude-code 					# TUI agentic coding tool
   ];
 
-  home.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
+  # Obs studio
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs # Wayland obs screen capture
+    ];
+  };
 }

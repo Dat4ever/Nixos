@@ -7,7 +7,7 @@ import "./bar"
 ShellRoot {
   PanelWindow {
     id: mainBar
-    exclusiveZone: 32
+    exclusiveZone: 31
     color: "transparent"
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.keyboardFocus: WlrLayershell.None
@@ -23,7 +23,7 @@ ShellRoot {
       right: 24
     }
 
-    implicitHeight: 28
+    implicitHeight: 27
 
     Rectangle {
       id: barBackground

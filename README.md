@@ -9,13 +9,6 @@ My flake-based NixOS config
 | datLOQ | Active | hosts/datLOQ/   |
 | datSV  | WIP    | hosts/datSV/    |
 
-## Build (existing install)
-
-```sh
-sudo nixos-rebuild switch --flake .#datLOQ
-# or: nrsf
-```
-
 ## Fresh install
 
 > [!WARNING]
@@ -29,9 +22,10 @@ cd /tmp/nixos-configurations
 bash install.sh <HOSTNAME> (only datLOQ works right now)
 ```
 
-## Updating an existing install
+## After install aliases
 
 ```sh
 nrsf          # sudo nixos-rebuild switch --flake .#datLOQ
 nfu-nrsf      # nix flake update && sudo nixos-rebuild switch --flake .#datLOQ
+ncg           # sudo nix-collect-garbage -d
 ```

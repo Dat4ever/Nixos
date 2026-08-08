@@ -1,15 +1,17 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
  imports =
   [
     ./nvidia.nix
+    ./nixld-appimage.nix
   ];
 
   # General settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enable Nix Flakes
   nix.settings.auto-optimise-store = true;                         # Symlinks same store files
   nixpkgs.config.allowUnfree = true;                               # Allow unfree packages
+  system.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
 
   # System settings
   networking.hostName = "datLOQ";                # Hostname
@@ -59,7 +61,6 @@
   fonts.packages = with pkgs; [
     inter
     nerd-fonts.commit-mono
-    nerd-fonts.jetbrains-mono
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
   ];
@@ -98,6 +99,7 @@
   services.udisks2.enable = true;       # Enable Udisks service
   services.openssh.enable = true;       # Enable the OpenSSH service
   services.printing.enable = true;      # Enable CUPS sevice for printing
+  services.fwupd.enable = true;         # Enable linux firmware updater
 
   # List of packages containing udev rules
   services.udev.packages = with pkgs; [ 
@@ -120,73 +122,6 @@
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
-  };
-
-  # Run unpatched dynamic binaries on NixOS
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      # C / System
-      stdenv.cc.cc
-      glibc
-      zlib
-      zstd
-      icu
-      util-linux
-      # GUI (Electron / GTK)
-      glib
-      gtk3
-      atk
-      dbus
-      gsettings-desktop-schemas
-      systemd
-      # Font & Render
-      fontconfig
-      freetype
-      pango
-      gdk-pixbuf
-      expat
-      libxml2
-      cairo
-      # Voice & Game
-      alsa-lib
-      pulseaudio
-      SDL
-      SDL2
-      libtheora
-      # Graphics / OpenGL
-      libdrm
-      libgbm
-      mesa
-      libGL
-      # Security & Web
-      openssl
-      nss
-      nspr
-      cups
-      # Xorg
-      libxkbcommon
-      libX11
-      libXcursor
-      libXext
-      libXfixes
-      libXi
-      libXrandr
-      libXrender
-      libXScrnSaver
-      libxcb
-      libXcomposite
-      libXdamage
-    ];
-  };
-
-  # Run Appimage
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-    package = pkgs.appimage-run.override {
-      extraPkgs = pkgs: [ pkgs.icu ]; 
-    };
   };
 
   # Steam
@@ -214,6 +149,4 @@
     };
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
   };
-
-  system.stateVersion = "26.05"; # State version (This is not system version. This is just backwards syntax and settings compability.)
 }
