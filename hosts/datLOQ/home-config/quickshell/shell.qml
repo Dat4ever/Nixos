@@ -7,7 +7,7 @@ import "./bar"
 ShellRoot {
   PanelWindow {
     id: mainBar
-    exclusiveZone: 31
+    exclusiveZone: 27
     color: "transparent"
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.keyboardFocus: WlrLayershell.None
@@ -28,7 +28,7 @@ ShellRoot {
     Rectangle {
       id: barBackground
       anchors.fill: parent
-      radius: 16
+      radius: 12
       color: Colors.nord_dark_gray
       border.width: 2
       border.color: Colors.nord_blue

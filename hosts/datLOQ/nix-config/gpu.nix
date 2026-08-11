@@ -1,11 +1,19 @@
 { config, pkgs, lib, ... }:
 
 {
-  hardware.graphics.extraPackages = lib.mkAfter (with pkgs; [
-    nvidia-vaapi-driver
-    libva-vdpau-driver
-    libvdpau-va-gl
-  ]);
+  # Graphics / GPU
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = lib.mkAfter (with pkgs; [
+      # Intel
+      intel-media-driver
+      # Nvidia
+      nvidia-vaapi-driver
+      libva-vdpau-driver
+      libvdpau-va-gl
+    ]);
+  };
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -32,7 +40,7 @@
 
     prime = {
       intelBusId = "PCI:0@0:2:0";
-      nvidiaBusId = "PCI:1@0:0:0"; 
+      nvidiaBusId = "PCI:1@0:0:0";
 
       offload = {
         enable = true;
