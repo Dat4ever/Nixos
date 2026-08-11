@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  # Graphics / GPU
   hardware.graphics = {
     enable = true;
     enable32Bit = true;

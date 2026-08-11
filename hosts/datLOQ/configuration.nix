@@ -6,7 +6,8 @@
     ./nix-config/gpu.nix
     ./nix-config/networking.nix
     ./nix-config/nixld-appimage.nix
-    ./nix-config/services-packages.nix
+    ./nix-config/services.nix
+    ./nix-config/packages.nix
    ];
 
   time.timeZone = "Europe/Istanbul";                               # Time zone
