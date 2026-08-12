@@ -3,9 +3,9 @@
 {
   imports =
    [
-    ./home-nixconfig/general.nix
-    ./home-nixconfig/packages.nix
-    ./home-nixconfig/dotconfigs.nix
-    ./home-nixconfig/desktop.nix
+    ./home.d/general.nix
+    ./home.d/packages.nix
+    ./home.d/dotconfigs.nix
+    ./home.d/desktop.nix
    ];
 }

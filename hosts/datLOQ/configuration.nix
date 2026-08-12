@@ -3,11 +3,11 @@
 {
   imports =
    [
-    ./nixos-config/general.nix
-    ./nixos-config/gpu.nix
-    ./nixos-config/networking.nix
-    ./nixos-config/nixld-appimage.nix
-    ./nixos-config/services.nix
-    ./nixos-config/packages.nix
+    ./configuration.d/general.nix
+    ./configuration.d/gpu.nix
+    ./configuration.d/networking.nix
+    ./configuration.d/nixld-appimage.nix
+    ./configuration.d/services.nix
+    ./configuration.d/packages.nix
    ];
 }

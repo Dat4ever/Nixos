@@ -12,18 +12,19 @@
       ncg = "sudo nix-collect-garbage -d";
       nfu-nrsf = "nix flake update && sudo nixos-rebuild switch --flake .#datLOQ";
     };
-    initExtra = builtins.readFile ../home-dotconfig/bashrc;
+    initExtra = builtins.readFile ./dotconfig/bashrc;
   };
 
-  # Yazi — raw config files linked as-is; Nix only adds plugins
-  home.file.".config/yazi/yazi.toml".source = ../home-dotconfig/yazi/yazi.toml;
-  home.file.".config/yazi/keymap.toml".source = ../home-dotconfig/yazi/keymap.toml;
-  home.file.".config/yazi/theme.toml".source = ../home-dotconfig/yazi/theme.toml;
-  home.file.".config/yazi/Nord.tmTheme".source = ../home-dotconfig/yazi/Nord.tmTheme;
+  # Yazi configuration
+  home.file.".config/yazi/yazi.toml".source = ./dotconfig/yazi/yazi.toml;
+  home.file.".config/yazi/keymap.toml".source = ./dotconfig/yazi/keymap.toml;
+  home.file.".config/yazi/theme.toml".source = ./dotconfig/yazi/theme.toml;
+  home.file.".config/yazi/Nord.tmTheme".source = ./dotconfig/yazi/Nord.tmTheme;
 
   programs.yazi = {
     enable = true;
 
+  # Yazi plugins
     plugins = {
       git = {
         package = pkgs.yaziPlugins.git;
@@ -43,16 +44,16 @@
     };
   };
 
-  # Desktop enviroment and its configuration file
+  # Desktop enviroment Hyprland and its configuration
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = builtins.readFile ../home-dotconfig/hypr/hyprland.lua;
+    extraConfig = builtins.readFile ./dotconfig/hypr/hyprland.lua;
   };
 
   # Btop configuration
   programs.btop = {
     enable = true;
-    extraConfig = builtins.readFile ../home-dotconfig/btop/btop.conf;
+    extraConfig = builtins.readFile ./dotconfig/btop/btop.conf;
   };
 
   # Obs configuration
@@ -64,10 +65,10 @@
   };
 
   # Other Configuration files
-  home.file.".config/nvim".source = ../home-dotconfig/nvim;
-  home.file.".config/kitty".source = ../home-dotconfig/kitty;
-  home.file.".config/quickshell".source = ../home-dotconfig/quickshell;
-  home.file.".config/rofi".source = ../home-dotconfig/rofi;
+  home.file.".config/nvim".source = ./dotconfig/nvim;
+  home.file.".config/kitty".source = ./dotconfig/kitty;
+  home.file.".config/quickshell".source = ./dotconfig/quickshell;
+  home.file.".config/rofi".source = ./dotconfig/rofi;
 
   # Treesitter parsers for the languages configured in nvim config
   home.file.".local/share/nvim/site/parser/vim.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-vim}/parser";
