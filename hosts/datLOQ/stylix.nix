@@ -4,7 +4,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./home-config/hypr/nordAstronaut2.png;
+    image = ./home-dotconfig/hypr/nordAstronaut2.png;
 
   # Colors
     base16Scheme = {
