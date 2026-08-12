@@ -3,7 +3,7 @@
 {
   networking.hostName = "datLOQ";                  # Hostname
   networking.networkmanager.enable = true;         # networkmanager (nmcli and nmtui)
-  networking.networkmanager.wifi.backend = "iwd";  # Use iwd as WiFi backend (default is "wpa_supplicant")
+  networking.networkmanager.wifi.backend = "iwd";  # Use iwd as WiFi backend (default is "wpa_supplicant". "iwd" is alternative)
 
   # iwd CLI tool (iwctl)
   environment.systemPackages = with pkgs; [

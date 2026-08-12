@@ -1,38 +1,23 @@
+# Package zip
+[[mgr.prepend_keymap]]
+on   = [ "c", "a", "z" ]
+run  = 'shell --interactive --cursor=19 -- set -- %s; zip -r ".zip" "${@##*/}"'
+desc = "Compress selected files to zip"
+
+# Package 7z
+[[mgr.prepend_keymap]]
+on   = [ "c", "a", "7" ]
+run  = 'shell --interactive --cursor=17 -- set -- %s; 7z a ".7z" "${@##*/}"'
+desc = "Compress selected files to 7z"
+
+# Package tar, gzip or coreutils
+[[mgr.prepend_keymap]]
+on   = [ "c", "a", "t" ]
+run  = 'shell --interactive --cursor=20 -- set -- %s; tar czf ".tar.gz" "${@##*/}"'
+desc = "Compress selected files to tar.gz"
+
+# Plugin mount.yazi
 [[mgr.prepend_keymap]]
 on  = "M"
 run = "plugin mount"
-
-[[mgr.prepend_keymap]]
-on   = [ "c", "m" ]
-run  = "plugin chmod"
-desc = "Chmod on selected files"
-
-[[mgr.prepend_keymap]]
-on = ["C"]
-run = "plugin ouch"
-desc = "Compress with ouch"
-
-[[mgr.prepend_keymap]]
-on   = [ "c", "a", "a" ]
-run  = "plugin compress"
-desc = "Archive selected files"
-
-[[mgr.prepend_keymap]]
-on   = [ "c", "a", "p" ]
-run  = "plugin compress -p"
-desc = "Archive selected files (password)"
-
-[[mgr.prepend_keymap]]
-on   = [ "c", "a", "h" ]
-run  = "plugin compress -ph"
-desc = "Archive selected files (password+header)"
-
-[[mgr.prepend_keymap]]
-on   = [ "c", "a", "l" ]
-run  = "plugin compress -l"
-desc = "Archive selected files (compression level)"
-
-[[mgr.prepend_keymap]]
-on   = [ "c", "a", "u" ]
-run  = "plugin compress -phl"
-desc = "Archive selected files (password+header+level)"
+desc = "Mount manager"

@@ -42,10 +42,8 @@
     qbittorrent 					# Torrent client
     localsend 						# Local network file sharing
     # CLI / TUI Utilities
-    yazi 									# Terminal file manager
     jq 										# Command-line JSON processor
-    mediainfo 						# Media file metadata viewer
-    ouch 									# Archive compressor/decompressor
+    udiskie               # Automounter for removable media
     zip 									# .zip compression
     unzip 								# .zip extraction
     unrar 								# .rar extraction
@@ -60,5 +58,6 @@
     wiremix 							# PipeWire TUI mixer
     opencode 							# AI terminal coding agent
     claude-code 					# TUI agentic coding tool
+    imv                   # Command line image viewer
   ];
 }

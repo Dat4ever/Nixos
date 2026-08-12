@@ -4,7 +4,7 @@
   imports =
    [
     ./home-nix-config/packages.nix
-    ./home-nix-config/programs.nix
+    ./home-nix-config/dotconfigs.nix
     ./home-nix-config/desktop.nix
    ];
 

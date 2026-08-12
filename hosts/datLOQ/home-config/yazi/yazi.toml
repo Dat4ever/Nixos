@@ -9,86 +9,45 @@ show_symlink = true
 tab_size = 2
 max_width = 1000
 max_height = 1000
+image_filter = "lanczos3"
+image_quality = 85
 
 [opener]
 edit = [
-  { run = 'nvim "$@"', block = true, desc = "Open with Neovim" },
-  { run = 'vim "$@"', block = true, desc = "Open with Vim" },
+  { run = 'nvim "$@"', block = true, desc = "Open with neovim" },
+  { run = 'vim "$@"', block = true, desc = "Open with vim" },
+]
+
+# Package vlc and mpv
+play = [
+  { run = 'vlc "$@"', orphan = true, desc = "Play with vlc" },
+  { run = 'mpv "$@"', orphan = true, desc = "Play with mpv" },
+]
+
+# Package imv
+image_view = [
+  { run = 'imv "$@"', orphan = true, desc = "Open with imv" },
 ]
 
 reveal = [
-  { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal" },
-]
-
-run = [
-	{ run = './"$1"', orphan = true, desc = "Run executable" },
+  { run = "xdg-open %d1", orphan = true, desc = "Reveal" },
 ]
 
 open = [
-  { run = 'xdg-open "$1"', desc = "Open" },
-]
-
-play = [
-  { run = 'vlc "$@"', orphan = true, desc = "Play with VLC" },
-  { run = 'mpv --force-window "$@"', orphan = true, desc = "Play with MPV" },
-  { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info" },
-]
-
-extract = [
-	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch" },
+  { run = 'xdg-open "$@"', orphan = true, desc = "Open" },
 ]
 
 [open]
-prepend_rules = [
-
-# Media
-  { mime = "video/*", use = ["play", "reveal"] },
-  { mime = "audio/*", use = ["play", "reveal"] },
-
-# Images
-  { mime = "image/*", use = ["open", "reveal"] },
-
-# AppImage
-	{ url = "*.AppImage", use = ["run", "reveal"] },
-
-# Directories
-  { mime = "inode/directory", use = ["edit", "open", "reveal"] },
-
-# Text / config
-  { mime = "text/*", use = ["edit", "reveal"] },
-  { url = "*.toml", use = ["edit", "reveal"] },
-  { url = "*.json", use = ["edit", "reveal"] },
-  { url = "*.yaml", use = ["edit", "reveal"] },
-  { url = "*.yml",  use = ["edit", "reveal"] },
-
-# Archive
-  {mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", use = ["extract", "open", "reveal"]},
-
-# Fallback
-  { url = "*", use = ["open", "edit", "run", "reveal"] },
+rules = [
+  { mime = "text/*", use = [ "edit", "reveal" ] },
+  { mime = "{video,audio}/*", use = [ "play", "open", "reveal" ] },
+  { mime = "image/*", use = [ "image_view", "open", "reveal" ] },
+  { url = "*", use = [ "open", "reveal" ] },
 ]
 
 [plugin]
-prepend_preloaders = [
-  { mime = "{audio,video,image}/*", run = "mediainfo" },
+# Plugin git.yazi
+prepend_fetchers = [
+  { url = "*",  run = "git", group = "git" },
+  { url = "*/", run = "git", group = "git" },
 ]
-
-prepend_previewers = [
-  { mime = "{audio,video,image}/*", run = "mediainfo" },
-  { mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch" }
-]
-
-[tasks]
-image_alloc = 1073741824
-
-[[plugin.prepend_fetchers]]
-id = "git"
-url = "*"
-run = "git"
-group = "git"
-
-[[plugin.prepend_fetchers]]
-id = "git"
-url = "*/"
-run = "git"
-group = "git"
