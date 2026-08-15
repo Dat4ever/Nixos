@@ -22,22 +22,30 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Other flake packages
+    # Datfetch (local)
+    datfetch = {
+      url = "path:/home/dat/Documents/projects/Datfetch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # Outputs section
-  outputs = { self, nixpkgs, home-manager, stylix, disko, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, stylix, disko, datfetch, ... }@inputs: {
+
+    # Global packages
+    packages.x86_64-linux.datfetch = datfetch.packages.x86_64-linux.default;
 
     # datLOQ's outputs
     nixosConfigurations.datLOQ = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; }; 
       modules = [
+        datfetch.nixosModules.default
+        stylix.nixosModules.stylix
+        disko.nixosModules.disko
         ./hosts/datLOQ/configuration.nix
         ./hosts/datLOQ/hardware-configuration.nix
-        stylix.nixosModules.stylix
         ./hosts/datLOQ/stylix.nix
-        disko.nixosModules.disko
         ./hosts/datLOQ/disko.nix
         home-manager.nixosModules.home-manager
         {
@@ -59,6 +67,7 @@
     #     ./hosts/datSV/disko.nix
     #     disko.nixosModules.disko
     #     home-manager.nixosModules.home-manager
+    #     datfetch.nixosModules.default
     #     {
     #       home-manager.useGlobalPkgs = true;
     #       home-manager.useUserPackages = true;

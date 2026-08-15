@@ -1,9 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
-  # Stylix home-manager target — don't generate a yazi theme, keep yazi's default colors
-  stylix.targets.yazi.enable = false;
-
   # Bash configuration  
   programs.bash = {
     enable = true;
@@ -11,28 +8,28 @@
       nrsf = "sudo nixos-rebuild switch --flake .#datLOQ";
       ncg = "sudo nix-collect-garbage -d";
       nfu-nrsf = "nix flake update && sudo nixos-rebuild switch --flake .#datLOQ";
-    };
-    initExtra = builtins.readFile ./dotconfig/bashrc;
+      start-tor = "sudo systemctl start tor-transparent";
+      stop-tor = "sudo systemctl stop tor-transparent";
+     };
+    initExtra = builtins.readFile ./dotconfig/bashrc; 
   };
 
   # Yazi configuration
   home.file.".config/yazi/yazi.toml".source = ./dotconfig/yazi/yazi.toml;
   home.file.".config/yazi/keymap.toml".source = ./dotconfig/yazi/keymap.toml;
-  home.file.".config/yazi/theme.toml".source = ./dotconfig/yazi/theme.toml;
   home.file.".config/yazi/Nord.tmTheme".source = ./dotconfig/yazi/Nord.tmTheme;
+  home.file.".config/yazi/init.lua".source = ./dotconfig/yazi/init.lua;
 
   programs.yazi = {
     enable = true;
-
-  # Yazi plugins
     plugins = {
-      git = {
-        package = pkgs.yaziPlugins.git;
-        setup = true;
-        settings = { order = 1500; };
-      };
-      mount = pkgs.yaziPlugins.mount;
+      git = pkgs.yaziPlugins.git;       # git.yazi
+      mount = pkgs.yaziPlugins.mount;   # mount.yazi
+      chmod = pkgs.yaziPlugins.chmod;   # chmod.yazi
     };
+
+    # Stylix manages theme.toml; use my Nord.tmTheme for syntax highlighting
+    theme.mgr.syntect_theme = lib.mkForce "${./dotconfig/yazi/Nord.tmTheme}";
   };
 
   # Git configuration
@@ -44,7 +41,7 @@
     };
   };
 
-  # Desktop enviroment Hyprland and its configuration
+  # Hyprland configuration
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = builtins.readFile ./dotconfig/hypr/hyprland.lua;
@@ -62,6 +59,13 @@
     plugins = with pkgs.obs-studio-plugins; [
       wlrobs # Wayland obs screen capture
     ];
+  };
+
+  # Direnv configuration
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
   };
 
   # Other Configuration files

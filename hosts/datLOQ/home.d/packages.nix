@@ -54,6 +54,8 @@
     steamcmd 							# Steam command-line client
     yt-dlp 								# Media downloader
     caligula 							# TUI disk imager
+    exiftool              # EXIF meta information reader
+    binwalk               # Firmware Analysis Tool
     bluetui 							# Bluetooth TUI
     wiremix 							# PipeWire TUI mixer
     opencode 							# AI terminal coding agent

@@ -21,3 +21,15 @@ desc = "Compress selected files to tar.gz"
 on  = "M"
 run = "plugin mount"
 desc = "Mount manager"
+
+# Plugin chmod.yazi
+[[mgr.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin chmod"
+desc = "Chmod on selected files"
+
+# Package exiftool
+[[mgr.prepend_keymap]]
+on  = "E"
+run = 'shell "exiftool \"$0\" | less" --block'
+desc = "View metadata with exiftool"
