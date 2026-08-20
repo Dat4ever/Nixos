@@ -15,7 +15,7 @@ Item {
   Text {
     id: timeText
     anchors.centerIn: parent
-    color: Colors.nord_cyan
+    color: Colors.color_cyan
     font.family: Colors.fontName
     font.pixelSize: 13
     font.bold: true
@@ -33,7 +33,7 @@ Item {
   Text {
     id: dateText
     anchors.centerIn: parent
-    color: Colors.nord_cyan
+    color: Colors.color_cyan
     font.family: Colors.fontName
     font.pixelSize: 13
     font.bold: true

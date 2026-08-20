@@ -38,7 +38,7 @@
     tor-browser 					# Privacy-focused browser
     vlc 									# Media player
     mpv 									# Lightweight media player
-    libreoffice-fresh 		# Office suite
+    libreoffice-qt        # Office programs
     qbittorrent 					# Torrent client
     localsend 						# Local network file sharing
     # CLI / TUI Utilities

@@ -3,7 +3,7 @@ import ".."
 
 Text {
     text: "│"
-    color: Colors.nord_gray
+    color: Colors.color_gray
     font.family: Colors.fontName
     font.pixelSize: 15
     leftPadding: 12

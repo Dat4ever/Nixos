@@ -1,15 +1,6 @@
 { pkgs, inputs, ... }:
 
 {
-  # Font packages
-  fonts.enableDefaultPackages = false;
-  fonts.packages = with pkgs; [
-    inter
-    nerd-fonts.commit-mono
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-  ];
-
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     bash                 # Shell

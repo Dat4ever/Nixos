@@ -7,7 +7,7 @@ import "./bar"
 ShellRoot {
   PanelWindow {
     id: mainBar
-    exclusiveZone: 27
+    exclusiveZone: 24
     color: "transparent"
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.keyboardFocus: WlrLayershell.None
@@ -18,20 +18,18 @@ ShellRoot {
     }
 
     margins {
-      top: 12
-      left: 24
-      right: 24
+      top: 0
+      left: 0
+      right: 0
     }
 
-    implicitHeight: 27
+    implicitHeight: 24
 
     Rectangle {
       id: barBackground
       anchors.fill: parent
-      radius: 12
-      color: Colors.nord_dark_gray
-      border.width: 2
-      border.color: Colors.nord_blue
+      radius: 0
+      color: Colors.color_dark_gray
 
       Item {
         id: leftCluster

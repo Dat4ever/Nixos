@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   # Bash configuration  
@@ -20,8 +20,6 @@
   home.file.".config/yazi/theme.toml".source = ./dotconfig/yazi/theme.toml;
   home.file.".config/yazi/init.lua".source = ./dotconfig/yazi/init.lua;
 
-  # Stylix's yazi target still generates the old theme format,
-  # incompatible with yazi 26.x; we manage theme.toml ourselves above.
   stylix.targets.yazi.enable = false;
 
   programs.yazi = {

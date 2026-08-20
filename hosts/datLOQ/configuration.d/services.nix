@@ -34,4 +34,5 @@
   services.openssh.enable = true;       # Enable the OpenSSH service
   services.printing.enable = true;      # Enable CUPS sevice for printing
   services.fwupd.enable = true;         # Enable linux firmware updater
+  services.flatpak.enable = true;       # Enable Flatpak
 }

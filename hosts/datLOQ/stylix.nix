@@ -4,7 +4,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./home.d/nordAstronaut2.png;
+    image = ./wallpapers/nordWaves.png;
 
   # Colors
     base16Scheme = {
@@ -21,7 +21,7 @@
       base0A = "ebcb8b";
       base0B = "a3be8c";
       base0C = "88c0d0";
-      base0D = "81a1c1";      
+      base0D = "81a1c1";
       base0E = "b48ead";
       base0F = "5e81ac";
     };
@@ -36,8 +36,8 @@
   # Fonts
     fonts = {
       sansSerif = {
-        package = pkgs.inter;
-        name = "Inter";
+        package = pkgs.geist;
+        name = "Geist";
       };
 
       serif = config.stylix.fonts.sansSerif;

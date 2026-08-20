@@ -25,7 +25,7 @@ Item {
     id: textDisplay
     anchors.centerIn: parent
     text: "󰀻"
-    color: Colors.nord_cyan
+    color: Colors.color_cyan
     font.family: Colors.fontName
     font.pixelSize: 16
     font.bold: true
