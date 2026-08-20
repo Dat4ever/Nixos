@@ -17,19 +17,20 @@
   # Yazi configuration
   home.file.".config/yazi/yazi.toml".source = ./dotconfig/yazi/yazi.toml;
   home.file.".config/yazi/keymap.toml".source = ./dotconfig/yazi/keymap.toml;
-  home.file.".config/yazi/Nord.tmTheme".source = ./dotconfig/yazi/Nord.tmTheme;
+  home.file.".config/yazi/theme.toml".source = ./dotconfig/yazi/theme.toml;
   home.file.".config/yazi/init.lua".source = ./dotconfig/yazi/init.lua;
+
+  # Stylix's yazi target still generates the old theme format,
+  # incompatible with yazi 26.x; we manage theme.toml ourselves above.
+  stylix.targets.yazi.enable = false;
 
   programs.yazi = {
     enable = true;
     plugins = {
-      git = pkgs.yaziPlugins.git;       # git.yazi
-      mount = pkgs.yaziPlugins.mount;   # mount.yazi
-      chmod = pkgs.yaziPlugins.chmod;   # chmod.yazi
+      git = pkgs.yaziPlugins.git;      # git.yazi
+      mount = pkgs.yaziPlugins.mount;  # mount.yazi
+      chmod = pkgs.yaziPlugins.chmod;  # chmod.yazi
     };
-
-    # Stylix manages theme.toml; use my Nord.tmTheme for syntax highlighting
-    theme.mgr.syntect_theme = lib.mkForce "${./dotconfig/yazi/Nord.tmTheme}";
   };
 
   # Git configuration

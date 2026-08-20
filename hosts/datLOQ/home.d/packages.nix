@@ -49,7 +49,6 @@
     unrar 								# .rar extraction
     p7zip 								# .7z extraction
     pastel 								# Color analysis CLI tool
-    pfetch 								# System info fetcher
     pokeget-rs 						# Pokemon sprites in terminal
     steamcmd 							# Steam command-line client
     yt-dlp 								# Media downloader
@@ -59,7 +58,5 @@
     bluetui 							# Bluetooth TUI
     wiremix 							# PipeWire TUI mixer
     opencode 							# AI terminal coding agent
-    claude-code 					# TUI agentic coding tool
-    imv                   # Command line image viewer
   ];
 }

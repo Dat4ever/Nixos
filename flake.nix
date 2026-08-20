@@ -30,17 +30,13 @@
   };
 
   # Outputs section
-  outputs = { self, nixpkgs, home-manager, stylix, disko, datfetch, ... }@inputs: {
-
-    # Global packages
-    packages.x86_64-linux.datfetch = datfetch.packages.x86_64-linux.default;
+  outputs = { self, nixpkgs, home-manager, stylix, disko, ... }@inputs: {
 
     # datLOQ's outputs
     nixosConfigurations.datLOQ = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; }; 
       modules = [
-        datfetch.nixosModules.default
         stylix.nixosModules.stylix
         disko.nixosModules.disko
         ./hosts/datLOQ/configuration.nix
@@ -67,7 +63,6 @@
     #     ./hosts/datSV/disko.nix
     #     disko.nixosModules.disko
     #     home-manager.nixosModules.home-manager
-    #     datfetch.nixosModules.default
     #     {
     #       home-manager.useGlobalPkgs = true;
     #       home-manager.useUserPackages = true;

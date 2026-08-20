@@ -31,5 +31,5 @@ desc = "Chmod on selected files"
 # Package exiftool
 [[mgr.prepend_keymap]]
 on  = "E"
-run = 'shell "exiftool \"$0\" | less" --block'
+run = 'shell "exiftool %h | less" --block'
 desc = "View metadata with exiftool"

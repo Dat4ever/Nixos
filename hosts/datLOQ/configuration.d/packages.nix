@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   # Font packages
@@ -20,6 +20,7 @@
     git                  # Version control
     rsync                # System-level file sync & backups
     nixos-anywhere       # NixOS installation via SSH
+    inputs.datfetch.packages.${pkgs.system}.default # datfetch from flake
   ];
 
   # Podman

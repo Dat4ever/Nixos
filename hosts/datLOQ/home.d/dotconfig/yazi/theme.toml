@@ -1,2 +1,144 @@
 [mgr]
+cwd = { fg = "#88c0d0" }
+find_keyword = { fg = "#a3be8c", bold = true }
+find_position = { fg = "#b48ead" }
+marker_selected = { fg = "#ebcb8b" }
+marker_copied = { fg = "#a3be8c" }
+marker_cut = { fg = "#bf616a" }
+count_copied = { fg = "#2e3440", bg = "#a3be8c" }
+count_cut = { fg = "#2e3440", bg = "#bf616a" }
+count_selected = { fg = "#2e3440", bg = "#ebcb8b" }
+border_style = { fg = "#d8dee9" }
 syntect_theme = "~/.config/yazi/Nord.tmTheme"
+
+[indicator]
+current = { bg = "#434c5e", bold = true }
+preview = { bg = "#434c5e", bold = true }
+
+[tabs]
+active = { fg = "#2e3440", bg = "#81a1c1", bold = true }
+inactive = { fg = "#81a1c1", bg = "#3b4252" }
+
+[mode]
+normal_main = { fg = "#2e3440", bg = "#81a1c1", bold = true }
+normal_alt = { fg = "#81a1c1", bg = "#2e3440" }
+select_main = { fg = "#2e3440", bg = "#a3be8c", bold = true }
+select_alt = { fg = "#a3be8c", bg = "#2e3440" }
+unset_main = { fg = "#2e3440", bg = "#5e81ac", bold = true }
+unset_alt = { fg = "#5e81ac", bg = "#2e3440" }
+
+[status]
+perm_type = { fg = "#81a1c1" }
+perm_read = { fg = "#ebcb8b" }
+perm_write = { fg = "#bf616a" }
+perm_exec = { fg = "#a3be8c" }
+perm_sep = { fg = "#88c0d0" }
+progress_label = { fg = "#e5e9f0", bold = true }
+progress_normal = { fg = "#a3be8c" }
+progress_error = { fg = "#bf616a", bold = true }
+
+[which]
+mask = { bg = "#434c5e" }
+cand = { fg = "#88c0d0" }
+rest = { fg = "#5e81ac" }
+desc = { fg = "#e5e9f0" }
+separator_style = { fg = "#d8dee9" }
+
+[confirm]
+border = { fg = "#81a1c1" }
+title = { fg = "#e5e9f0" }
+body = { fg = "#e5e9f0" }
+list = { fg = "#e5e9f0" }
+btn_yes = { fg = "#a3be8c", bold = true }
+btn_no = { fg = "#bf616a", bold = true }
+
+[spot]
+border = { fg = "#81a1c1" }
+title = { fg = "#e5e9f0" }
+tbl_col = { bg = "#434c5e" }
+tbl_cell = { fg = "#e5e9f0" }
+
+[notify]
+title_info = { fg = "#88c0d0" }
+title_warn = { fg = "#ebcb8b" }
+title_error = { fg = "#bf616a", bold = true }
+
+[pick]
+border = { fg = "#81a1c1" }
+active = { fg = "#b48ead" }
+inactive = { fg = "#e5e9f0" }
+
+[input]
+border = { fg = "#81a1c1" }
+title = { fg = "#e5e9f0" }
+value = { fg = "#e5e9f0" }
+selected = { bg = "#4c566a" }
+
+[cmp]
+border = { fg = "#81a1c1" }
+active = { fg = "#b48ead", bg = "#4c566a" }
+inactive = { fg = "#e5e9f0" }
+
+[tasks]
+border = { fg = "#81a1c1" }
+title = { fg = "#e5e9f0" }
+hovered = { fg = "#e5e9f0", bg = "#4c566a" }
+
+[help]
+border = { fg = "#81a1c1" }
+chord = { fg = "#b48ead" }
+action = { fg = "#88c0d0" }
+hovered = { fg = "#e5e9f0", bg = "#4c566a" }
+
+[filetype]
+rules = [
+  { mime = "image/*", fg = "#88c0d0" },
+  { mime = "video/*", fg = "#ebcb8b" },
+  { mime = "audio/*", fg = "#ebcb8b" },
+  { mime = "inode/x-empty", fg = "#88c0d0" },
+  { mime = "application/zip", fg = "#b48ead" },
+  { mime = "application/gzip", fg = "#b48ead" },
+  { mime = "application/tar", fg = "#b48ead" },
+  { mime = "application/bzip", fg = "#b48ead" },
+  { mime = "application/bzip2", fg = "#b48ead" },
+  { mime = "application/7z-compressed", fg = "#b48ead" },
+  { mime = "application/rar", fg = "#b48ead" },
+  { mime = "application/xz", fg = "#b48ead" },
+  { mime = "application/doc", fg = "#a3be8c" },
+  { mime = "application/pdf", fg = "#a3be8c" },
+  { mime = "application/rtf", fg = "#a3be8c" },
+  { mime = "application/vnd.*", fg = "#a3be8c" },
+  { url = "*/", fg = "#81a1c1", bold = true },
+  { url = "*", fg = "#e5e9f0" },
+]
+
+[icon]
+prepend_dirs = [
+  { name = ".config", text = "", fg = "#d08770" },
+  { name = ".git", text = "", fg = "#88c0d0" },
+  { name = ".github", text = "", fg = "#81a1c1" },
+  { name = ".npm", text = "", fg = "#81a1c1" },
+  { name = "Desktop", text = "", fg = "#88c0d0" },
+  { name = "Development", text = "", fg = "#88c0d0" },
+  { name = "Documents", text = "", fg = "#88c0d0" },
+  { name = "Downloads", text = "", fg = "#88c0d0" },
+  { name = "Library", text = "", fg = "#88c0d0" },
+  { name = "Movies", text = "", fg = "#88c0d0" },
+  { name = "Music", text = "", fg = "#88c0d0" },
+  { name = "Pictures", text = "", fg = "#88c0d0" },
+  { name = "Public", text = "", fg = "#88c0d0" },
+  { name = "Videos", text = "", fg = "#88c0d0" },
+]
+prepend_conds = [
+  { if = "orphan", text = "", fg = "#e5e9f0" },
+  { if = "link", text = "", fg = "#d8dee9" },
+  { if = "block", text = "", fg = "#ebcb8b" },
+  { if = "char", text = "", fg = "#ebcb8b" },
+  { if = "fifo", text = "", fg = "#ebcb8b" },
+  { if = "sock", text = "", fg = "#ebcb8b" },
+  { if = "sticky", text = "", fg = "#ebcb8b" },
+  { if = "dummy", text = "", fg = "#bf616a" },
+  { if = "dir", text = "", fg = "#81a1c1" },
+  { if = "exec", text = "", fg = "#a3be8c" },
+  { if = "!dir", text = "", fg = "#e5e9f0" },
+]

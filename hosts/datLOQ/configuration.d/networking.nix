@@ -1,48 +1,81 @@
 { pkgs, lib, ... }:
 
 {
-  networking.hostName = "datLOQ";                  # Hostname
-  networking.networkmanager.enable = true;         # networkmanager (nmcli and nmtui)
-  networking.nftables.enable = true;               # nftables instead of iptables
-  networking.networkmanager.wifi.backend = "iwd";  # Use iwd as WiFi backend (default is "wpa_supplicant". "iwd" is alternative)
+  networking.hostName = "datLOQ";   # Hostname
+  networking.networkmanager = {
+    enable = true;
+    wifi.backend = "wpa_supplicant"; # Use iwd or wpa_supplicant.
+    dns = "systemd-resolved";        # Let systemd-resolved handle DNS.
+  };
 
+  networking.nftables.enable = true;
+  networking.enableIPv6 = false;
+  services.resolved = {
+    enable = true;
+    settings.Resolve = {
+      DNS = [
+        "1.1.1.1"
+        "1.0.0.1"
+        "8.8.8.8"
+      ];
+
+      FallbackDNS = [
+        "1.1.1.1"
+        "1.0.0.1"
+        "8.8.8.8"
+      ];
+    };
+  };
+
+  # Packages
   environment.systemPackages = with pkgs; [
     iwd        # Wireless CLI daemon
-    torsocks   # Tor CLI tool
+    torsocks   # Wrap commands to route them through Tor SOCKS
     nyx        # Tor TUI monitor
   ];
-
-  # DNS via systemd-resolved
-  services.resolved.enable = true;
-  networking.networkmanager.dns = "systemd-resolved";
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1" "8.8.8.8" ];
 
   # Firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 443 53317 ];
-    allowedUDPPorts = [ 53317 ];
+    allowedTCPPorts = [
+      22
+      443
+      53317
+    ];
+    allowedUDPPorts = [
+      53317
+    ];
   };
 
-  # Tor settings
+  # Tor
   services.tor = {
     enable = true;
     client = {
       enable = true;
-      transparentProxy.enable = true; # Port 9040
-      dns.enable = true;              # Port 9053
+      transparentProxy.enable = true; # TransPort 127.0.0.1:9040
+      dns.enable = true;              # DNSPort  127.0.0.1:9053
     };
+
     settings = {
+      VirtualAddrNetworkIPv4 = "100.64.0.0/10";
       ControlPort = 9051;
       CookieAuthentication = true;
-      CookieAuthFileGroupReadable = true;
       CookieAuthFile = "/run/tor/control.authcookie";
+      CookieAuthFileGroupReadable = true;
     };
   };
 
+  # Allow the local user to use the Tor control socket / nyx.
   users.users.dat.extraGroups = [ "tor" ];
 
-  # Toggle: systemctl start/stop tor-transparent (or start-tor/stop-tor)
+  # Transparent Tor routing (nftables)
+  # Tor OFF:  normal NetworkManager -> Internet
+  # Tor ON:   normal outbound traffic -> Tor
+
+  # Toggle with:
+  # systemctl start tor-transparent   (start-tor alias)
+  # systemctl stop  tor-transparent   (stop-tor alias)
+
   systemd.services.tor-transparent = {
     description = "Toggle transparent Tor routing";
     after = [ "tor.service" ];

@@ -14,19 +14,24 @@ image_quality = 85
 
 [opener]
 edit = [
-  { run = 'nvim "$@"', block = true, desc = "Open with neovim" },
-  { run = 'vim "$@"', block = true, desc = "Open with vim" },
+  { run = 'nvim %s', block = true, desc = "Open with neovim" },
+  { run = 'vim %s', block = true, desc = "Open with vim" },
 ]
 
 # Package vlc and mpv
 play = [
-  { run = 'vlc "$@"', orphan = true, desc = "Play with vlc" },
-  { run = 'mpv "$@"', orphan = true, desc = "Play with mpv" },
+  { run = 'vlc %s', orphan = true, desc = "Play with vlc" },
+  { run = 'mpv %s', orphan = true, desc = "Play with mpv" },
 ]
 
-# Package imv
+# mpv views images and comic archives (.cbz/.cbr)
 image_view = [
-  { run = 'imv "$@"', orphan = true, desc = "Open with imv" },
+  { run = 'mpv %s', orphan = true, desc = "View with mpv" },
+]
+
+# Reuse the `extract` bash function from ~/.bashrc
+extract = [
+  { run = 'bash -ic "extract %s"', block = true, desc = "Extract archive" },
 ]
 
 reveal = [
@@ -34,7 +39,7 @@ reveal = [
 ]
 
 open = [
-  { run = 'xdg-open "$@"', orphan = true, desc = "Open" },
+  { run = 'xdg-open %s', orphan = true, desc = "Open" },
 ]
 
 [open]
@@ -42,6 +47,21 @@ rules = [
   { mime = "text/*", use = [ "edit", "reveal" ] },
   { mime = "{video,audio}/*", use = [ "play", "open", "reveal" ] },
   { mime = "image/*", use = [ "image_view", "open", "reveal" ] },
+  { url = "*.cbz", use = [ "image_view", "open", "reveal" ] },
+  { url = "*.cbr", use = [ "image_view", "open", "reveal" ] },
+  { url = "*.zip", use = [ "extract" ] },
+  { url = "*.tar.gz", use = [ "extract" ] },
+  { url = "*.tar.bz2", use = [ "extract" ] },
+  { url = "*.tar.xz", use = [ "extract" ] },
+  { url = "*.tbz2", use = [ "extract" ] },
+  { url = "*.tgz", use = [ "extract" ] },
+  { url = "*.tar", use = [ "extract" ] },
+  { url = "*.gz", use = [ "extract" ] },
+  { url = "*.bz2", use = [ "extract" ] },
+  { url = "*.rar", use = [ "extract" ] },
+  { url = "*.7z", use = [ "extract" ] },
+  { url = "*.Z", use = [ "extract" ] },
+  { url = "*/", use = [ "open", "reveal" ] },
   { url = "*", use = [ "open", "reveal" ] },
 ]
 
