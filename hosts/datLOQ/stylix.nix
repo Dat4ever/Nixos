@@ -4,7 +4,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ./wallpapers/nordWaves.png;
+    image = ./wallpapers/nordNixMinimal.png;
 
   # Colors
     base16Scheme = {

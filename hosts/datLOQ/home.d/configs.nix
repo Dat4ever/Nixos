@@ -72,6 +72,7 @@
   home.file.".config/kitty".source = ./dotconfig/kitty;
   home.file.".config/quickshell".source = ./dotconfig/quickshell;
   home.file.".config/rofi".source = ./dotconfig/rofi;
+  home.file.".config/opencode/tui.json".source = ./dotconfig/opencode/tui.json;
 
   # Treesitter parsers for the languages configured in nvim config
   home.file.".local/share/nvim/site/parser/vim.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-vim}/parser";

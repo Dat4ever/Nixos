@@ -41,6 +41,8 @@
     libreoffice-qt        # Office programs
     qbittorrent 					# Torrent client
     localsend 						# Local network file sharing
+    famistudio            # NES Music Editor (run FamiStudio in terminal)
+    prismlauncher         # Minecraft launcher
     # CLI / TUI Utilities
     jq 										# Command-line JSON processor
     udiskie               # Automounter for removable media

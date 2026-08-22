@@ -11,7 +11,7 @@
     git                  # Version control
     rsync                # System-level file sync & backups
     nixos-anywhere       # NixOS installation via SSH
-    inputs.datfetch.packages.${pkgs.system}.default # datfetch from flake
+    inputs.datfetch.packages.${pkgs.stdenv.hostPlatform.system}.default # datfetch from flake
   ];
 
   # Podman

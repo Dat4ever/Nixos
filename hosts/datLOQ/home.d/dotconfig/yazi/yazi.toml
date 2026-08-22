@@ -24,12 +24,12 @@ play = [
   { run = 'mpv %s', orphan = true, desc = "Play with mpv" },
 ]
 
-# mpv views images and comic archives (.cbz/.cbr)
+# Package mpv
 image_view = [
-  { run = 'mpv %s', orphan = true, desc = "View with mpv" },
+  { run = 'mpv --image-display-duration=inf %s', orphan = true, desc = "View with mpv" },
 ]
 
-# Reuse the `extract` bash function from ~/.bashrc
+# Uses the `extract` bash function from ~/.bashrc
 extract = [
   { run = 'bash -ic "extract %s"', block = true, desc = "Extract archive" },
 ]

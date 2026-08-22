@@ -75,8 +75,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1787231121,
-        "narHash": "sha256-jE73EXGp/rq5RAbqzO+wNUAbsEe0ZEU9ConzDQm+azM=",
+        "lastModified": 1787411378,
+        "narHash": "sha256-EesaPN7Azrfi5/X4HA8w/I9qdnV3YYm10jPlUz8FV9U=",
         "path": "/home/dat/Documents/projects/Datfetch",
         "type": "path"
       },
@@ -184,11 +184,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787176219,
-        "narHash": "sha256-djoRr6jBpe35q/0JwAvXpFXg1Ktf+X54NU2RLR7wnHw=",
+        "lastModified": 1787379775,
+        "narHash": "sha256-XL2qfqmocfsvuEGyomZg4nOZfkuSe8vZtrOX99I+b6I=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c53d643b3737e2fcd04e6cb3b3580ef50b2087a0",
+        "rev": "ec1a8fdf74ed3f276148ee106299a2ba0e65d51f",
         "type": "github"
       },
       "original": {
