@@ -9,13 +9,14 @@ hl.monitor({
 ---- AUTOSTART ----
 hl.on("hyprland.start", function ()
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
+  hl.exec_cmd("hyprpaper")
   hl.exec_cmd("qs")
 end)
 
 ---- ENVIRONMENT VARIABLES ----
 -- Hyprcursor
-hl.env("HYPRCURSOR_THEME", "Nordzy-cursors")
-hl.env("XCURSOR_THEME", "Nordzy-cursors")
+hl.env("HYPRCURSOR_THEME", "Capitaine Cursors (Nord)")
+hl.env("XCURSOR_THEME", "Capitaine Cursors (Nord)")
 hl.env("XCURSOR_SIZE", "32")
 hl.env("HYPRCURSOR_SIZE", "32")
 -- QT settings
@@ -23,6 +24,22 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
 -- GTK settings
 
 ----- PERMISSIONS -----
+
+---- THEME COLORS ----
+local themeColors = {}
+local themeFile = io.open(os.getenv("HOME") .. "/.local/state/theme/hyprland.colors", "r")
+if themeFile then
+  for line in themeFile:lines() do
+    local key, value = line:match("^(%w+)=(.*)$")
+    if key and value then themeColors[key] = value end
+  end
+  themeFile:close()
+end
+local function stripHash(s) return s:gsub("^#", "") end
+local themeColor00 = stripHash(themeColors["color00"] or "2e3440")
+local themeColor03 = stripHash(themeColors["color03"] or "4c566a")
+local themeColor07 = stripHash(themeColors["color07"] or "8fbcbb")
+local themeColor0D = stripHash(themeColors["color0D"] or "81a1c1")
 
 ---- LOOK AND FEEL ----
 hl.config({
@@ -32,10 +49,10 @@ hl.config({
     border_size = 2,
 
     ["col.active_border"] = {
-        colors = { "rgba(81a1c1ee)", "rgba(8fbcbbee)" },
+        colors = { "rgba(" .. themeColor0D .. "ee)", "rgba(" .. themeColor07 .. "ee)" },
         angle = 45
     },
-    ["col.inactive_border"] = "rgba(4c566aaa)",
+    ["col.inactive_border"] = "rgba(" .. themeColor03 .. "aa)",
 
     resize_on_border = false,
     allow_tearing    = false,
@@ -52,7 +69,7 @@ hl.config({
       enabled      = true,
       range        = 4,
       render_power = 3,
-      color        = "rgba(2e3440ee)",
+      color        = "rgba(" .. themeColor00 .. "ee)",
     },
 
     blur = {
@@ -91,8 +108,9 @@ hl.config({
 ----  MISC  ----
 hl.config({
   misc = {
-    force_default_wallpaper = 0,
-    disable_hyprland_logo   = true,
+    force_default_wallpaper   = 0,
+    disable_hyprland_logo     = true,
+    disable_splash_rendering = true,
   },
 })
 
@@ -128,6 +146,7 @@ local terminal    = "kitty"
 local fileManager = "kitty -e yazi"
 local menu        = "rofi -show drun"
 local browser     = "firefox"
+local themeMenu   = "theme-rofi"
 
 ---- KEYBINDINGS ----
 local mainMod = "SUPER"
@@ -136,6 +155,7 @@ hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(themeMenu))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + Z", hl.dsp.layout("togglesplit"))
@@ -165,7 +185,7 @@ hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- Take a screenshot (with grim + slurp + wl-clipboard)
+-- Take a screenshot (with mainMod + Home or mainMod + SHIFT + Home)
 hl.bind(mainMod .. " + HOME", hl.dsp.exec_cmd([[mkdir -p ~/Pictures/screenshots && grim -g "$(slurp -d)" ~/Pictures/screenshots/$(date +'%Y%m%d_%H%M%S').png]]))
 hl.bind("SUPER + SHIFT + Home", hl.dsp.exec_cmd([[mkdir -p ~/Pictures/screenshots && grim ~/Pictures/screenshots/$(date +'%Y%m%d_%H%M%S').png]]))
 

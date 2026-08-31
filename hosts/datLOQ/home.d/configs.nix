@@ -17,10 +17,7 @@
   # Yazi configuration
   home.file.".config/yazi/yazi.toml".source = ./dotconfig/yazi/yazi.toml;
   home.file.".config/yazi/keymap.toml".source = ./dotconfig/yazi/keymap.toml;
-  home.file.".config/yazi/theme.toml".source = ./dotconfig/yazi/theme.toml;
   home.file.".config/yazi/init.lua".source = ./dotconfig/yazi/init.lua;
-
-  stylix.targets.yazi.enable = false;
 
   programs.yazi = {
     enable = true;
@@ -46,12 +43,6 @@
     extraConfig = builtins.readFile ./dotconfig/hypr/hyprland.lua;
   };
 
-  # Btop configuration
-  programs.btop = {
-    enable = true;
-    extraConfig = builtins.readFile ./dotconfig/btop/btop.conf;
-  };
-
   # Obs configuration
   programs.obs-studio = {
     enable = true;
@@ -69,10 +60,32 @@
 
   # Other Configuration files
   home.file.".config/nvim".source = ./dotconfig/nvim;
-  home.file.".config/kitty".source = ./dotconfig/kitty;
-  home.file.".config/quickshell".source = ./dotconfig/quickshell;
-  home.file.".config/rofi".source = ./dotconfig/rofi;
-  home.file.".config/opencode/tui.json".source = ./dotconfig/opencode/tui.json;
+
+  # Kitty (colors.conf is mutable, written by theme-switch)
+  home.file.".config/kitty/kitty.conf".source = ./dotconfig/kitty/kitty.conf;
+
+  # Rofi (theme.rasi is mutable, written by theme-switch)
+  home.file.".config/rofi/config.rasi".source = ./dotconfig/rofi/config.rasi;
+
+  # Quickshell (Colors.qml is mutable, written by theme-switch)
+  home.file.".config/quickshell/shell.qml".source = ./dotconfig/quickshell/shell.qml;
+  home.file.".config/quickshell/bar/ActiveWindow.qml".source = ./dotconfig/quickshell/bar/ActiveWindow.qml;
+  home.file.".config/quickshell/bar/Battery.qml".source = ./dotconfig/quickshell/bar/Battery.qml;
+  home.file.".config/quickshell/bar/Bluetooth.qml".source = ./dotconfig/quickshell/bar/Bluetooth.qml;
+  home.file.".config/quickshell/bar/Clock.qml".source = ./dotconfig/quickshell/bar/Clock.qml;
+  home.file.".config/quickshell/bar/Keyboard.qml".source = ./dotconfig/quickshell/bar/Keyboard.qml;
+  home.file.".config/quickshell/bar/Launcher.qml".source = ./dotconfig/quickshell/bar/Launcher.qml;
+  home.file.".config/quickshell/bar/Network.qml".source = ./dotconfig/quickshell/bar/Network.qml;
+  home.file.".config/quickshell/bar/Power.qml".source = ./dotconfig/quickshell/bar/Power.qml;
+  home.file.".config/quickshell/bar/Separator.qml".source = ./dotconfig/quickshell/bar/Separator.qml;
+  home.file.".config/quickshell/bar/Volume.qml".source = ./dotconfig/quickshell/bar/Volume.qml;
+  home.file.".config/quickshell/bar/Workspace.qml".source = ./dotconfig/quickshell/bar/Workspace.qml;
+
+  # Theme definitions (read at runtime by theme-switch)
+  home.file.".config/themes".source = ./theme;
+
+  # Wallpapers (used by theme-switch via hyprpaper)
+  home.file.".config/wallpapers".source = ./theme/wallpapers;
 
   # Treesitter parsers for the languages configured in nvim config
   home.file.".local/share/nvim/site/parser/vim.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-vim}/parser";

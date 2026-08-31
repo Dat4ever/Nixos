@@ -43,7 +43,7 @@ Item {
     font.family: Colors.fontName
     font.pixelSize: 13
     font.bold: true
-    color: Colors.color_magenta
+    color: Colors.color0E
     text: " " + rawLayout
   }
 
@@ -54,6 +54,6 @@ Item {
     width: parent.width
     height: 2
     radius: 1
-    color: Colors.color_magenta
+    color: Colors.color0E
   }
 }

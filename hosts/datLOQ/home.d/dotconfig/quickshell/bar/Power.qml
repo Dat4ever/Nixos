@@ -44,19 +44,9 @@ Item {
     id: textDisplay
     anchors.centerIn: parent
     text: "⏻"
-    color: Colors.color_red
+    color: Colors.color08
     font.family: Colors.fontName
-    font.pixelSize: 14
+    font.pixelSize: 16
     font.bold: true
-  }
-
-  Rectangle {
-    id: accentLine
-    anchors.horizontalCenter: parent.horizontalCenter
-    anchors.bottom: parent.bottom
-    width: parent.width
-    height: 2
-    radius: 1
-    color: Colors.color_red
   }
 }

@@ -1,0 +1,76 @@
+* {
+  color00: __color00__;
+  color01: __color01__;
+  color02: __color02__;
+  color03: __color03__;
+  color04: __color04__;
+  color05: __color05__;
+  color06: __color06__;
+  color07: __color07__;
+  color08: __color08__;
+  color09: __color09__;
+  color0A: __color0A__;
+  color0B: __color0B__;
+  color0C: __color0C__;
+  color0D: __color0D__;
+  color0E: __color0E__;
+  color0F: __color0F__;
+
+  background-color: transparent;
+  text-color: @color04;
+}
+
+window {
+  location: center;
+  anchor: center;
+  border-radius: 2px;
+  border: 2px;
+  border-color: @color0D;
+  background-color: @color00;
+  padding: 14px;
+}
+
+mainbox {
+  spacing: 10px;
+  children: [ inputbar, listview ];
+}
+
+inputbar {
+  background-color: @color01;
+  padding: 10px 14px;
+  border-radius: 2px;
+  children: [ prompt, entry ];
+}
+
+prompt {
+  text-color: @color0C;
+  margin: 0px 8px 0px 0px;
+}
+
+entry {
+  text-color: @color06;
+  placeholder: "Search...";
+  placeholder-color: @color03;
+}
+
+listview {
+  fixed-height: true;
+  cycle: true;
+  scrollbar: false;
+  spacing: 4px;
+}
+
+element {
+  padding: 8px 12px;
+  border-radius: 2px;
+  background-color: transparent;
+}
+
+element-text {
+  text-color: inherit;
+}
+
+element selected.normal {
+  background-color: @color07;
+  text-color: @color00;
+}

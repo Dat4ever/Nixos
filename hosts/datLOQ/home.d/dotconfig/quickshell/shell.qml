@@ -29,7 +29,7 @@ ShellRoot {
       id: barBackground
       anchors.fill: parent
       radius: 0
-      color: Colors.color_dark_gray
+      color: Colors.color01
 
       Item {
         id: leftCluster

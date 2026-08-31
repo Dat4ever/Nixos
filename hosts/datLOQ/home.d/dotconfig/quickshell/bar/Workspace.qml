@@ -28,9 +28,9 @@ Item {
         radius: 4
 
         color: {
-          if (isActive) return Colors.color_cyan;
-          if (wsData) return Colors.color_white;
-          return Colors.color_gray;
+          if (isActive) return Colors.color0C;
+          if (wsData) return Colors.color05;
+          return Colors.color03;
         }
 
         Behavior on width {

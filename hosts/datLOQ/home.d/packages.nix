@@ -35,6 +35,7 @@
     jdt-language-server   # Java LSP 'jdtls'
     # GUI Applications
     firefox 							# Web browser
+    nwg-look 							# GTK settings GUI (wlroots)
     tor-browser 					# Privacy-focused browser
     vlc 									# Media player
     mpv 									# Lightweight media player
@@ -43,6 +44,7 @@
     localsend 						# Local network file sharing
     famistudio            # NES Music Editor (run FamiStudio in terminal)
     prismlauncher         # Minecraft launcher
+    gparted               # Graphical disk partition tool
     # CLI / TUI Utilities
     jq 										# Command-line JSON processor
     udiskie               # Automounter for removable media
@@ -59,6 +61,7 @@
     binwalk               # Firmware Analysis Tool
     bluetui 							# Bluetooth TUI
     wiremix 							# PipeWire TUI mixer
+    btop                  # Resource monitor
     opencode 							# AI terminal coding agent
   ];
 }

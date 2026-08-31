@@ -80,7 +80,7 @@ Item {
     id: textDisplay
     anchors.centerIn: parent
     text: networkWidget.netIcon + " " + networkWidget.netStatus
-    color: Colors.color_cyan
+    color: Colors.color0C
     font.family: Colors.fontName
     font.pixelSize: 13
     font.bold: true
@@ -93,6 +93,6 @@ Item {
     width: parent.width
     height: 2
     radius: 1
-    color: Colors.color_cyan
+    color: Colors.color0C
   }
 }

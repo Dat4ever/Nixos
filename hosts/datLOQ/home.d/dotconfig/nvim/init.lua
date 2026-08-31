@@ -55,9 +55,11 @@ vim.keymap.set("n", "<leader>d", function()
 end, { silent = true })
 
 -- Other settings
+-- Theme (written by theme-switch, uses base16 colors)
+pcall(dofile, vim.fn.expand("~/.local/share/nvim/theme.lua"))
+
 require("lsp")
 require("terminalcolor")
 require("netrw")
 require("treesitter")
-require("statusline")
 require("find&grep")

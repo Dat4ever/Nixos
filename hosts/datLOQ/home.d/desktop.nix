@@ -1,8 +1,6 @@
-{ ... }:
-
 {
-  home.pointerCursor.enable = true;
   xdg.enable = true;
+  dconf.enable = true;
 
   # Xdg user dirs
   xdg.userDirs = {
@@ -20,14 +18,10 @@
     publicShare = "$HOME/Public";
   };
 
-  # GTK settings
-  gtk = {
-    enable = true;
-  };
-
   # QT settings
   qt = {
     enable = true;
     platformTheme.name = "qtct";
+    style.name = "kvantum";
   };
 }

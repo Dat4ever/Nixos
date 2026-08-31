@@ -30,6 +30,12 @@
 
   # Other services
   security.polkit.enable = true;        # Enable polkit
+  security.wrappers.pkexec = {          # setuid pkexec (root GUI apps)
+    source = "${pkgs.polkit}/bin/pkexec";
+    owner = "root";
+    group = "root";
+    setuid = true;
+  };
   services.udisks2.enable = true;       # Enable Udisks service
   services.openssh.enable = true;       # Enable the OpenSSH service
   services.printing.enable = true;      # Enable CUPS sevice for printing
