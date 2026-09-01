@@ -43,6 +43,9 @@
     extraConfig = builtins.readFile ./dotconfig/hypr/hyprland.lua;
   };
 
+  # Polkit authentication agent
+  services.hyprpolkitagent.enable = true;
+
   # Obs configuration
   programs.obs-studio = {
     enable = true;
@@ -60,14 +63,8 @@
 
   # Other Configuration files
   home.file.".config/nvim".source = ./dotconfig/nvim;
-
-  # Kitty (colors.conf is mutable, written by theme-switch)
   home.file.".config/kitty/kitty.conf".source = ./dotconfig/kitty/kitty.conf;
-
-  # Rofi (theme.rasi is mutable, written by theme-switch)
   home.file.".config/rofi/config.rasi".source = ./dotconfig/rofi/config.rasi;
-
-  # Quickshell (Colors.qml is mutable, written by theme-switch)
   home.file.".config/quickshell/shell.qml".source = ./dotconfig/quickshell/shell.qml;
   home.file.".config/quickshell/bar/ActiveWindow.qml".source = ./dotconfig/quickshell/bar/ActiveWindow.qml;
   home.file.".config/quickshell/bar/Battery.qml".source = ./dotconfig/quickshell/bar/Battery.qml;

@@ -23,7 +23,7 @@ vim.api.nvim_set_hl(0, "StatusInfo",        { bg = bg2,     fg = cyan })
 vim.api.nvim_set_hl(0, "StatusBase",        { bg = bg,      fg = fg2 })
 vim.api.nvim_set_hl(0, "StatusGitBranch",   { bg = bg2,     fg = green })
 
--- Git branch (cached, updated on BufEnter)
+-- Git branch
 local git_branch = ""
 vim.api.nvim_create_autocmd({"BufEnter", "BufWritePost"}, {
   callback = function()

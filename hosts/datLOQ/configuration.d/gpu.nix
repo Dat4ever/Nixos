@@ -1,28 +1,20 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = lib.mkAfter (with pkgs; [
+    # iGPU is the primary GPU in PRIME offload mode, so Intel VA-API is what
+    # most apps use. Run apps on the dGPU with: nvidia-offload <app>
+    extraPackages = with pkgs; [
       # Intel
       intel-media-driver
-      # Nvidia
+      # Nvidia (VA-API for apps running on the dGPU)
       nvidia-vaapi-driver
-      libva-vdpau-driver
-      libvdpau-va-gl
-    ]);
+    ];
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
-
-  environment.sessionVariables = {
-    NVD_BACKEND = "direct";
-    LIBVA_DRIVER_NAME = "nvidia";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    GBM_BACKEND = "nvidia-drm";
-    WLR_NO_HARDWARE_CURSORS = "1";
-  };
 
   boot.kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" ];
 

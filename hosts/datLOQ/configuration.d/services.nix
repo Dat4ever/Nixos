@@ -29,12 +29,9 @@
   ];
 
   # Other services
-  security.polkit.enable = true;        # Enable polkit
-  security.wrappers.pkexec = {          # setuid pkexec (root GUI apps)
-    source = "${pkgs.polkit}/bin/pkexec";
-    owner = "root";
-    group = "root";
-    setuid = true;
+  security.polkit = {
+    enable = true;               # Enable polkit
+    enablePkexecWrapper = true;  # setuid pkexec (root GUI apps)
   };
   services.udisks2.enable = true;       # Enable Udisks service
   services.openssh.enable = true;       # Enable the OpenSSH service

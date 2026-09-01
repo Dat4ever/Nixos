@@ -8,7 +8,6 @@ hl.monitor({
 
 ---- AUTOSTART ----
 hl.on("hyprland.start", function ()
-  hl.exec_cmd("systemctl --user start hyprpolkitagent")
   hl.exec_cmd("hyprpaper")
   hl.exec_cmd("qs")
 end)
@@ -19,9 +18,6 @@ hl.env("HYPRCURSOR_THEME", "Capitaine Cursors (Nord)")
 hl.env("XCURSOR_THEME", "Capitaine Cursors (Nord)")
 hl.env("XCURSOR_SIZE", "32")
 hl.env("HYPRCURSOR_SIZE", "32")
--- QT settings
-hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
--- GTK settings
 
 ----- PERMISSIONS -----
 

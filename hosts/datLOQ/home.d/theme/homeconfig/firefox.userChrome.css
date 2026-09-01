@@ -11,19 +11,19 @@
   --accent2: __color0C__;
 }
 
-/* ===== Main toolbox (toolbar + tab bar unified background) ===== */
+/* Main toolbox (toolbar + tab bar unified background) */
 #navigator-toolbox {
   background-color: var(--bg) !important;
   color: var(--fg) !important;
 }
 
-/* ===== Nav bar (URL bar row) ===== */
+/* Nav bar (URL bar row) */
 #nav-bar {
   background-color: var(--bg) !important;
   border-top: 1px solid var(--bg3) !important;
 }
 
-/* ===== Tab bar ===== */
+/* Tab bar */
 #TabsToolbar {
   background-color: var(--bg) !important;
   color: var(--fg) !important;
@@ -34,7 +34,7 @@
   background-color: transparent !important;
 }
 
-/* ===== Active tab: accent background, contrasting text ===== */
+/* Active tab: accent background, contrasting text */
 .tab-background[selected="true"] {
   background-color: var(--accent) !important;
   border-radius: 6px 6px 0 0 !important;
@@ -53,7 +53,7 @@
   display: none !important;
 }
 
-/* ===== Inactive tabs: muted ===== */
+/* Inactive tabs: muted */
 .tab-background:not([selected="true"]) {
   background-color: transparent !important;
   border-radius: 6px 6px 0 0 !important;
@@ -81,7 +81,7 @@
   color: var(--fg) !important;
 }
 
-/* ===== URL bar ===== */
+/* URL bar */
 #urlbar,
 #urlbar-background {
   background-color: var(--bg2) !important;
@@ -105,13 +105,13 @@
   color: var(--fg) !important;
 }
 
-/* ===== Bookmarks toolbar ===== */
+/* Bookmarks toolbar */
 #PersonalToolbar {
   background-color: var(--bg) !important;
   color: var(--fg) !important;
 }
 
-/* ===== Sidebar (vertical tabs + panels) ===== */
+/* Sidebar (vertical tabs + panels) */
 #sidebar-header,
 #sidebar-box,
 #sidebar,
@@ -156,7 +156,7 @@
   color: var(--muted) !important;
 }
 
-/* ===== Toolbar buttons ===== */
+/* Toolbar buttons */
 .toolbarbutton-icon {
   fill: var(--fg) !important;
 }
@@ -166,7 +166,7 @@
   color: var(--fg) !important;
 }
 
-/* ===== Menu popups ===== */
+/* Menu popups */
 menupopup,
 panel {
   --panel-background: var(--bg2) !important;
@@ -189,14 +189,14 @@ menuseparator {
   border-color: var(--bg3) !important;
 }
 
-/* ===== Find bar ===== */
+/* Find bar */
 findbar {
   background-color: var(--bg2) !important;
   color: var(--fg) !important;
   border-top: 1px solid var(--bg3) !important;
 }
 
-/* ===== Status panel ===== */
+/* Status panel */
 #statuspanel-label {
   background-color: var(--bg2) !important;
   color: var(--fg) !important;

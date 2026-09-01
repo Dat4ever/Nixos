@@ -52,7 +52,7 @@ render "$TEMPLATES_DIR/kitty.colors.conf" "$KITTY_COLORS"
 
 # Reload running kitty instances.
 if command -v kitty >/dev/null 2>&1; then
-  kitty @ set-colors --all --configured "$KITTY_COLORS" >/dev/null 2>&1 || true
+  kitten @ set-colors --all --configured "$KITTY_COLORS" >/dev/null 2>&1 || true
 fi
 
 # rofi
@@ -125,7 +125,7 @@ cat > "$KV_DIR/kvantum.kvconfig" <<EOF
 theme=$kvantum_theme
 EOF
 
-# --- opencode ---
+# opencode
 OPENCODE_TUI="$HOME/.config/opencode/tui.json"
 mkdir -p "$HOME/.config/opencode"
 cat > "$OPENCODE_TUI" <<EOF
@@ -144,7 +144,7 @@ theme_background = False
 rounded_corners = True
 proc_tree = True
 graph_symbol = "braille"
-  proc_sorting = "cpu lazy"
+proc_sorting = "cpu lazy"
 EOF
 
 # Neovim (statusline + highlight groups)
@@ -185,7 +185,6 @@ wallpaper {
     path = $WALL
 }
 EOF
-  pkill -f swaybg 2>/dev/null || true
   pkill -f hyprpaper 2>/dev/null || true
   sleep 0.3
   nohup hyprpaper >/dev/null 2>&1 &

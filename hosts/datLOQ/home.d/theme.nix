@@ -149,14 +149,36 @@ in
     theme-wallpaper
     # GTK/Kvantum themes
     gtk-qt-themes
-    # Cursor themes (vendored locally)
+    # Cursor themes
     cursor-themes
   ];
 
-  # Apply the current (or default) theme after every activation so the
-  # runtime-switchable config files are always present and in sync.
-  # Must run after `linkGeneration`, which is what actually creates the
-  # ~/.config/<app> symlinks that theme-switch reads/writes.
+  # Fontconfig
+  fonts.fontconfig.enable = true;
+  xdg.configFile."fontconfig/fonts.conf".text = ''
+    <?xml version="1.0"?>
+    <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+    <fontconfig>
+      <alias binding="strong">
+        <family>monospace</family>
+        <prefer><family>CommitMono Nerd Font</family></prefer>
+      </alias>
+      <alias binding="strong">
+        <family>sans-serif</family>
+        <prefer><family>Geist</family></prefer>
+      </alias>
+      <alias binding="strong">
+        <family>sans</family>
+        <prefer><family>Geist</family></prefer>
+      </alias>
+      <alias binding="strong">
+        <family>serif</family>
+        <prefer><family>Geist</family></prefer>
+      </alias>
+    </fontconfig>
+  '';
+
+  # Apply the current (or default) theme after every activation
   home.activation.applyTheme = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     theme="nord"
     if [[ -f "$HOME/.local/state/theme/current" ]]; then

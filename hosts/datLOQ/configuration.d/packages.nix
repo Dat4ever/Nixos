@@ -6,7 +6,6 @@
 
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
-    bash                 # Shell
     vim                  # Text editor
     brightnessctl        # Screen brightness control
     wget                 # Web file retriever

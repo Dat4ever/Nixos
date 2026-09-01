@@ -4,21 +4,19 @@
   # Home Packages
   home.packages = with pkgs; [
     # Wayland / Hyprland Desktop Environment
-    hyprland 							# Wayland compositor
     hyprpaper 						# Wallpaper manager
-    hyprcursor 						# Hyprland cursor library
-    hyprpolkitagent 			# Authentication agent
+    hyprland-qtutils 				# Hyprland utility apps (hyprland-run, hyprland-dialog, share picker)
     quickshell	 					# Desktop shell toolkit
     rofi 									# Application launcher
     # Wayland Utilities
     grim 									# Screenshot tool
     slurp 								# Screen region selector
     wl-clipboard 					# Clipboard manager
+    playerctl 						# Media player control (media keys)
     # Terminal & Development Tools & language servers
     kitty 								# Terminal
     neovim 								# Text editor
     tmux 									# Terminal multiplexer
-    tree-sitter 					# Parsing tool
     ripgrep 							# Fast grep
     gcc 									# C/C++ compiler
     gnumake 							# C Build automation tool

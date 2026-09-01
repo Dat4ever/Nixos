@@ -28,11 +28,14 @@ let
     cairo
     # Voice & Game / Audio
     alsa-lib
-    pulseaudio
     libpulseaudio
     SDL
     SDL2
     libtheora
+    libvorbis
+    libogg
+    flac
+    openal
     # Graphics / OpenGL / Vulkan
     libdrm
     libgbm
@@ -57,6 +60,11 @@ let
     libxcb
     libXcomposite
     libXdamage
+    libXxf86vm
+    libXinerama
+    libXtst
+    libSM
+    libICE
   ];
 in
 

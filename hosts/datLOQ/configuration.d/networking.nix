@@ -29,7 +29,6 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
-    iwd        # Wireless CLI daemon
     torsocks   # Wrap commands to route them through Tor SOCKS
     nyx        # Tor TUI monitor
   ];
@@ -39,7 +38,6 @@
     enable = true;
     allowedTCPPorts = [
       22
-      443
       53317
     ];
     allowedUDPPorts = [

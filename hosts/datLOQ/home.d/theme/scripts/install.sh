@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Portable theme system installer. On NixOS, home-manager handles this automatically (theme.nix), so this script is mainly for Guix / Arch / other distros.
+# Portable theme system installer. On NixOS, home-manager handles this automatically (theme.nix), so this script is mainly for other disros.
 set -euo pipefail
 
 # Resolve the repo root
