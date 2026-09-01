@@ -108,7 +108,7 @@ Item {
     id: textDisplay
     anchors.centerIn: parent
     font.family: Colors.fontName
-    font.pixelSize: 13
+    font.pixelSize: 14
     font.bold: true
     color: Colors.color0A
 

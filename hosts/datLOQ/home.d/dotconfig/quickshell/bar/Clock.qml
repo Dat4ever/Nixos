@@ -17,7 +17,7 @@ Item {
     anchors.centerIn: parent
     color: Colors.color0C
     font.family: Colors.fontName
-    font.pixelSize: 13
+    font.pixelSize: 14
     font.bold: true
     visible: clockWidget.state === "time"
     text: Qt.formatDateTime(new Date(), "HH:mm")
@@ -35,7 +35,7 @@ Item {
     anchors.centerIn: parent
     color: Colors.color0C
     font.family: Colors.fontName
-    font.pixelSize: 13
+    font.pixelSize: 14
     font.bold: true
     visible: clockWidget.state === "date"
     

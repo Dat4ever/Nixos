@@ -82,7 +82,7 @@ Item {
     text: networkWidget.netIcon + " " + networkWidget.netStatus
     color: Colors.color0C
     font.family: Colors.fontName
-    font.pixelSize: 13
+    font.pixelSize: 14
     font.bold: true
   }
 

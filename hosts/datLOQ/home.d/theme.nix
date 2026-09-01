@@ -118,6 +118,7 @@ let
       mkdir -p "$out/share/icons"
       cp -r ${./theme/cursors/capitaine-nord} "$out/share/icons/Capitaine Cursors (Nord)"
       cp -r ${./theme/cursors/capitaine-gruvbox} "$out/share/icons/Capitaine Cursors (Gruvbox)"
+      cp -r ${./theme/cursors/everforest-cursors} "$out/share/icons/everforest-cursors"
     '';
   };
 
@@ -129,8 +130,10 @@ let
       mkdir -p "$out/share/themes" "$out/share/Kvantum"
       cp -r ${./theme/gtk-qt/themes/Nordic} "$out/share/themes/Nordic"
       cp -r ${./theme/gtk-qt/themes/Gruvbox-Dark} "$out/share/themes/Gruvbox-Dark"
+      cp -r ${./theme/gtk-qt/themes/Everforest} "$out/share/themes/Everforest"
       cp -r ${./theme/gtk-qt/kvantum/Nordic} "$out/share/Kvantum/Nordic"
       cp -r ${./theme/gtk-qt/kvantum/Gruvbox-Dark-Brown} "$out/share/Kvantum/Gruvbox-Dark-Brown"
+      cp -r ${./theme/gtk-qt/kvantum/Everforest} "$out/share/Kvantum/Everforest"
     '';
   };
 in
@@ -178,15 +181,6 @@ in
     </fontconfig>
   '';
 
-  # Apply the current (or default) theme after every activation
-  home.activation.applyTheme = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-    theme="nord"
-    if [[ -f "$HOME/.local/state/theme/current" ]]; then
-      theme="$(${pkgs.coreutils}/bin/cat "$HOME/.local/state/theme/current")"
-    fi
-    THEME_SWITCH_NO_RELOAD=1 ${theme-switch}/bin/theme-switch "$theme"
-  '';
-
   # GIMP: follow the GTK theme instead of its bundled one
   home.activation.gimpSystemTheme = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     rc="$HOME/.config/GIMP/3.2/gimprc"
@@ -195,5 +189,14 @@ in
       ${pkgs.gnused}/bin/sed -i '/^(theme /d' "$rc"
       printf '%s\n' '(theme "System")' >> "$rc"
     }
+  '';
+
+  # Apply the current (or default) theme after every activation
+  home.activation.applyTheme = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    theme="nord"
+    if [[ -f "$HOME/.local/state/theme/current" ]]; then
+      theme="$(${pkgs.coreutils}/bin/cat "$HOME/.local/state/theme/current")"
+    fi
+    THEME_SWITCH_NO_RELOAD=1 ${theme-switch}/bin/theme-switch "$theme"
   '';
 }

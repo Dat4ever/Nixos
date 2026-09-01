@@ -79,7 +79,7 @@ Item {
     text: activeWindowWidget.displayText
     color: Colors.color0C
     font.family: Colors.fontName
-    font.pixelSize: 13
+    font.pixelSize: 14
     font.bold: true
 
     Behavior on text {

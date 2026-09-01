@@ -9,7 +9,7 @@ count_copied = { fg = "__color00__", bg = "__color0B__" }
 count_cut = { fg = "__color00__", bg = "__color08__" }
 count_selected = { fg = "__color00__", bg = "__color0A__" }
 border_style = { fg = "__color04__" }
-syntect_theme = "~/.config/yazi/Nord.tmTheme"
+syntect_theme = "~/.config/yazi/syntect.tmTheme"
 
 [indicator]
 current = { bg = "__color02__", bold = true }

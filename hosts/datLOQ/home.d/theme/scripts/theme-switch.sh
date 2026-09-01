@@ -61,6 +61,9 @@ YAZI_THEME="$HOME/.config/yazi/theme.toml"
 mkdir -p "$HOME/.config/yazi"
 render "$TEMPLATES_DIR/yazi.theme.toml" "$YAZI_THEME"
 
+# yazi syntect (code preview highlighting, follows the theme)
+render "$TEMPLATES_DIR/yazi.tmTheme" "$HOME/.config/yazi/syntect.tmTheme"
+
 # GTK
 for v in 3.0 4.0; do
   d="$HOME/.config/gtk-$v"

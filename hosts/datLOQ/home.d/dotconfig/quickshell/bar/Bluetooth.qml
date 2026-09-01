@@ -102,7 +102,7 @@ Item {
     text: bluetoothWidget.btIcon + " " + bluetoothWidget.btStatus
     color: Colors.color0D
     font.family: Colors.fontName
-    font.pixelSize: 13
+    font.pixelSize: 14
     font.bold: true
   }
 
