@@ -93,7 +93,7 @@ let
   theme-switch = pkgs.writeShellApplication {
     name = "theme-switch";
     runtimeInputs = [ pkgs.jq pkgs.kitty pkgs.hyprland pkgs.hyprpaper pkgs.quickshell pkgs.procps pkgs.coreutils pkgs.gnused pkgs.gawk pkgs.dconf ];
-    excludeShellChecks = [ "SC2154" ]; # color/name/theme vars are assigned via `source`
+    excludeShellChecks = [ "SC2154" ];
     text = builtins.readFile ./theme/scripts/theme-switch.sh;
   };
 
@@ -106,7 +106,7 @@ let
   theme-wallpaper = pkgs.writeShellApplication {
     name = "theme-wallpaper";
     runtimeInputs = [ pkgs.hyprland pkgs.hyprpaper pkgs.procps pkgs.coreutils pkgs.jq ];
-    excludeShellChecks = [ "SC2154" ]; # wallpaper var is assigned via `source`
+    excludeShellChecks = [ "SC2154" ];
     text = builtins.readFile ./theme/scripts/theme-wallpaper.sh;
   };
 
@@ -185,5 +185,15 @@ in
       theme="$(${pkgs.coreutils}/bin/cat "$HOME/.local/state/theme/current")"
     fi
     THEME_SWITCH_NO_RELOAD=1 ${theme-switch}/bin/theme-switch "$theme"
+  '';
+
+  # GIMP: follow the GTK theme instead of its bundled one
+  home.activation.gimpSystemTheme = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    rc="$HOME/.config/GIMP/3.2/gimprc"
+    ${pkgs.coreutils}/bin/touch "$rc"
+    ${pkgs.gnugrep}/bin/grep -q '^(theme "System")' "$rc" || {
+      ${pkgs.gnused}/bin/sed -i '/^(theme /d' "$rc"
+      printf '%s\n' '(theme "System")' >> "$rc"
+    }
   '';
 }

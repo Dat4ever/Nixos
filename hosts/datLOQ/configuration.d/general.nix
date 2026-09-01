@@ -33,6 +33,9 @@
     options = "--delete-older-than 7d";
   };
 
+  # Disable default font packages (fonts are managed via home-manager)
+  fonts.enableDefaultPackages = false;
+
   # TTY keyboard layout
   console.keyMap = "trq";
 

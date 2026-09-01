@@ -5,7 +5,7 @@
   home.packages = with pkgs; [
     # Wayland / Hyprland Desktop Environment
     hyprpaper 						# Wallpaper manager
-    hyprland-qtutils 				# Hyprland utility apps (hyprland-run, hyprland-dialog, share picker)
+    hyprland-qtutils 			# Hyprland utility apps (hyprland-run, hyprland-dialog, share picker)
     quickshell	 					# Desktop shell toolkit
     rofi 									# Application launcher
     # Wayland Utilities
@@ -42,6 +42,7 @@
     localsend 						# Local network file sharing
     famistudio            # NES Music Editor (run FamiStudio in terminal)
     prismlauncher         # Minecraft launcher
+    gimp                  # Image Manipulation
     gparted               # Graphical disk partition tool
     # CLI / TUI Utilities
     jq 										# Command-line JSON processor

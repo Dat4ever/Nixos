@@ -1,9 +1,6 @@
 { pkgs, inputs, ... }:
 
 {
-  # Disable default font packages (fonts are managed via home-manager)
-  fonts.enableDefaultPackages = false;
-
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     vim                  # Text editor
@@ -17,6 +14,20 @@
     gsettings-desktop-schemas  # GLib schemas (GTK theme backend)
     inputs.datfetch.packages.${pkgs.stdenv.hostPlatform.system}.default # datfetch from flake
   ];
+
+  # Podman
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+
+  # Steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
 
   # Link gsettings schemas into system profile (GLib looks in glib-2.0/schemas/)
   environment.pathsToLink = [ "/share/gsettings-schemas" "/share/glib-2.0" ];
@@ -33,18 +44,4 @@
     # Compile ALL schemas into a single gschemas.compiled
     ${pkgs.glib}/bin/glib-compile-schemas "$out/share/glib-2.0/schemas/" 2>/dev/null || true
   '';
-
-  # Podman
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-  };
-
-  # Steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    gamescopeSession.enable = true;
-  };
 }

@@ -19,31 +19,22 @@ fi
 # shellcheck disable=SC1090
 source "$THEME_FILE"
 
-# Render a template file, substituting the __colorXX__ placeholders.
+# Render a template file, substituting the __colorXX__ placeholders. Writes to a temp file and moves it into place, so a failed render never leaves a broken/partial config behind (rofi/quickshell keep working).
 render() {
-  local template="$1" output="$2"
+  local template="$1" output="$2" tmp
   local sedargs=() var
   for var in color00 color01 color02 color03 color04 color05 color06 color07 \
              color08 color09 color0A color0B color0C color0D color0E color0F; do
     sedargs+=( -e "s|__${var}__|${!var}|g" )
   done
-  sed "${sedargs[@]}" "$template" > "$output"
+  tmp="$(mktemp "${output}.tmp.XXXXXX")" || return 1
+  if sed "${sedargs[@]}" "$template" > "$tmp"; then
+    mv -f "$tmp" "$output"
+  else
+    rm -f "$tmp"
+    return 1
+  fi
 }
-
-# Remove any stale home-manager symlinks so we can write real files.
-rm -f \
-  "$HOME/.config/kitty/colors.conf" \
-  "$HOME/.config/rofi/theme.rasi" \
-  "$HOME/.config/quickshell/Colors.qml" \
-  "$HOME/.config/yazi/theme.toml" \
-  "$HOME/.config/opencode/tui.json" \
-  "$HOME/.config/btop/btop.conf" \
-  "$HOME/.local/share/nvim/theme.lua" \
-  "$HOME/.config/gtk-3.0/settings.ini" \
-  "$HOME/.config/gtk-4.0/settings.ini" \
-  "$HOME/.config/qt6ct/qt6ct.conf" \
-  "$HOME/.config/qt5ct/qt5ct.conf" \
-  "$HOME/.config/Kvantum/kvantum.kvconfig"
 
 # kitty
 KITTY_COLORS="$HOME/.config/kitty/colors.conf"
@@ -147,10 +138,10 @@ graph_symbol = "braille"
 proc_sorting = "cpu lazy"
 EOF
 
-# Neovim (statusline + highlight groups)
+# Neovim
 NVIM_THEME="$HOME/.local/share/nvim/theme.lua"
 mkdir -p "$HOME/.local/share/nvim"
-render "$TEMPLATES_DIR/nvim.statusline.lua" "$NVIM_THEME"
+render "$TEMPLATES_DIR/nvim.colors.lua" "$NVIM_THEME"
 
 # firefox
 FIREFOX_BASE="$HOME/.config/mozilla/firefox"

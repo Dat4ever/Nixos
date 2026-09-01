@@ -4,8 +4,6 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    # iGPU is the primary GPU in PRIME offload mode, so Intel VA-API is what
-    # most apps use. Run apps on the dGPU with: nvidia-offload <app>
     extraPackages = with pkgs; [
       # Intel
       intel-media-driver
