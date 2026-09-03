@@ -16,9 +16,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Datfetch (local)
+    # Datfetch (in extras)
     datfetch = {
-      url = "path:/home/dat/Documents/projects/Datfetch";
+      url = "path:./extras/datfetch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

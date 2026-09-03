@@ -7,15 +7,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1787411378,
-        "narHash": "sha256-EesaPN7Azrfi5/X4HA8w/I9qdnV3YYm10jPlUz8FV9U=",
-        "path": "/home/dat/Documents/projects/Datfetch",
+        "path": "./extras/datfetch",
         "type": "path"
       },
       "original": {
-        "path": "/home/dat/Documents/projects/Datfetch",
+        "path": "./extras/datfetch",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "disko": {
       "inputs": {

@@ -5,12 +5,14 @@ set -euo pipefail
 # Resolve the repo root
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
+EXTRAS_DIR="$(cd "$REPO_ROOT/.." && pwd)/extras"
 
 THEME_DIR="$REPO_ROOT"
-WALLPAPER_DIR="$THEME_DIR/wallpapers"
-FONTS_DIR="$THEME_DIR/fonts"
-CURSORS_DIR="$THEME_DIR/cursors"
-GTKQT_DIR="$THEME_DIR/gtk-qt"
+WALLPAPER_DIR="$EXTRAS_DIR/wallpapers"
+FONTS_DIR="$EXTRAS_DIR/fonts"
+CURSORS_DIR="$EXTRAS_DIR/cursors"
+GTK_DIR="$EXTRAS_DIR/gtk"
+KVANTUM_DIR="$EXTRAS_DIR/kvantum"
 SCRIPTS_DIR="$THEME_DIR/scripts"
 
 echo "installing theme system from $THEME_DIR"
@@ -54,7 +56,7 @@ done
 
 # Install GTK themes
 mkdir -p "$HOME/.local/share/themes"
-for theme_sub in "$GTKQT_DIR/themes"/*/; do
+for theme_sub in "$GTK_DIR"/*/; do
   theme_name="$(basename "$theme_sub")"
   target="$HOME/.local/share/themes/$theme_name"
   chmod -R u+w "$target" 2>/dev/null || true
@@ -65,7 +67,7 @@ done
 
 # Install Kvantum themes
 mkdir -p "$HOME/.local/share/Kvantum"
-for kv_sub in "$GTKQT_DIR/kvantum"/*/; do
+for kv_sub in "$KVANTUM_DIR"/*/; do
   kv_name="$(basename "$kv_sub")"
   target="$HOME/.local/share/Kvantum/$kv_name"
   chmod -R u+w "$target" 2>/dev/null || true

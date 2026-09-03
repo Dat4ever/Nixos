@@ -1,0 +1,30 @@
+logo_position = "left"
+modules_position = "left"
+icons = false
+padding = 2
+separator = ":"
+
+[modules]
+user = false
+host = false
+user_host = true
+model = false
+os = true
+kernel = true
+shell = true
+desktop = true
+terminal = false
+cpu = false
+gpu = false
+memory = false
+disk = false
+font = false
+resolution = false
+uptime = true
+ip = false
+installed = false
+packages = true
+
+[colors]
+label = "red, yellow, green, cyan, blue, magenta"
+user_host = "cyan"

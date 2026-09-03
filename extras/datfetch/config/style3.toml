@@ -1,0 +1,34 @@
+# Datfetch config — logo on top, everything centered
+logo_position = "top"
+modules_position = "center"
+icons = false
+logo = "braille-auto"
+separator = ""
+# logo_color = "blue"
+# label_color = "cyan"
+# value_color = "white"
+
+[modules]
+user_host = true
+user = false
+host = false
+model = true
+os = true
+kernel = true
+shell = true
+desktop = true
+terminal = true
+cpu = true
+gpu = true
+memory = true
+disk = true
+font = true
+resolution = true
+uptime = true
+ip = true
+installed = true
+packages = true
+
+[colors]
+label = "red, yellow, green, cyan, blue, magenta"
+user_host = "cyan"

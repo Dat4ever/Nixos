@@ -12,21 +12,14 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("qs")
 end)
 
----- ENVIRONMENT VARIABLES ----
--- Hyprcursor
-hl.env("HYPRCURSOR_THEME", "Capitaine Cursors (Nord)")
-hl.env("XCURSOR_THEME", "Capitaine Cursors (Nord)")
-hl.env("XCURSOR_SIZE", "32")
-hl.env("HYPRCURSOR_SIZE", "32")
-
------ PERMISSIONS -----
-
----- THEME COLORS ----
+---- THEME STATE ----
+-- Written by theme-switch; lets the cursor and border colors follow the
+-- active theme across reboots.
 local themeColors = {}
 local themeFile = io.open(os.getenv("HOME") .. "/.local/state/theme/hyprland.colors", "r")
 if themeFile then
   for line in themeFile:lines() do
-    local key, value = line:match("^(%w+)=(.*)$")
+    local key, value = line:match("^([%w_]+)=(.*)$")
     if key and value then themeColors[key] = value end
   end
   themeFile:close()
@@ -36,6 +29,16 @@ local themeColor00 = stripHash(themeColors["color00"] or "2e3440")
 local themeColor03 = stripHash(themeColors["color03"] or "4c566a")
 local themeColor07 = stripHash(themeColors["color07"] or "8fbcbb")
 local themeColor0D = stripHash(themeColors["color0D"] or "81a1c1")
+local cursorTheme = themeColors["cursor_theme"] or "Capitaine Cursors (Nord)"
+
+---- ENVIRONMENT VARIABLES ----
+-- Cursor (follows the active theme via the state file)
+hl.env("HYPRCURSOR_THEME", cursorTheme)
+hl.env("XCURSOR_THEME", cursorTheme)
+hl.env("XCURSOR_SIZE", "32")
+hl.env("HYPRCURSOR_SIZE", "32")
+
+----- PERMISSIONS -----
 
 ---- LOOK AND FEEL ----
 hl.config({

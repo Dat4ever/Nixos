@@ -18,9 +18,9 @@ let
     pname = "inter";
     version = "4.1";
     files = [
-      ./theme/fonts/inter/Inter.ttc
-      ./theme/fonts/inter/InterVariable.ttf
-      ./theme/fonts/inter/InterVariable-Italic.ttf
+      ../../../extras/fonts/inter/Inter.ttc
+      ../../../extras/fonts/inter/InterVariable.ttf
+      ../../../extras/fonts/inter/InterVariable-Italic.ttf
     ];
   };
 
@@ -28,8 +28,8 @@ let
     pname = "geist";
     version = "1.4.1";
     files = [
-      ./theme/fonts/geist/Geist.ttf
-      ./theme/fonts/geist/Geist-Italic.ttf
+      ../../../extras/fonts/geist/Geist.ttf
+      ../../../extras/fonts/geist/Geist-Italic.ttf
     ];
   };
 
@@ -37,18 +37,18 @@ let
     pname = "jetbrains-mono-nerd-font";
     version = "3.5.0";
     files = [
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFont-Bold.ttf
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFont-BoldItalic.ttf
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFont-Italic.ttf
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFont-Regular.ttf
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFontMono-Bold.ttf
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFontMono-BoldItalic.ttf
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFontMono-Italic.ttf
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFontMono-Regular.ttf
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFontPropo-Bold.ttf
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFontPropo-BoldItalic.ttf
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFontPropo-Italic.ttf
-      ./theme/fonts/jetbrains-mono/JetBrainsMonoNerdFontPropo-Regular.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFont-Bold.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFont-BoldItalic.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFont-Italic.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFont-Regular.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFontMono-Bold.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFontMono-BoldItalic.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFontMono-Italic.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFontMono-Regular.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFontPropo-Bold.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFontPropo-BoldItalic.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFontPropo-Italic.ttf
+      ../../../extras/fonts/jetbrains-mono/JetBrainsMonoNerdFontPropo-Regular.ttf
     ];
   };
 
@@ -57,18 +57,18 @@ let
     version = "3.5.0";
     subdir = "opentype";
     files = [
-      ./theme/fonts/commit-mono/CommitMonoNerdFont-Bold.otf
-      ./theme/fonts/commit-mono/CommitMonoNerdFont-BoldItalic.otf
-      ./theme/fonts/commit-mono/CommitMonoNerdFont-Italic.otf
-      ./theme/fonts/commit-mono/CommitMonoNerdFont-Regular.otf
-      ./theme/fonts/commit-mono/CommitMonoNerdFontMono-Bold.otf
-      ./theme/fonts/commit-mono/CommitMonoNerdFontMono-BoldItalic.otf
-      ./theme/fonts/commit-mono/CommitMonoNerdFontMono-Italic.otf
-      ./theme/fonts/commit-mono/CommitMonoNerdFontMono-Regular.otf
-      ./theme/fonts/commit-mono/CommitMonoNerdFontPropo-Bold.otf
-      ./theme/fonts/commit-mono/CommitMonoNerdFontPropo-BoldItalic.otf
-      ./theme/fonts/commit-mono/CommitMonoNerdFontPropo-Italic.otf
-      ./theme/fonts/commit-mono/CommitMonoNerdFontPropo-Regular.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFont-Bold.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFont-BoldItalic.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFont-Italic.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFont-Regular.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFontMono-Bold.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFontMono-BoldItalic.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFontMono-Italic.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFontMono-Regular.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFontPropo-Bold.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFontPropo-BoldItalic.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFontPropo-Italic.otf
+      ../../../extras/fonts/commit-mono/CommitMonoNerdFontPropo-Regular.otf
     ];
   };
 
@@ -77,8 +77,8 @@ let
     version = "2.004";
     subdir = "opentype";
     files = [
-      ./theme/fonts/noto-cjk/NotoSansCJK-VF.otf.ttc
-      ./theme/fonts/noto-cjk/NotoSansMonoCJK-VF.otf.ttc
+      ../../../extras/fonts/noto-cjk/NotoSansCJK-VF.otf.ttc
+      ../../../extras/fonts/noto-cjk/NotoSansMonoCJK-VF.otf.ttc
     ];
   };
 
@@ -86,7 +86,7 @@ let
     pname = "noto-color-emoji";
     version = "2.051";
     files = [
-      ./theme/fonts/noto-emoji/NotoColorEmoji.ttf
+      ../../../extras/fonts/noto-emoji/NotoColorEmoji.ttf
     ];
   };
 
@@ -116,9 +116,9 @@ let
     dontUnpack = true;
     installPhase = ''
       mkdir -p "$out/share/icons"
-      cp -r ${./theme/cursors/capitaine-nord} "$out/share/icons/Capitaine Cursors (Nord)"
-      cp -r ${./theme/cursors/capitaine-gruvbox} "$out/share/icons/Capitaine Cursors (Gruvbox)"
-      cp -r ${./theme/cursors/everforest-cursors} "$out/share/icons/everforest-cursors"
+      cp -r ${../../../extras/cursors/capitaine-nord} "$out/share/icons/Capitaine Cursors (Nord)"
+      cp -r ${../../../extras/cursors/capitaine-gruvbox} "$out/share/icons/Capitaine Cursors (Gruvbox)"
+      cp -r ${../../../extras/cursors/phinger-everforest} "$out/share/icons/Phinger Cursors (Everforest)"
     '';
   };
 
@@ -128,12 +128,12 @@ let
     dontUnpack = true;
     installPhase = ''
       mkdir -p "$out/share/themes" "$out/share/Kvantum"
-      cp -r ${./theme/gtk-qt/themes/Nordic} "$out/share/themes/Nordic"
-      cp -r ${./theme/gtk-qt/themes/Gruvbox-Dark} "$out/share/themes/Gruvbox-Dark"
-      cp -r ${./theme/gtk-qt/themes/Everforest} "$out/share/themes/Everforest"
-      cp -r ${./theme/gtk-qt/kvantum/Nordic} "$out/share/Kvantum/Nordic"
-      cp -r ${./theme/gtk-qt/kvantum/Gruvbox-Dark-Brown} "$out/share/Kvantum/Gruvbox-Dark-Brown"
-      cp -r ${./theme/gtk-qt/kvantum/Everforest} "$out/share/Kvantum/Everforest"
+      cp -r ${../../../extras/gtk/Nordic} "$out/share/themes/Nordic"
+      cp -r ${../../../extras/gtk/Gruvbox-Dark} "$out/share/themes/Gruvbox-Dark"
+      cp -r ${../../../extras/gtk/Everforest} "$out/share/themes/Everforest"
+      cp -r ${../../../extras/kvantum/Nordic} "$out/share/Kvantum/Nordic"
+      cp -r ${../../../extras/kvantum/Gruvbox-Dark-Brown} "$out/share/Kvantum/Gruvbox-Dark-Brown"
+      cp -r ${../../../extras/kvantum/Everforest} "$out/share/Kvantum/Everforest"
     '';
   };
 in

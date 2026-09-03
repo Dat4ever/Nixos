@@ -1,0 +1,5 @@
+result
+datfetch
+*.o
+.direnv
+.envrc

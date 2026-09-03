@@ -82,7 +82,10 @@
   home.file.".config/themes".source = ./theme;
 
   # Wallpapers (used by theme-switch via hyprpaper)
-  home.file.".config/wallpapers".source = ./theme/wallpapers;
+  home.file.".config/wallpapers".source = ../../../extras/wallpapers;
+
+  # Kvantum themes (source for the copies theme-switch writes to ~/.config/Kvantum)
+  home.file.".config/kvantum-themes".source = ../../../extras/kvantum;
 
   # Treesitter parsers for the languages configured in nvim config
   home.file.".local/share/nvim/site/parser/vim.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-vim}/parser";

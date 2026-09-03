@@ -1,0 +1,34 @@
+# Datfetch config — logo on the left, nerd-font icons
+logo_position = "left"
+modules_position = "left"
+icons = true
+padding = 2
+logo = "braille-auto"
+separator = ":"
+# logo_color = "blue"
+# label_color = "cyan"
+# value_color = "white"
+
+[modules]
+user_host = false
+user = true
+host = true
+model = true
+os = true
+kernel = true
+shell = true
+desktop = true
+terminal = true
+cpu = true
+gpu = true
+memory = true
+disk = true
+font = true
+resolution = true
+uptime = true
+ip = true
+installed = true
+packages = true
+
+[colors]
+label = "red, yellow, green, cyan, blue, magenta"

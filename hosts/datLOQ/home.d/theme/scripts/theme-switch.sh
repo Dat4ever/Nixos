@@ -108,10 +108,10 @@ done
 # Kvantum
 KV_DIR="$HOME/.config/Kvantum"
 mkdir -p "$KV_DIR"
-if [[ -d "$THEMES_DIR/gtk-qt/kvantum/$kvantum_theme" ]]; then
+if [[ -d "$HOME/.config/kvantum-themes/$kvantum_theme" ]]; then
   chmod -R u+w "${KV_DIR:?}/$kvantum_theme" 2>/dev/null || true
   rm -rf "${KV_DIR:?}/$kvantum_theme"
-  cp -r "$THEMES_DIR/gtk-qt/kvantum/$kvantum_theme" "$KV_DIR/$kvantum_theme"
+  cp -r "$HOME/.config/kvantum-themes/$kvantum_theme" "$KV_DIR/$kvantum_theme"
   chmod -R u+w "$KV_DIR/$kvantum_theme"
 fi
 cat > "$KV_DIR/kvantum.kvconfig" <<EOF
@@ -197,6 +197,7 @@ color00=$c00
 color03=$c03
 color07=$c07
 color0D=$c0D
+cursor_theme=${cursor_theme:-Capitaine Cursors (Nord)}
 EOF
 
 if command -v hyprctl >/dev/null 2>&1; then
