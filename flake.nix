@@ -15,12 +15,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Datfetch (in extras)
-    datfetch = {
-      url = "path:./extras/datfetch";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   # Outputs section
@@ -29,7 +23,6 @@
     # datLOQ's outputs
     nixosConfigurations.datLOQ = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; }; 
       modules = [
         disko.nixosModules.disko
         ./hosts/datLOQ/configuration.nix
@@ -39,7 +32,6 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.dat = import ./hosts/datLOQ/home.nix;
         }
       ];

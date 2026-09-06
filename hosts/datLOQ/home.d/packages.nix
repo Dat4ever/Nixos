@@ -34,16 +34,13 @@
     # GUI Applications
     firefox 							# Web browser
     nwg-look 							# GTK settings GUI (wlroots)
-    tor-browser 					# Privacy-focused browser
     vlc 									# Media player
     mpv 									# Lightweight media player
-    libreoffice-qt        # Office programs
+    libreoffice-stable    # Office programs
     qbittorrent 					# Torrent client
     localsend 						# Local network file sharing
     famistudio            # NES Music Editor (run FamiStudio in terminal)
     prismlauncher         # Minecraft launcher
-    gimp                  # Image Manipulation
-    gparted               # Graphical disk partition tool
     # CLI / TUI Utilities
     jq 										# Command-line JSON processor
     udiskie               # Automounter for removable media

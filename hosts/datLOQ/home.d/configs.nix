@@ -18,7 +18,6 @@
   home.file.".config/yazi/yazi.toml".source = ./dotconfig/yazi/yazi.toml;
   home.file.".config/yazi/keymap.toml".source = ./dotconfig/yazi/keymap.toml;
   home.file.".config/yazi/init.lua".source = ./dotconfig/yazi/init.lua;
-
   programs.yazi = {
     enable = true;
     plugins = {
@@ -62,30 +61,24 @@
   };
 
   # Other Configuration files
-  home.file.".config/nvim".source = ./dotconfig/nvim;
-  home.file.".config/kitty/kitty.conf".source = ./dotconfig/kitty/kitty.conf;
-  home.file.".config/rofi/config.rasi".source = ./dotconfig/rofi/config.rasi;
-  home.file.".config/quickshell/shell.qml".source = ./dotconfig/quickshell/shell.qml;
-  home.file.".config/quickshell/bar/ActiveWindow.qml".source = ./dotconfig/quickshell/bar/ActiveWindow.qml;
-  home.file.".config/quickshell/bar/Battery.qml".source = ./dotconfig/quickshell/bar/Battery.qml;
-  home.file.".config/quickshell/bar/Bluetooth.qml".source = ./dotconfig/quickshell/bar/Bluetooth.qml;
-  home.file.".config/quickshell/bar/Clock.qml".source = ./dotconfig/quickshell/bar/Clock.qml;
-  home.file.".config/quickshell/bar/Keyboard.qml".source = ./dotconfig/quickshell/bar/Keyboard.qml;
-  home.file.".config/quickshell/bar/Launcher.qml".source = ./dotconfig/quickshell/bar/Launcher.qml;
-  home.file.".config/quickshell/bar/Network.qml".source = ./dotconfig/quickshell/bar/Network.qml;
-  home.file.".config/quickshell/bar/Power.qml".source = ./dotconfig/quickshell/bar/Power.qml;
-  home.file.".config/quickshell/bar/Separator.qml".source = ./dotconfig/quickshell/bar/Separator.qml;
-  home.file.".config/quickshell/bar/Volume.qml".source = ./dotconfig/quickshell/bar/Volume.qml;
-  home.file.".config/quickshell/bar/Workspace.qml".source = ./dotconfig/quickshell/bar/Workspace.qml;
-
-  # Theme definitions (read at runtime by theme-switch)
-  home.file.".config/themes".source = ./theme;
-
-  # Wallpapers (used by theme-switch via hyprpaper)
-  home.file.".config/wallpapers".source = ../../../extras/wallpapers;
-
-  # Kvantum themes (source for the copies theme-switch writes to ~/.config/Kvantum)
-  home.file.".config/kvantum-themes".source = ../../../extras/kvantum;
+  home.file.".config/nvim".source = ./dotconfig/nvim; # Neovim editor config
+  home.file.".config/kitty/kitty.conf".source = ./dotconfig/kitty/kitty.conf; # Kitty terminal config
+  home.file.".config/rofi/config.rasi".source = ./dotconfig/rofi/config.rasi; # Rofi launcher config
+  home.file.".config/quickshell/shell.qml".source = ./dotconfig/quickshell/shell.qml; # Quickshell bar main shell
+  home.file.".config/quickshell/bar/ActiveWindow.qml".source = ./dotconfig/quickshell/bar/ActiveWindow.qml; # Bar widget: active window
+  home.file.".config/quickshell/bar/Battery.qml".source = ./dotconfig/quickshell/bar/Battery.qml; # Bar widget: battery + brightness
+  home.file.".config/quickshell/bar/Bluetooth.qml".source = ./dotconfig/quickshell/bar/Bluetooth.qml; # Bar widget: bluetooth
+  home.file.".config/quickshell/bar/Clock.qml".source = ./dotconfig/quickshell/bar/Clock.qml; # Bar widget: clock
+  home.file.".config/quickshell/bar/Keyboard.qml".source = ./dotconfig/quickshell/bar/Keyboard.qml; # Bar widget: keyboard layout
+  home.file.".config/quickshell/bar/Launcher.qml".source = ./dotconfig/quickshell/bar/Launcher.qml; # Bar widget: app launcher
+  home.file.".config/quickshell/bar/Network.qml".source = ./dotconfig/quickshell/bar/Network.qml; # Bar widget: network status
+  home.file.".config/quickshell/bar/Power.qml".source = ./dotconfig/quickshell/bar/Power.qml; # Bar widget: power menu
+  home.file.".config/quickshell/bar/Separator.qml".source = ./dotconfig/quickshell/bar/Separator.qml; # Bar widget: separator
+  home.file.".config/quickshell/bar/Volume.qml".source = ./dotconfig/quickshell/bar/Volume.qml; # Bar widget: volume
+  home.file.".config/quickshell/bar/Workspace.qml".source = ./dotconfig/quickshell/bar/Workspace.qml; # Bar widget: workspaces
+  home.file.".config/themes".source = ./theme; # Theme definitions
+  home.file.".config/wallpapers".source = ../../../extras/wallpapers; # Wallpapers
+  home.file.".config/kvantum-themes".source = ../../../extras/kvantum; # Kvantum themes
 
   # Treesitter parsers for the languages configured in nvim config
   home.file.".local/share/nvim/site/parser/vim.so".source = "${pkgs.tree-sitter-grammars.tree-sitter-vim}/parser";

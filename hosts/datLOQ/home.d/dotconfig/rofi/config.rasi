@@ -1,21 +1,76 @@
 configuration {
-  font: "CommitMono Nerd Font Propo 12";
+  font: "CommitMono Nerd Font Propo 11";
   show-icons: false;
 
-  display-ssh:    " ";
-  display-run:    " ";
-  display-drun:   " ";
-  display-window: " ";
-  display-combi:  " ";
+  display-ssh:    " ";
+  display-run:    " ";
+  display-drun:   " ";
+  display-window: " ";
+  display-combi:  " ";
 }
 
 @theme "~/.config/rofi/theme.rasi"
 
+/* Global defaults; colorXX variables come from the imported theme */
+* {
+  background-color: transparent;
+  text-color: @color04;
+}
+
 window {
   width: 30%;
+  location: center;
+  anchor: center;
+  border-radius: 2px;
+  border: 2px;
+  border-color: @color0D;
+  background-color: @color00;
+  padding: 14px;
+}
+
+mainbox {
+  spacing: 10px;
+  children: [ inputbar, listview ];
+}
+
+inputbar {
+  background-color: @color01;
+  padding: 10px 14px;
+  border-radius: 2px;
+  children: [ prompt, entry ];
+}
+
+prompt {
+  text-color: @color0C;
+  margin: 0px 8px 0px 0px;
+}
+
+entry {
+  text-color: @color06;
+  placeholder: "Search...";
+  placeholder-color: @color03;
 }
 
 listview {
   lines: 7;
   columns: 1;
+  fixed-height: true;
+  cycle: true;
+  scrollbar: false;
+  spacing: 4px;
+}
+
+element {
+  padding: 8px 12px;
+  border-radius: 2px;
+  background-color: transparent;
+}
+
+element-text {
+  text-color: inherit;
+}
+
+element selected.normal {
+  background-color: @color07;
+  text-color: @color00;
 }

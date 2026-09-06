@@ -54,6 +54,23 @@ function _G.ThemeStatusline()
     table.insert(parts, "%#StatusGitBranch# " .. git_branch .. " ")
   end
 
+  -- LSP diagnostic counts (error/warn/info/hint)
+  local ok, diag = pcall(vim.diagnostic.count, 0)
+  if ok and diag then
+    local diag_map = {
+      { 1, "StatusDiagError", "\u{f057}" },
+      { 2, "StatusDiagWarn",  "\u{f071}" },
+      { 3, "StatusDiagInfo",  "\u{f05a}" },
+      { 4, "StatusDiagHint",  "\u{f0eb}" },
+    }
+    for _, d in ipairs(diag_map) do
+      local n = diag[d[1]] or 0
+      if n > 0 then
+        table.insert(parts, "%#" .. d[2] .. "# " .. d[3] .. " " .. n .. " ")
+      end
+    end
+  end
+
   -- Right side: filetype + position
   table.insert(parts, "%=")
   table.insert(parts, "%#StatusInfo# " .. ft .. " ")

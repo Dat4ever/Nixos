@@ -21,6 +21,7 @@
 #nav-bar {
   background-color: var(--bg) !important;
   border-top: 1px solid var(--bg3) !important;
+  border-bottom: 1px solid var(--bg3) !important;
 }
 
 /* Tab bar */
@@ -34,41 +35,35 @@
   background-color: transparent !important;
 }
 
-/* Active tab: accent background, contrasting text */
-.tab-background[selected="true"] {
-  background-color: var(--accent) !important;
-  border-radius: 6px 6px 0 0 !important;
+/* Active tab: default background, cyan ring as the indicator */
+.tab-background[selected] {
+  box-shadow: inset 0 0 0 1px var(--accent2) !important;
+  border-radius: 6px !important;
 }
 
-.tab-label[selected="true"] {
-  color: var(--bg) !important;
-  font-weight: bold !important;
-}
 
-.tab-icon-image[selected="true"] {
-  fill: var(--bg) !important;
-}
 
-.tab-line[selected="true"] {
+.tab-line[selected] {
   display: none !important;
 }
 
-/* Inactive tabs: muted */
-.tab-background:not([selected="true"]) {
+/* Inactive tabs: muted, transparent border keeps the tab size identical */
+.tab-background:not([selected]) {
   background-color: transparent !important;
-  border-radius: 6px 6px 0 0 !important;
+  border: 1px solid transparent !important;
+  border-radius: 6px !important;
 }
 
-.tab-label:not([selected="true"]) {
+.tab-label:not([selected]) {
   color: var(--muted) !important;
 }
 
 /* Tab hover */
-.tabbrowser-tab:hover .tab-background:not([selected="true"]) {
+.tabbrowser-tab:hover .tab-background:not([selected]) {
   background-color: var(--bg2) !important;
 }
 
-.tabbrowser-tab:hover .tab-label:not([selected="true"]) {
+.tabbrowser-tab:hover .tab-label:not([selected]) {
   color: var(--fg2) !important;
 }
 
@@ -129,10 +124,10 @@
   fill: var(--fg) !important;
 }
 
-/* Sidebar active tab */
-#sidebar-main .tab-background[selected="true"],
+/* Sidebar active tab: cyan ring only */
+#sidebar-main .tab-background[selected],
 #sidebar-main .sidebar-tab-active {
-  background-color: var(--accent) !important;
+  box-shadow: inset 0 0 0 1px var(--accent2) !important;
 }
 
 /* Sidebar tab text */
@@ -140,7 +135,7 @@
   color: var(--fg2) !important;
 }
 
-#sidebar-main .tab-label[selected="true"] {
+#sidebar-main .tab-label[selected] {
   color: var(--bg) !important;
   font-weight: bold !important;
 }

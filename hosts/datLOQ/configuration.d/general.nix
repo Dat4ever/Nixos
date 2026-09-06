@@ -33,7 +33,7 @@
     options = "--delete-older-than 7d";
   };
 
-  # Disable default font packages (fonts are managed via home-manager)
+  # Disable default font packages
   fonts.enableDefaultPackages = false;
 
   # TTY keyboard layout

@@ -24,6 +24,12 @@ vim.api.nvim_set_hl(0, "StatusInfo",        { bg = bg2,     fg = cyan })
 vim.api.nvim_set_hl(0, "StatusBase",        { bg = bg,      fg = fg2 })
 vim.api.nvim_set_hl(0, "StatusGitBranch",   { bg = bg2,     fg = green })
 
+-- Diagnostic counters (statusline)
+vim.api.nvim_set_hl(0, "StatusDiagError", { bg = bg2, fg = red,    bold = true })
+vim.api.nvim_set_hl(0, "StatusDiagWarn",  { bg = bg2, fg = yellow })
+vim.api.nvim_set_hl(0, "StatusDiagInfo",  { bg = bg2, fg = cyan })
+vim.api.nvim_set_hl(0, "StatusDiagHint",  { bg = bg2, fg = green })
+
 -- Diagnostic signs with theme colors
 vim.api.nvim_set_hl(0, "DiagnosticError", { fg = red })
 vim.api.nvim_set_hl(0, "DiagnosticWarn",  { fg = yellow })

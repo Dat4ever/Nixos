@@ -13,8 +13,7 @@ hl.on("hyprland.start", function ()
 end)
 
 ---- THEME STATE ----
--- Written by theme-switch; lets the cursor and border colors follow the
--- active theme across reboots.
+-- Written by theme-switch; lets the cursor and border colors follow the active theme across reboots.
 local themeColors = {}
 local themeFile = io.open(os.getenv("HOME") .. "/.local/state/theme/hyprland.colors", "r")
 if themeFile then
@@ -59,7 +58,7 @@ hl.config({
   },
 
   decoration = {
-    rounding         = 2,
+    rounding         = 4,
     rounding_power   = 1,
     active_opacity   = 1,
     inactive_opacity = 0.9,

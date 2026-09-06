@@ -139,6 +139,10 @@ let
 in
 {
   home.packages = [
+    # Theme switcher scripts
+    theme-switch
+    theme-rofi
+    theme-wallpaper
     # Fonts
     inter
     geist
@@ -146,10 +150,6 @@ in
     commit-mono
     noto-cjk-sans
     noto-color-emoji
-    # Theme switcher scripts
-    theme-switch
-    theme-rofi
-    theme-wallpaper
     # GTK/Kvantum themes
     gtk-qt-themes
     # Cursor themes

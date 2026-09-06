@@ -28,6 +28,20 @@
     solaar       # Logitech device manager
   ];
 
+  # Steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
+
+  # Podman (docker-compatible container runtime)
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+
   # Other services
   security.polkit = {
     enable = true;               # Enable polkit
