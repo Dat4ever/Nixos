@@ -1,0 +1,80 @@
+[[ $- != *i* ]] && return
+
+# Colors
+RS="\033[0m"
+RED="\033[0;31m"
+GRN="\033[0;32m"
+YLW="\033[0;33m"
+BLU="\033[0;34m"
+MAG="\033[0;35m"
+CYN="\033[0;36m"
+WHT="\033[0;37m"
+
+# Default Editor
+#export EDITOR="vim"
+export EDITOR="nvim"
+
+# Aliases
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# History
+HISTSIZE=5000
+HISTFILESIZE=10000
+
+# Shell options
+shopt -s histappend  # Append history
+shopt -s extglob     # Extended pattern matching
+shopt -s globstar    # recursive directory searching (**)
+shopt -s checkjobs   # warn about running jobs on exit
+
+# Case-insensitive tab completion
+bind "set completion-ignore-case on"
+# Up and down arrows to search through history
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
+# extract bash function
+function extract () {
+  if [ $# -eq 0 ]; then
+    echo "Usage: extract <file1> <file2> ..."
+    return 1
+  fi
+  for arg in "$@"; do
+    if [ -f "$arg" ] ; then
+      case "$arg" in
+        *.tar.bz2)   tar xjvf "$arg"    ;;
+        *.tar.gz)    tar xzvf "$arg"    ;;
+        *.tar.xz)    tar xvf "$arg"     ;;
+        *.bz2)       bzip2 -d "$arg"    ;;
+        *.rar)       unrar x "$arg"     ;;
+        *.gz)        gunzip "$arg"      ;;
+        *.tar)       tar xf "$arg"      ;;
+        *.tbz2)      tar xjf "$arg"     ;;
+        *.tgz)       tar xzf "$arg"     ;;
+        *.zip)       unzip "$arg"       ;;
+        *.Z)         uncompress "$arg"  ;;
+        *.7z)        7z x "$arg"        ;;
+        *)           echo "'$arg' extract() cannot sorted files" ;;
+      esac
+    else
+      echo "'$arg' not a valid file"
+    fi
+  done
+}
+
+# Git status
+parse_git_bg() {
+  local branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+  if [ -n "$branch" ]; then
+    local status=$(git status --porcelain 2> /dev/null)
+    if [ -n "$status" ]; then
+      echo -e " ${RED}(git:${branch}*)$RS"
+    else
+      echo -e " ${GRN}(git:${branch})$RS"
+    fi
+  fi
+}
+
+# Bash prompt
+export PS1="\[$BLU\]\u\[$RS\]\[$CYN\]@\[$RS\]\[$GRN\]\h\[$RS\]\[$YLW\] \w\[$RS\] \$(parse_git_bg) \n\[$CYN\]\\$ \[$RS\]"
