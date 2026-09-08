@@ -32,6 +32,8 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          # Cakisan mevcut dosyalari silmek yerine <dosya>.backup olarak sakla
+          home-manager.backupFileExtension = "backup";
           home-manager.users.dat = import ./hosts/datLOQ/home.nix;
         }
       ];

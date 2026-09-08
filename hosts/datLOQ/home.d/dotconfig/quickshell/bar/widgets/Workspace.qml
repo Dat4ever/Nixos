@@ -1,7 +1,7 @@
 import QtQuick
 import Quickshell.Hyprland
 import "."
-import ".."
+import "../.."
 
 Item {
   id: workspaceWidget

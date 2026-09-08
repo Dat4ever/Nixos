@@ -35,7 +35,8 @@ extract = [
 ]
 
 reveal = [
-  { run = "xdg-open %d1", orphan = true, desc = "Reveal" },
+  { run = 'kitty --directory "%d1"', orphan = true, desc = "Reveal in kitty" },
+  { run = "xdg-open %d1", orphan = true, desc = "Reveal" }
 ]
 
 open = [
