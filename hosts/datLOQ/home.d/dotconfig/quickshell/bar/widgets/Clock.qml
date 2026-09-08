@@ -1,0 +1,82 @@
+import QtQuick
+import "../.."
+
+Item {
+  id: clockWidget
+
+  width: implicitWidth
+  height: implicitHeight
+
+  state: "time"
+  Behavior on implicitWidth {
+    NumberAnimation { duration: 150; easing.type: Easing.InOutQuad }
+  }
+
+  Text {
+    id: timeText
+    anchors.centerIn: parent
+    color: Colors.color0C
+    font.family: Colors.fontName
+    font.pixelSize: 14
+    font.bold: true
+    visible: clockWidget.state === "time"
+    text: Qt.formatDateTime(new Date(), "HH:mm")
+
+    Timer {
+      interval: 1000
+      running: clockWidget.state === "time"
+      repeat: true
+      onTriggered: timeText.text = Qt.formatDateTime(new Date(), "HH:mm")
+    }
+  }
+
+  Text {
+    id: dateText
+    anchors.centerIn: parent
+    color: Colors.color0C
+    font.family: Colors.fontName
+    font.pixelSize: 14
+    font.bold: true
+    visible: clockWidget.state === "date"
+    
+    text: Qt.formatDateTime(new Date(), "dd MMMM yyyy dddd")
+  }
+
+  Timer {
+    id: autoReturnTimer
+    interval: 4000
+    running: false
+    repeat: false
+    onTriggered: clockWidget.state = "time"
+  }
+
+  states: [
+    State {
+      name: "time"
+      PropertyChanges { target: clockWidget; implicitWidth: timeText.implicitWidth }
+      PropertyChanges { target: clockWidget; implicitHeight: 24 }
+    },
+    State {
+      name: "date"
+      PropertyChanges { target: clockWidget; implicitWidth: dateText.implicitWidth }
+      PropertyChanges { target: clockWidget; implicitHeight: 24 }
+    }
+  ]
+
+  MouseArea {
+    anchors.fill: parent
+    z: 99
+    cursorShape: Qt.PointingHandCursor
+
+    onClicked: {
+      if (clockWidget.state === "time") {
+        dateText.text = Qt.formatDateTime(new Date(), "dd MMMM yyyy dddd")
+        clockWidget.state = "date"
+        autoReturnTimer.restart()
+      } else {
+        clockWidget.state = "time"
+        autoReturnTimer.stop()
+      }
+    }
+  }
+}
