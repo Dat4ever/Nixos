@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
-# Instant theme switcher (no rebuild required). Reads a theme from ~/.config/themes/<name>.conf and applies it to kitty, rofi, quickshell, GTK, Qt/Kvantum, and hyprpaper.
+# Live theme switcher. Reads a theme from ~/.config/themes/<name>.conf, writes the config files and live-applies to running apps: kitty colors, Hyprland border/shadow/cursor, dconf/GTK, and clean full restarts of hyprpaper and quickshell (old processes are waited out completely before the new ones start). --if-changed exits silently when theme inputs are unchanged, so the home-manager activation on rebuilds never pokes the running session for the same theme.
 set -euo pipefail
+
+IF_CHANGED=0
+if [[ "${1:-}" == "--if-changed" ]]; then
+  IF_CHANGED=1
+  shift
+fi
 
 THEMES_DIR="$HOME/.config/themes"
 TEMPLATES_DIR="$THEMES_DIR/homeconfig"
@@ -19,6 +25,18 @@ fi
 # shellcheck disable=SC1090
 source "$THEME_FILE"
 
+# Hash of every theme input (conf + templates) to detect no-op switches
+INPUTS_HASH="$(
+  {
+    cat "$THEME_FILE"
+    find "$TEMPLATES_DIR" -type f -print0 2>/dev/null | sort -z | xargs -0 -r cat 2>/dev/null
+  } | sha256sum | cut -d' ' -f1
+)"
+HASH_FILE="$HOME/.local/state/theme/.applied-hash"
+if [[ "$IF_CHANGED" == "1" && -f "$HASH_FILE" && "$(cat "$HASH_FILE" 2>/dev/null)" == "$INPUTS_HASH" ]]; then
+  exit 0
+fi
+
 # Render a template file, substituting the __colorXX__ placeholders. Writes to a temp file and moves it into place, so a failed render never leaves a broken/partial config behind (rofi/quickshell keep working).
 render() {
   local template="$1" output="$2" tmp
@@ -36,13 +54,25 @@ render() {
   fi
 }
 
+# Fully stop processes matching a pattern
+kill_wait() {
+  local pat="$1"
+  pkill -f "$pat" 2>/dev/null || true
+  for _ in $(seq 1 50); do
+    pgrep -f "$pat" >/dev/null 2>&1 || return 0
+    sleep 0.1
+  done
+  pkill -9 -f "$pat" 2>/dev/null || true
+  sleep 0.1
+}
+
 # kitty
 KITTY_COLORS="$HOME/.config/kitty/colors.conf"
 mkdir -p "$HOME/.config/kitty"
 render "$TEMPLATES_DIR/kitty.colors.conf" "$KITTY_COLORS"
 
-# Reload running kitty instances.
-if command -v kitty >/dev/null 2>&1; then
+# Live-reload colors into running kitty instances
+if command -v kitten >/dev/null 2>&1; then
   kitten @ set-colors --all --configured "$KITTY_COLORS" >/dev/null 2>&1 || true
 fi
 
@@ -61,7 +91,7 @@ YAZI_THEME="$HOME/.config/yazi/theme.toml"
 mkdir -p "$HOME/.config/yazi"
 render "$TEMPLATES_DIR/yazi.theme.toml" "$YAZI_THEME"
 
-# yazi syntect (code preview highlighting, follows the theme)
+# yazi syntect
 render "$TEMPLATES_DIR/yazi.tmTheme" "$HOME/.config/yazi/syntect.tmTheme"
 
 # GTK
@@ -78,7 +108,7 @@ gtk-cursor-theme-size=32
 EOF
 done
 
-# GTK4/libadwaita apps + nwg-look read from dconf
+# GTK4/libadwaita apps
 if command -v dconf >/dev/null 2>&1; then
   dconf write /org/gnome/desktop/interface/gtk-theme "'$gtk_theme'" 2>/dev/null || true
   dconf write /org/gnome/desktop/interface/cursor-theme "'${cursor_theme:-Capitaine Cursors (Nord)}'" 2>/dev/null || true
@@ -165,7 +195,7 @@ EOF
   fi
 fi
 
-# Wallpaper (hyprpaper via config file)
+# Wallpaper
 WALL="$HOME/.config/wallpapers/$wallpaper"
 if [[ -f "$WALL" ]]; then
   HYPRPAPER_CONF="$HOME/.config/hypr/hyprpaper.conf"
@@ -179,13 +209,9 @@ wallpaper {
     path = $WALL
 }
 EOF
-  pkill -f hyprpaper 2>/dev/null || true
-  sleep 0.3
-  nohup hyprpaper >/dev/null 2>&1 &
-  disown 2>/dev/null || true
 fi
 
-# Hyprland (border/shadow/cursor)
+# Hyprland state
 HYPR_STATE="$HOME/.local/state/theme/hyprland.colors"
 mkdir -p "$(dirname "$HYPR_STATE")"
 c00="${color00#\#}"
@@ -200,6 +226,7 @@ color0D=$c0D
 cursor_theme=${cursor_theme:-Capitaine Cursors (Nord)}
 EOF
 
+# Live-apply borders/shadow/cursor to the running compositor
 if command -v hyprctl >/dev/null 2>&1; then
   hyprctl eval "hl.config({general={['col.active_border']={colors={'rgba(${c0D}ee)','rgba(${c07}ee)'},angle=45}}})" >/dev/null 2>&1 || true
   hyprctl eval "hl.config({general={['col.inactive_border']='rgba(${c03}aa)'}})" >/dev/null 2>&1 || true
@@ -207,16 +234,22 @@ if command -v hyprctl >/dev/null 2>&1; then
   hyprctl setcursor "${cursor_theme:-Capitaine Cursors (Nord)}" 32 >/dev/null 2>&1 || true
 fi
 
-# Reload quickshell
-if [[ -z "${THEME_SWITCH_NO_RELOAD:-}" ]]; then
-  pkill -f quickshell 2>/dev/null || true
-  sleep 0.3
-  nohup qs >/dev/null 2>&1 &
+# Restart themed components
+if command -v hyprctl >/dev/null 2>&1 && hyprctl version >/dev/null 2>&1; then
+  if [[ -f "$WALL" ]]; then
+    kill_wait hyprpaper
+    setsid nohup hyprpaper </dev/null >/dev/null 2>&1 &
+    disown 2>/dev/null || true
+  fi
+
+  kill_wait quickshell
+  setsid nohup qs </dev/null >/dev/null 2>&1 &
   disown 2>/dev/null || true
 fi
 
-# Save active theme
+# Save active theme + inputs hash
 mkdir -p "$HOME/.local/state/theme"
 echo "$THEME_NAME" > "$HOME/.local/state/theme/current"
+printf '%s\n' "$INPUTS_HASH" > "$HASH_FILE"
 
 echo "theme applied: $name"

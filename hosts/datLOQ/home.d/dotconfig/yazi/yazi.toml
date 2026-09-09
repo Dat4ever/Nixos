@@ -24,9 +24,14 @@ play = [
   { run = 'mpv %s', orphan = true, desc = "Play with mpv" },
 ]
 
-# Package mpv
+# Package imv
 image_view = [
-  { run = 'mpv --image-display-duration=inf %s', orphan = true, desc = "View with mpv" },
+  { run = 'imv %s', orphan = true, desc = "View with imv" },
+]
+
+# Package zathura
+document_view = [
+  { run = 'zathura %s', orphan = true, desc = "Open with zathura" },
 ]
 
 # Uses the `extract` bash function from ~/.bashrc
@@ -48,8 +53,10 @@ rules = [
   { mime = "text/*", use = [ "edit", "reveal" ] },
   { mime = "{video,audio}/*", use = [ "play", "open", "reveal" ] },
   { mime = "image/*", use = [ "image_view", "open", "reveal" ] },
-  { url = "*.cbz", use = [ "image_view", "open", "reveal" ] },
-  { url = "*.cbr", use = [ "image_view", "open", "reveal" ] },
+  { url = "*.cbz", use = [ "document_view", "image_view", "open", "reveal" ] },
+  { url = "*.cbr", use = [ "document_view", "image_view", "open", "reveal" ] },
+  { url = "*.epub", use = [ "document_view", "open", "reveal" ] },
+  { url = "*.pdf", use = [ "document_view", "open", "reveal" ] },
   { url = "*.zip", use = [ "extract" ] },
   { url = "*.tar.gz", use = [ "extract" ] },
   { url = "*.tar.bz2", use = [ "extract" ] },

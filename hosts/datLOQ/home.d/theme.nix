@@ -92,7 +92,7 @@ let
 
   theme-switch = pkgs.writeShellApplication {
     name = "theme-switch";
-    runtimeInputs = [ pkgs.jq pkgs.kitty pkgs.hyprland pkgs.hyprpaper pkgs.quickshell pkgs.procps pkgs.coreutils pkgs.gnused pkgs.gawk pkgs.dconf ];
+    runtimeInputs = [ pkgs.jq pkgs.kitty pkgs.hyprland pkgs.hyprpaper pkgs.quickshell pkgs.util-linux pkgs.procps pkgs.coreutils pkgs.findutils pkgs.gnused pkgs.gawk pkgs.dconf ];
     excludeShellChecks = [ "SC2154" ];
     text = builtins.readFile ./theme/scripts/theme-switch.sh;
   };
@@ -197,6 +197,6 @@ in
     if [[ -f "$HOME/.local/state/theme/current" ]]; then
       theme="$(${pkgs.coreutils}/bin/cat "$HOME/.local/state/theme/current")"
     fi
-    THEME_SWITCH_NO_RELOAD=1 ${theme-switch}/bin/theme-switch "$theme"
+    ${theme-switch}/bin/theme-switch --if-changed "$theme"
   '';
 }

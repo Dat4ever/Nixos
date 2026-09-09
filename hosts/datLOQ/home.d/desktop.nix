@@ -32,14 +32,16 @@
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
-      "application/pdf" = "firefox.desktop";
+      "application/pdf" = "zathura.desktop";
 
-      # Images
-      "image/png" = "mpv.desktop";
-      "image/jpeg" = "mpv.desktop";
-      "image/gif" = "mpv.desktop";
-      "image/webp" = "mpv.desktop";
-      "image/svg+xml" = "mpv.desktop";
+      # Images (imv; mpv fallback)
+      "image/png" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
+      "image/jpeg" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
+      "image/gif" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
+      "image/webp" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
+      "image/svg+xml" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
+      "image/bmp" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
+      "image/tiff" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
 
       # Video
       "video/mp4" = "mpv.desktop";
@@ -86,15 +88,13 @@
       "application/x-bzip2" = "yazi.desktop";
 
       # Comic books
-      "application/vnd.comicbook+zip" = "mpv.desktop";
-      "application/vnd.comicbook-rar" = "mpv.desktop";
+      "application/vnd.comicbook+zip" = "zathura.desktop";
+      "application/vnd.comicbook-rar" = "zathura.desktop";
 
       # Ebooks
-      "application/epub+zip" = "firefox.desktop";
+      "application/epub+zip" = "zathura.desktop";
 
-      # Other image types
-      "image/bmp" = "mpv.desktop";
-      "image/tiff" = "mpv.desktop";
+      # Other
       "application/xhtml+xml" = "firefox.desktop";
     };
   };
