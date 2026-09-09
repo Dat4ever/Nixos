@@ -1,0 +1,81 @@
+[mgr]
+show_hidden = false
+sort_by = "natural"
+sort_sensitive = false
+linemode = "size"
+show_symlink = true
+
+[preview]
+tab_size = 2
+max_width = 1000
+max_height = 1000
+image_filter = "lanczos3"
+image_quality = 85
+
+[opener]
+edit = [
+  { run = 'nvim %s', block = true, desc = "Open with neovim" },
+  { run = 'vim %s', block = true, desc = "Open with vim" },
+]
+
+# Package vlc and mpv
+play = [
+  { run = 'vlc %s', orphan = true, desc = "Play with vlc" },
+  { run = 'mpv %s', orphan = true, desc = "Play with mpv" },
+]
+
+# Package imv
+image_view = [
+  { run = 'imv %s', orphan = true, desc = "View with imv" },
+]
+
+# Package zathura
+document_view = [
+  { run = 'zathura %s', orphan = true, desc = "Open with zathura" },
+]
+
+# Uses the `extract` bash function from ~/.bashrc
+extract = [
+  { run = 'bash -ic "extract %s"', block = true, desc = "Extract archive" },
+]
+
+reveal = [
+  { run = 'kitty --directory "%d1"', orphan = true, desc = "Reveal in kitty" },
+  { run = "xdg-open %d1", orphan = true, desc = "Reveal" }
+]
+
+open = [
+  { run = 'xdg-open %s', orphan = true, desc = "Open" },
+]
+
+[open]
+rules = [
+  { mime = "text/*", use = [ "edit", "reveal" ] },
+  { mime = "{video,audio}/*", use = [ "play", "open", "reveal" ] },
+  { mime = "image/*", use = [ "image_view", "open", "reveal" ] },
+  { url = "*.cbz", use = [ "document_view", "image_view", "open", "reveal" ] },
+  { url = "*.cbr", use = [ "document_view", "image_view", "open", "reveal" ] },
+  { url = "*.epub", use = [ "document_view", "open", "reveal" ] },
+  { url = "*.pdf", use = [ "document_view", "open", "reveal" ] },
+  { url = "*.zip", use = [ "extract" ] },
+  { url = "*.tar.gz", use = [ "extract" ] },
+  { url = "*.tar.bz2", use = [ "extract" ] },
+  { url = "*.tar.xz", use = [ "extract" ] },
+  { url = "*.tbz2", use = [ "extract" ] },
+  { url = "*.tgz", use = [ "extract" ] },
+  { url = "*.tar", use = [ "extract" ] },
+  { url = "*.gz", use = [ "extract" ] },
+  { url = "*.bz2", use = [ "extract" ] },
+  { url = "*.rar", use = [ "extract" ] },
+  { url = "*.7z", use = [ "extract" ] },
+  { url = "*.Z", use = [ "extract" ] },
+  { url = "*/", use = [ "open", "reveal" ] },
+  { url = "*", use = [ "open", "reveal" ] },
+]
+
+[plugin]
+# Plugin git.yazi
+prepend_fetchers = [
+  { url = "*",  run = "git", group = "git" },
+  { url = "*/", run = "git", group = "git" },
+]
