@@ -77,7 +77,7 @@ Item {
     id: textDisplay
     anchors.centerIn: parent
     text: activeWindowWidget.displayText
-    color: Colors.color0C
+    color: Colors.color05
     font.family: Colors.fontName
     font.pixelSize: 14
     font.bold: true

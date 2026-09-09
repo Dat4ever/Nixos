@@ -181,16 +181,6 @@ in
     </fontconfig>
   '';
 
-  # GIMP: follow the GTK theme instead of its bundled one
-  home.activation.gimpSystemTheme = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-    rc="$HOME/.config/GIMP/3.2/gimprc"
-    ${pkgs.coreutils}/bin/touch "$rc"
-    ${pkgs.gnugrep}/bin/grep -q '^(theme "System")' "$rc" || {
-      ${pkgs.gnused}/bin/sed -i '/^(theme /d' "$rc"
-      printf '%s\n' '(theme "System")' >> "$rc"
-    }
-  '';
-
   # Apply the current (or default) theme after every activation
   home.activation.applyTheme = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     theme="nord"
