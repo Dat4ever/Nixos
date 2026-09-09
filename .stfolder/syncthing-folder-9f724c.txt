@@ -1,5 +1,0 @@
-# This directory is a Syncthing folder marker.
-# Do not delete.
-
-folderID: mqvdh-hpv4q
-created: 2026-09-06T17:48:32+03:00

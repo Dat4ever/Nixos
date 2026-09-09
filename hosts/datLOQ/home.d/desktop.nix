@@ -32,16 +32,16 @@
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
-      "application/pdf" = "zathura.desktop";
+      "application/pdf" = "org.pwmt.zathura.desktop";
 
       # Images (imv; mpv fallback)
-      "image/png" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
-      "image/jpeg" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
-      "image/gif" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
-      "image/webp" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
-      "image/svg+xml" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
-      "image/bmp" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
-      "image/tiff" = [ "imv-wayland.desktop" "imv.desktop" "mpv.desktop" ];
+      "image/png" = [ "imv.desktop" "mpv.desktop" ];
+      "image/jpeg" = [ "imv.desktop" "mpv.desktop" ];
+      "image/gif" = [ "imv.desktop" "mpv.desktop" ];
+      "image/webp" = [ "imv.desktop" "mpv.desktop" ];
+      "image/svg+xml" = [ "imv.desktop" "mpv.desktop" ];
+      "image/bmp" = [ "imv.desktop" "mpv.desktop" ];
+      "image/tiff" = [ "imv.desktop" "mpv.desktop" ];
 
       # Video
       "video/mp4" = "mpv.desktop";
@@ -88,11 +88,11 @@
       "application/x-bzip2" = "yazi.desktop";
 
       # Comic books
-      "application/vnd.comicbook+zip" = "zathura.desktop";
-      "application/vnd.comicbook-rar" = "zathura.desktop";
+      "application/vnd.comicbook+zip" = "org.pwmt.zathura.desktop";
+      "application/vnd.comicbook-rar" = "org.pwmt.zathura.desktop";
 
       # Ebooks
-      "application/epub+zip" = "zathura.desktop";
+      "application/epub+zip" = "org.pwmt.zathura.desktop";
 
       # Other
       "application/xhtml+xml" = "firefox.desktop";

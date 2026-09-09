@@ -21,7 +21,7 @@
     nwg-look 							# GTK settings GUI (wlroots)
     brightnessctl        # Screen brightness control
     xdg-terminal-exec 			# Terminal launcher for Terminal=true desktop entries (yazi reveal, nvim.desktop...)
-    (zathura.override { plugins = [ zathuraPkgs.zathura_pdf_mupdf ]; })  # PDF, EPUB, CBZ viewer (mupdf backend)
+    (zathura.override { plugins = [ zathuraPkgs.zathura_pdf_mupdf zathuraPkgs.zathura_cb ]; })  # PDF, EPUB via mupdf; CBZ via cb plugin
     imv 								# Image viewer
 
     # Terminal & Development Tools & language servers
