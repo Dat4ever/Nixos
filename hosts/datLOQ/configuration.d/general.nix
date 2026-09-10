@@ -14,7 +14,7 @@
   # User account.
   users.users.dat = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "audio" "disk" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
   };
 
   # System language

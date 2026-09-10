@@ -1,15 +1,14 @@
-{ pkgs, lib, ... }:
+{ ... }:
 
 {
-  # Web UI: http://127.0.0.1:8384  (localhost only, guiAddress below)
+  # Web UI: http://127.0.0.1:8384  (guiAddress below)
   services.syncthing = {
     enable = true;
     user = "dat";
     dataDir = "/home/dat/Sync";
     configDir = "/home/dat/.config/syncthing";
     guiAddress = "127.0.0.1:8384"; # Web UI never exposed to the network
-    # Ports are NOT blanket-allowed: 22000/tcp+udp & 21027/udp are opened by extraInputRules below, restricted to private (RFC1918) source networks.
-    openDefaultPorts = false;
+    openDefaultPorts = false; # ports opened per-interface (22000, 21027) in networking.nix
 
     settings = {
       devices = {
@@ -32,7 +31,9 @@
         urAccepted = -1; # No anonymous usage reporting
       };
 
+    # Folders
       folders = {
+      # Pictures
         "6bomy-bttr9" = {
           label = "Pictures";
           path = "/home/dat/Pictures";
@@ -43,6 +44,8 @@
             cleanoutDays = 15;
           };
         };
+
+      # Public
         "fy3wp-4vwhm" = {
           label = "Public";
           path = "/home/dat/Public";
@@ -53,6 +56,8 @@
             cleanoutDays = 15;
           };
         };
+
+      # Nixos
         "mqvdh-hpv4q" = {
           label = "Nixos";
           path = "/home/dat/Nixos";
@@ -64,6 +69,8 @@
             cleanoutDays = 15;
           };
         };
+
+      # Music
         "traon-rqxlb" = {
           label = "Music";
           path = "/home/dat/Music";
@@ -74,6 +81,8 @@
             cleanoutDays = 15;
           };
         };
+
+      # Videos
         "ui76t-kkwm3" = {
           label = "Videos";
           path = "/home/dat/Videos";
@@ -84,6 +93,8 @@
             cleanoutDays = 15;
           };
         };
+
+      # Documents
         "x5sgm-xpwfv" = {
           label = "Documents";
           path = "/home/dat/Documents";
@@ -117,11 +128,4 @@
       ];
     };
   };
-
-  # Only private (RFC1918) sources may reach the syncthing sync ports. Blocks untrusted/public Wi-Fi peers; local discovery still works at home.
-  networking.firewall.extraInputRules = ''
-    ip saddr { 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 } tcp dport 22000 accept
-    ip saddr { 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 } udp dport 22000 accept
-    ip saddr { 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 } udp dport 21027 accept
-  '';
 }

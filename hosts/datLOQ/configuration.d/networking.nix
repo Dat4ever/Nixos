@@ -28,14 +28,21 @@
   };
 
   # Firewall
+  # Ports: SSH (22), LocalSend (53317), Syncthing(21027,22000)
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [
-      22
-      53317
-    ];
-    allowedUDPPorts = [
-      53317
-    ];
+    allowedTCPPorts = [ ];
+    allowedUDPPorts = [ ];
+    interfaces = {
+      # Wifi
+      wlp8s0.allowedTCPPorts = [ 22 53317 22000 ];
+      wlp8s0.allowedUDPPorts = [ 53317 21027 22000 ];
+      # Ethernet
+      enp7s0.allowedTCPPorts = [ 22 ];
+      enp7s0.allowedUDPPorts = [ ];
+      # USB tethering
+      enp0s20f0u3.allowedTCPPorts = [ 22 53317 22000 ];
+      enp0s20f0u3.allowedUDPPorts = [ 53317 21027 22000 ];
+    };
   };
 }

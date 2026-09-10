@@ -11,18 +11,18 @@
   environment.systemPackages = with pkgs; [
     # Desktop (Wayland / Hyprland)
     hyprpaper 						# Wallpaper manager
-    hyprland-qtutils 			# Hyprland utility apps (hyprland-run, hyprland-dialog, share picker)
+    hyprland-qtutils 			# Hyprland utility apps
     quickshell	 					# Desktop shell toolkit
     rofi 									# Application launcher
     grim 									# Screenshot tool
     slurp 								# Screen region selector
     wl-clipboard 					# Clipboard manager
-    playerctl 						# Media player control (media keys)
+    playerctl 						# Media player control
     nwg-look 							# GTK settings GUI (wlroots)
     brightnessctl         # Screen brightness control
-    xdg-terminal-exec 		# Terminal launcher for Terminal=true desktop entries (yazi reveal, nvim.desktop...)
-    (zathura.override { plugins = [ zathuraPkgs.zathura_pdf_mupdf zathuraPkgs.zathura_cb ]; })  # PDF, EPUB via mupdf; CBZ via cb plugin
+    xdg-terminal-exec 		# Terminal launcher
     imv 								# Image viewer
+    (zathura.override { plugins = [ zathuraPkgs.zathura_pdf_mupdf zathuraPkgs.zathura_cb ]; })  # PDF, EPUB via mupdf; CBZ via cb plugin
 
     # Terminal & Development Tools & language servers
     bash 								  # Shell
@@ -51,6 +51,7 @@
     vlc 									# Media player
     mpv 									# Lightweight media player
     libreoffice-stable    # Office programs
+    qbittorrent 					# Torrent client
     localsend 						# Local network file sharing
     prismlauncher         # Minecraft launcher
 

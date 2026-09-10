@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-  # glib/gsettings schemas: collect and compile every package's schemas into one directory so GTK apps (file dialogs, rofi, quickshell entries) can resolve them at runtime.
   environment.systemPackages = with pkgs; [
     glib                      # gsettings binary
     gsettings-desktop-schemas # GLib schemas (GTK theme backend)
