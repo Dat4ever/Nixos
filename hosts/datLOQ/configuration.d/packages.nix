@@ -19,18 +19,18 @@
     wl-clipboard 					# Clipboard manager
     playerctl 						# Media player control (media keys)
     nwg-look 							# GTK settings GUI (wlroots)
-    brightnessctl        # Screen brightness control
-    xdg-terminal-exec 			# Terminal launcher for Terminal=true desktop entries (yazi reveal, nvim.desktop...)
+    brightnessctl         # Screen brightness control
+    xdg-terminal-exec 		# Terminal launcher for Terminal=true desktop entries (yazi reveal, nvim.desktop...)
     (zathura.override { plugins = [ zathuraPkgs.zathura_pdf_mupdf zathuraPkgs.zathura_cb ]; })  # PDF, EPUB via mupdf; CBZ via cb plugin
     imv 								# Image viewer
 
     # Terminal & Development Tools & language servers
-    bash 								# Shell
-    vim 								# Text editor
-    git 								# Version control
+    bash 								  # Shell
+    vim 								  # Text editor
+    git 								  # Version control
     kitty 								# Terminal
-    neovim 							# Text editor
-    tmux 								# Terminal multiplexer
+    neovim 							  # Text editor
+    tmux 								  # Terminal multiplexer
     ripgrep 							# Fast grep
     gcc 									# C/C++ compiler
     gnumake 							# C Build automation tool
@@ -51,17 +51,15 @@
     vlc 									# Media player
     mpv 									# Lightweight media player
     libreoffice-stable    # Office programs
-    qbittorrent 					# Torrent client
     localsend 						# Local network file sharing
-    famistudio            # NES Music Editor (run FamiStudio in terminal)
     prismlauncher         # Minecraft launcher
 
     # CLI / TUI Utilities
     wget 									# Web file retriever
     curl 									# URL file transfer utility
     rsync 								# System-level file sync & backups
-    nixos-anywhere       # NixOS installation via SSH
-    datfetch 						# datfetch (extras/pkgs overlay)
+    nixos-anywhere        # NixOS installation via SSH
+    datfetch 						  # datfetch (extras/pkgs overlay)
     jq 										# Command-line JSON processor
     udiskie               # Automounter for removable media
     zip 									# .zip compression

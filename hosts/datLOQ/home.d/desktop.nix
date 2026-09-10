@@ -34,7 +34,7 @@
       "x-scheme-handler/unknown" = "firefox.desktop";
       "application/pdf" = "org.pwmt.zathura.desktop";
 
-      # Images (imv; mpv fallback)
+      # Images
       "image/png" = [ "imv.desktop" "mpv.desktop" ];
       "image/jpeg" = [ "imv.desktop" "mpv.desktop" ];
       "image/gif" = [ "imv.desktop" "mpv.desktop" ];
@@ -61,7 +61,7 @@
       "application/x-shellscript" = "nvim.desktop";
       "text/markdown" = "nvim.desktop";
 
-      # Office (LibreOffice)
+      # Office
       "application/msword" = "writer.desktop";
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
       "application/rtf" = "writer.desktop";

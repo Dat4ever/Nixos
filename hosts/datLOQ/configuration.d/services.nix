@@ -48,7 +48,15 @@
     enablePkexecWrapper = true;  # setuid pkexec (root GUI apps)
   };
   services.udisks2.enable = true;       # Enable Udisks service
-  services.openssh.enable = true;       # Enable the OpenSSH service
+  services.openssh.enable = true;       # OpenSSH service (host)
+
+  # Hardening: keys only, no root. GitHub'da güvende kalması için firewall
+  # LAN kısıtı networking.nix'te (extraInputRules) tutulur.
+  services.openssh.settings = {
+    PasswordAuthentication = false;
+    KbdInteractiveAuthentication = false;
+    PermitRootLogin = "no";
+  };
   services.printing.enable = true;      # Enable CUPS sevice for printing
   services.fwupd.enable = true;         # Enable linux firmware updater
   services.flatpak.enable = true;       # Enable Flatpak
