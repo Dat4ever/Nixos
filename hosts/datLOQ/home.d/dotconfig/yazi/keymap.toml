@@ -1,0 +1,41 @@
+# Package zip
+[[mgr.prepend_keymap]]
+on   = [ "c", "a", "z" ]
+run  = 'shell --interactive --cursor=19 -- set -- %s; zip -r ".zip" "${@##*/}"'
+desc = "Compress selected files to zip"
+
+# Package 7z
+[[mgr.prepend_keymap]]
+on   = [ "c", "a", "7" ]
+run  = 'shell --interactive --cursor=17 -- set -- %s; 7z a ".7z" "${@##*/}"'
+desc = "Compress selected files to 7z"
+
+# Package tar, gzip or coreutils
+[[mgr.prepend_keymap]]
+on   = [ "c", "a", "t" ]
+run  = 'shell --interactive --cursor=20 -- set -- %s; tar czf ".tar.gz" "${@##*/}"'
+desc = "Compress selected files to tar.gz"
+
+# Plugin mount.yazi
+[[mgr.prepend_keymap]]
+on  = "M"
+run = "plugin mount"
+desc = "Mount manager"
+
+# Plugin chmod.yazi
+[[mgr.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin chmod"
+desc = "Chmod on selected files"
+
+# Package exiftool
+[[mgr.prepend_keymap]]
+on  = "E"
+run = 'shell "exiftool %h | less" --block'
+desc = "View metadata with exiftool"
+
+# Script theme.toml (theme-switch sends this key to running instances)
+[[mgr.prepend_keymap]]
+on  = "T"
+run = "app:theme"
+desc = "Reload theme"
