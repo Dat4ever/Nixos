@@ -27,11 +27,11 @@
     enable = true;
     defaultApplications = {
       # Browser
-      "text/html" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/about" = "firefox.desktop";
-      "x-scheme-handler/unknown" = "firefox.desktop";
+      "text/html" = "librewolf.desktop";
+      "x-scheme-handler/http" = "librewolf.desktop";
+      "x-scheme-handler/https" = "librewolf.desktop";
+      "x-scheme-handler/about" = "librewolf.desktop";
+      "x-scheme-handler/unknown" = "librewolf.desktop";
       "application/pdf" = "org.pwmt.zathura.desktop";
 
       # Images
@@ -95,7 +95,7 @@
       "application/epub+zip" = "org.pwmt.zathura.desktop";
 
       # Other
-      "application/xhtml+xml" = "firefox.desktop";
+      "application/xhtml+xml" = "librewolf.desktop";
     };
   };
 }

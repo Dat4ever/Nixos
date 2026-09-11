@@ -17,7 +17,7 @@
           autoAcceptFolders = false;
         };
         SM-S931B = {
-          id = "54VRHOV-SLQUKNU-FE6R25E-O2I2HCJ-DXMUQ3X-EKX3JJE-QITCH6Z-YD4PZA5";
+          id = "3E2PRDX-EHAMHVZ-YQ3VYKY-2SEXBUB-CS37NFW-2COIZCC-GDZPNXQ-KWFWNQ5";
           autoAcceptFolders = false;
           compression = "never";
           addresses = [ "dynamic" ];

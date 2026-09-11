@@ -9,7 +9,7 @@ if [[ "${1:-}" == "--if-changed" ]]; then
 fi
 
 THEMES_DIR="$HOME/.config/themes"
-TEMPLATES_DIR="$THEMES_DIR/homeconfig"
+TEMPLATES_DIR="$THEMES_DIR/dotconfig"
 THEME_NAME="${1:-nord}"
 THEME_FILE="$THEMES_DIR/$THEME_NAME.conf"
 
@@ -71,9 +71,12 @@ KITTY_COLORS="$HOME/.config/kitty/colors.conf"
 mkdir -p "$HOME/.config/kitty"
 render "$TEMPLATES_DIR/kitty.colors.conf" "$KITTY_COLORS"
 
-# Live-reload colors into running kitty instances
-if command -v kitten >/dev/null 2>&1; then
-  kitten @ set-colors --all --configured "$KITTY_COLORS" >/dev/null 2>&1 || true
+# Live-reload colors into every running kitty instance (process name is
+# ".kitty-wrapped"; each instance listens on its own unix:@kitty-<pid> socket)
+if command -v kitten >/dev/null 2>&1 && hyprctl version >/dev/null 2>&1; then
+  for _kitty_pid in $(pgrep kitty); do
+    kitten @ --to "unix:@kitty-$_kitty_pid" set-colors --all --configured "$KITTY_COLORS" >/dev/null 2>&1 || true
+  done
 fi
 
 # rofi
@@ -93,6 +96,17 @@ render "$TEMPLATES_DIR/yazi.theme.toml" "$YAZI_THEME"
 
 # yazi syntect
 render "$TEMPLATES_DIR/yazi.tmTheme" "$HOME/.config/yazi/syntect.tmTheme"
+
+# yazi hot-reload: press "T" (app:theme) in every running yazi instance so
+# icon/syntax colors update live; the TUI does not watch theme.toml itself.
+if command -v kitten >/dev/null 2>&1; then
+  for _kitty_pid in $(pgrep kitty); do
+    _sock="unix:@kitty-$_kitty_pid"
+    for _wid in $(kitten @ --to "$_sock" ls 2>/dev/null | jq -r '.[] | .tabs[] | .windows[] | select((.cmdline | tostring) | test("yazi")) | .id' 2>/dev/null); do
+      kitten @ --to "$_sock" send-text --match "id:$_wid" "T" >/dev/null 2>&1 || true
+    done
+  done
+fi
 
 # GTK
 for v in 3.0 4.0; do
@@ -149,50 +163,54 @@ cat > "$KV_DIR/kvantum.kvconfig" <<EOF
 theme=$kvantum_theme
 EOF
 
-# opencode
-OPENCODE_TUI="$HOME/.config/opencode/tui.json"
-mkdir -p "$HOME/.config/opencode"
-cat > "$OPENCODE_TUI" <<EOF
-{
-  "\$schema": "https://opencode.ai/tui.json",
-  "theme": "${opencode_theme:-$THEME_NAME}"
-}
-EOF
-
 # btop
 BTOP_CONF="$HOME/.config/btop/btop.conf"
 mkdir -p "$HOME/.config/btop"
-cat > "$BTOP_CONF" <<EOF
-color_theme = "${btop_theme:-nord}"
-theme_background = False
-rounded_corners = True
-proc_tree = True
-graph_symbol = "braille"
-proc_sorting = "cpu lazy"
-EOF
+render "$TEMPLATES_DIR/btop.conf" "$BTOP_CONF"
+
+# opencode (custom "current" theme, referenced by ~/.config/opencode/tui.json)
+OC_THEMES="$HOME/.config/opencode/themes"
+mkdir -p "$OC_THEMES"
+render "$TEMPLATES_DIR/opencode.colors.json" "$OC_THEMES/current.json"
 
 # Neovim
 NVIM_THEME="$HOME/.local/share/nvim/theme.lua"
 mkdir -p "$HOME/.local/share/nvim"
 render "$TEMPLATES_DIR/nvim.colors.lua" "$NVIM_THEME"
 
-# firefox
-FIREFOX_BASE="$HOME/.config/mozilla/firefox"
-if [[ -f "$FIREFOX_BASE/profiles.ini" ]]; then
-  FIREFOX_PROFILE="$(awk -F= '/^Path=/ { path=$2 } END { print path }' "$FIREFOX_BASE/profiles.ini")"
-  if [[ -n "$FIREFOX_PROFILE" ]]; then
-    if [[ "$FIREFOX_PROFILE" = /* ]]; then
-      PROFILE_DIR="$FIREFOX_PROFILE"
+# librewolf
+LIBREWOLF_BASE="$HOME/.config/librewolf/librewolf"
+if [[ -f "$LIBREWOLF_BASE/profiles.ini" ]]; then
+  LIBREWOLF_PROFILE="$(awk -F= '/^Path=/ { path=$2 } END { print path }' "$LIBREWOLF_BASE/profiles.ini")"
+  if [[ -n "$LIBREWOLF_PROFILE" ]]; then
+    if [[ "$LIBREWOLF_PROFILE" = /* ]]; then
+      PROFILE_DIR="$LIBREWOLF_PROFILE"
     else
-      PROFILE_DIR="$FIREFOX_BASE/$FIREFOX_PROFILE"
+      PROFILE_DIR="$LIBREWOLF_BASE/$LIBREWOLF_PROFILE"
     fi
     mkdir -p "$PROFILE_DIR/chrome"
-    render "$TEMPLATES_DIR/firefox.userChrome.css" "$PROFILE_DIR/chrome/userChrome.css"
-    render "$TEMPLATES_DIR/firefox.userContent.css" "$PROFILE_DIR/chrome/userContent.css"
+    render "$TEMPLATES_DIR/librewolf.userChrome.css" "$PROFILE_DIR/chrome/userChrome.css"
+    render "$TEMPLATES_DIR/librewolf.userContent.css" "$PROFILE_DIR/chrome/userContent.css"
     cat > "$PROFILE_DIR/user.js" <<'EOF'
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("browser.startup.page", 3);
+user_pref("privacy.sanitize.sanitizeOnShutdown", false);
 EOF
   fi
+fi
+if command -v hyprctl >/dev/null 2>&1 && hyprctl version >/dev/null 2>&1; then
+  # Restart with the window pinned to the workspace it was closed on: this
+  # compositor evaluates `hyprctl dispatch` args as Lua, so the spawn is sent
+  # as a valid Lua string arg of hl.dsp.exec_cmd, using Hyprland's
+  # "[workspace N silent]" prefix (opens directly there, no focus steal).
+  LW_WS="$(hyprctl clients -j | jq -r '.[] | select(.class == "librewolf") | .workspace.id' | head -1 | tr -d '[:space:]' || true)"
+  kill_wait librewolf
+  if [[ -n "$LW_WS" ]]; then
+    setsid nohup hyprctl dispatch "hl.dsp.exec_cmd('[workspace $LW_WS silent] librewolf')" </dev/null >/dev/null 2>&1 &
+  else
+    setsid nohup librewolf </dev/null >/dev/null 2>&1 &
+  fi
+  disown 2>/dev/null || true
 fi
 
 # Wallpaper
@@ -243,7 +261,7 @@ if command -v hyprctl >/dev/null 2>&1 && hyprctl version >/dev/null 2>&1; then
   fi
 
   kill_wait quickshell
-  setsid nohup qs </dev/null >/dev/null 2>&1 &
+  setsid nohup env QS_NO_RELOAD_POPUP=1 qs </dev/null >/dev/null 2>&1 &
   disown 2>/dev/null || true
 fi
 

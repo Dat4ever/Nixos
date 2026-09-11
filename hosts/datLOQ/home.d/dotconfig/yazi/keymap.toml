@@ -33,3 +33,9 @@ desc = "Chmod on selected files"
 on  = "E"
 run = 'shell "exiftool %h | less" --block'
 desc = "View metadata with exiftool"
+
+# Script theme.toml (theme-switch sends this key to running instances)
+[[mgr.prepend_keymap]]
+on  = "T"
+run = "app:theme"
+desc = "Reload theme"

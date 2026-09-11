@@ -47,7 +47,7 @@
     jdt-language-server   # Java LSP 'jdtls'
 
     # GUI Applications
-    firefox 							# Web browser
+    librewolf 						# Web browser
     vlc 									# Media player
     mpv 									# Lightweight media player
     libreoffice-stable    # Office programs

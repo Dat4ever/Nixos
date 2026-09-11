@@ -9,7 +9,7 @@ hl.monitor({
 ---- AUTOSTART ----
 hl.on("hyprland.start", function ()
   hl.exec_cmd("hyprpaper")
-  hl.exec_cmd("qs")
+  hl.exec_cmd("env QS_NO_RELOAD_POPUP=1 qs")
 end)
 
 ---- THEME STATE ----
@@ -143,7 +143,7 @@ hl.gesture({
 local terminal    = "kitty"
 local fileManager = "kitty -e yazi"
 local menu        = "rofi -show drun"
-local browser     = "firefox"
+local browser     = "librewolf"
 local themeMenu   = "theme-rofi"
 
 ---- KEYBINDINGS ----

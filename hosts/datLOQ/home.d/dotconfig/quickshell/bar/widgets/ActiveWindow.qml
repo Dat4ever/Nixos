@@ -36,7 +36,7 @@ Item {
             var icon = "";
             switch (cls.toLowerCase()) {
               case "kitty":           icon = ""; break;
-              case "firefox":         icon = "󰈹"; break;
+              case "librewolf":       icon = "󰈹"; break;
               case "steam":           icon = "󰓓"; break;
               case "mpv":             icon = "󰝚"; break;
               case "vlc":             icon = "󰕼"; break;
