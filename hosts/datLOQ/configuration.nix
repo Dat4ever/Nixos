@@ -12,6 +12,5 @@
     ./configuration.d/packages.nix
     ./configuration.d/services.nix
     ./configuration.d/syncthing.nix
-    ./configuration.d/container.nix
   ];
 }

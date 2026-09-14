@@ -3,8 +3,8 @@
 {
   # Tor client + transparent routing toggle
   # Toggle with:
-  #   systemctl start tor-transparent   (alias:"start-tor")
-  #   systemctl stop  tor-transparent   (alias:"stop-tor")
+  # systemctl start tor-transparent (alias:"start-tor")
+  # systemctl stop  tor-transparent (alias:"stop-tor")
 
   environment.systemPackages = with pkgs; [
     torsocks   # Wrap commands to route them through Tor SOCKS

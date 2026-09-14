@@ -25,7 +25,6 @@
       };
 
       options = {
-        # Discovery only on the local network; no public internet announcements.
         globalAnnounceEnabled = false; # Do not register on global discovery
         relaysEnabled = false; # Never route via the fallback nodes
         urAccepted = -1; # No anonymous usage reporting
@@ -33,15 +32,15 @@
 
     # Folders
       folders = {
-      # Pictures
+      # Media (Pictures + Videos + Music + Books parent)
         "6bomy-bttr9" = {
-          label = "Pictures";
-          path = "/home/dat/Pictures";
+          label = "Media";
+          path = "/home/dat/Media";
           devices = [ "datLOQ" "SM-S931B" ];
           versioning = {
             type = "trashcan";
             fsType = "basic";
-            cleanoutDays = 15;
+            cleanoutDays = 14;
           };
         };
 
@@ -53,7 +52,7 @@
           versioning = {
             type = "trashcan";
             fsType = "basic";
-            cleanoutDays = 15;
+            cleanoutDays = 14;
           };
         };
 
@@ -66,31 +65,7 @@
           versioning = {
             type = "trashcan";
             fsType = "basic";
-            cleanoutDays = 15;
-          };
-        };
-
-      # Music
-        "traon-rqxlb" = {
-          label = "Music";
-          path = "/home/dat/Music";
-          devices = [ "datLOQ" "SM-S931B" ];
-          versioning = {
-            type = "trashcan";
-            fsType = "basic";
-            cleanoutDays = 15;
-          };
-        };
-
-      # Videos
-        "ui76t-kkwm3" = {
-          label = "Videos";
-          path = "/home/dat/Videos";
-          devices = [ "datLOQ" ];
-          versioning = {
-            type = "trashcan";
-            fsType = "basic";
-            cleanoutDays = 15;
+            cleanoutDays = 14;
           };
         };
 
@@ -102,7 +77,19 @@
           versioning = {
             type = "trashcan";
             fsType = "basic";
-            cleanoutDays = 15;
+            cleanoutDays = 14;
+          };
+        };
+
+      # Projects
+        "prj9c-n58zt" = {
+          label = "Projects";
+          path = "/home/dat/Projects";
+          devices = [ "datLOQ" "SM-S931B" ];
+          versioning = {
+            type = "trashcan";
+            fsType = "basic";
+            cleanoutDays = 14;
           };
         };
       };
@@ -119,12 +106,11 @@
         "-/home/dat/.config/syncthing"
         "-/home/dat/.local/state/syncthing"
         # Synced folders (keep in sync with the "folders" block above)
-        "-/home/dat/Pictures"
+        "-/home/dat/Media"
         "-/home/dat/Public"
         "-/home/dat/Nixos"
-        "-/home/dat/Music"
-        "-/home/dat/Videos"
         "-/home/dat/Documents"
+        "-/home/dat/Projects"
       ];
     };
   };

@@ -10,12 +10,17 @@
     # Xdg dirs locations
     download = "$HOME/Downloads";
     documents = "$HOME/Documents";
-    pictures = "$HOME/Pictures";
-    videos = "$HOME/Videos";
-    music = "$HOME/Music";
+    pictures = "$HOME/Media/Pictures";
+    videos = "$HOME/Media/Videos";
+    music = "$HOME/Media/Music";
     desktop = "$HOME/Desktop";
-    templates = "$HOME/Downloads";
+    templates = "$HOME/Desktop";
     publicShare = "$HOME/Public";
+    extraConfig = {
+      PROJECTS = "$HOME/Projects";
+      BOOKS = "$HOME/Media/Books";
+      GAMES = "$HOME/Media/Games";
+    };
   };
 
   # Default terminal

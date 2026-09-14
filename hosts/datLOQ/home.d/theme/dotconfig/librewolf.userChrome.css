@@ -41,8 +41,6 @@
   border-radius: 6px !important;
 }
 
-
-
 .tab-line[selected] {
   display: none !important;
 }

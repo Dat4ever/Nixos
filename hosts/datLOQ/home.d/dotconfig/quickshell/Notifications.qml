@@ -3,10 +3,6 @@ import Quickshell.Services.Notifications as Notifs
 import QtQuick
 import "."
 
-// System-wide notification daemon popup: ALL apps' notifications are
-// rendered here, themed with the active theme's colors (theme-switch).
-// Root MUST be the window: quickshell only collects PanelWindows that are
-// direct ShellRoot children / component roots, not ones nested in Items.
 PanelWindow {
   id: popup
   anchors { bottom: true; right: true }
@@ -24,8 +20,6 @@ PanelWindow {
     bodyMarkupSupported: true
     actionsSupported: true
 
-    // Notifications are NOT tracked by default; keep every incoming one so
-    // the popup below can render it.
     onNotification: notification => {
       notification.tracked = true;
     }

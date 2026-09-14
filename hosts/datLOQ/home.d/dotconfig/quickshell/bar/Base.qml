@@ -4,8 +4,6 @@ import QtQuick
 import ".."
 import "./widgets"
 
-// The status bar window: everything bar-related (window properties + layout
-// clusters) lives here; shell.qml only instantiates it.
 PanelWindow {
   id: mainBar
 

@@ -71,8 +71,7 @@ KITTY_COLORS="$HOME/.config/kitty/colors.conf"
 mkdir -p "$HOME/.config/kitty"
 render "$TEMPLATES_DIR/kitty.colors.conf" "$KITTY_COLORS"
 
-# Live-reload colors into every running kitty instance (process name is
-# ".kitty-wrapped"; each instance listens on its own unix:@kitty-<pid> socket)
+# Live-reload every kitty instances
 if command -v kitten >/dev/null 2>&1 && hyprctl version >/dev/null 2>&1; then
   for _kitty_pid in $(pgrep kitty); do
     kitten @ --to "unix:@kitty-$_kitty_pid" set-colors --all --configured "$KITTY_COLORS" >/dev/null 2>&1 || true
@@ -97,8 +96,7 @@ render "$TEMPLATES_DIR/yazi.theme.toml" "$YAZI_THEME"
 # yazi syntect
 render "$TEMPLATES_DIR/yazi.tmTheme" "$HOME/.config/yazi/syntect.tmTheme"
 
-# yazi hot-reload: press "T" (app:theme) in every running yazi instance so
-# icon/syntax colors update live; the TUI does not watch theme.toml itself.
+# yazi hot-reload
 if command -v kitten >/dev/null 2>&1; then
   for _kitty_pid in $(pgrep kitty); do
     _sock="unix:@kitty-$_kitty_pid"
@@ -199,10 +197,6 @@ EOF
   fi
 fi
 if command -v hyprctl >/dev/null 2>&1 && hyprctl version >/dev/null 2>&1; then
-  # Restart with the window pinned to the workspace it was closed on: this
-  # compositor evaluates `hyprctl dispatch` args as Lua, so the spawn is sent
-  # as a valid Lua string arg of hl.dsp.exec_cmd, using Hyprland's
-  # "[workspace N silent]" prefix (opens directly there, no focus steal).
   LW_WS="$(hyprctl clients -j | jq -r '.[] | select(.class == "librewolf") | .workspace.id' | head -1 | tr -d '[:space:]' || true)"
   kill_wait librewolf
   if [[ -n "$LW_WS" ]]; then

@@ -18,16 +18,16 @@
   };
 
   # Outputs section
-  outputs = { self, nixpkgs, home-manager, disko, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, disko, ... }: {
 
     # datLOQ's outputs
     nixosConfigurations.datLOQ = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        disko.nixosModules.disko
         ./hosts/datLOQ/configuration.nix
         ./hosts/datLOQ/hardware-configuration.nix
         ./hosts/datLOQ/disko.nix
+        disko.nixosModules.disko
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

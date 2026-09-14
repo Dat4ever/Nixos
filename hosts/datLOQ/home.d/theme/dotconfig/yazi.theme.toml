@@ -112,23 +112,38 @@ rules = [
   { url = "*", fg = "__color05__" },
 ]
 
+prepend_conds = [
+  { if = "orphan", text = "", fg = "__color05__" },
+  { if = "link", text = "", fg = "__color04__" },
+  { if = "block", text = "", fg = "__color0A__" },
+  { if = "char", text = "", fg = "__color0A__" },
+  { if = "fifo", text = "", fg = "__color0A__" },
+  { if = "sock", text = "", fg = "__color0A__" },
+  { if = "sticky", text = "", fg = "__color0A__" },
+  { if = "dummy", text = "", fg = "__color08__" },
+  { if = "dir", text = "", fg = "__color0D__" },
+  { if = "exec", text = "", fg = "__color0B__" },
+  { if = "!dir", text = "", fg = "__color05__" },
+]
 [icon]
 prepend_dirs = [
-  { name = ".config", text = "", fg = "__color09__" },
-  { name = ".git", text = "", fg = "__color0C__" },
-  { name = ".github", text = "", fg = "__color0D__" },
-  { name = ".npm", text = "", fg = "__color0D__" },
+  { name = ".config", text = "", fg = "__color09__" },
+  { name = ".git", text = "", fg = "__color0C__" },
+  { name = ".npm", text = "", fg = "__color0D__" },
+  { name = "Media", text = "", fg = "__color0C__" },
   { name = "Desktop", text = "", fg = "__color0C__" },
-  { name = "Development", text = "", fg = "__color0C__" },
-  { name = "Documents", text = "", fg = "__color0C__" },
-  { name = "Downloads", text = "", fg = "__color0C__" },
-  { name = "Library", text = "", fg = "__color0C__" },
-  { name = "Movies", text = "", fg = "__color0C__" },
-  { name = "Music", text = "", fg = "__color0C__" },
-  { name = "Pictures", text = "", fg = "__color0C__" },
-  { name = "Public", text = "", fg = "__color0C__" },
-  { name = "Videos", text = "", fg = "__color0C__" },
+  { name = "Documents", text = "", fg = "__color0C__" },
+  { name = "Downloads", text = "", fg = "__color0C__" },
+  { name = "Games", text = "󰊴", fg = "__color0C__" },
+  { name = "Books", text = "", fg = "__color0C__" },
+  { name = "Music", text = "", fg = "__color0C__" },
+  { name = "Nixos", text = "", fg = "__color0C__" },
+  { name = "Pictures", text = "", fg = "__color0C__" },
+  { name = "Projects", text = "", fg = "__color0C__" },
+  { name = "Public", text = "", fg = "__color0C__" },
+  { name = "Videos", text = "", fg = "__color0C__" },
 ]
+
 prepend_conds = [
   { if = "orphan", text = "", fg = "__color05__" },
   { if = "link", text = "", fg = "__color04__" },

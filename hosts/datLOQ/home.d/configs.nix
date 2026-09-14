@@ -11,7 +11,7 @@
       start-tor = "sudo systemctl start tor-transparent";
       stop-tor = "sudo systemctl stop tor-transparent";
      };
-    initExtra = builtins.readFile ./dotconfig/bashrc; 
+    initExtra = builtins.readFile ./dotconfig/bashrc;
   };
 
   # Yazi configuration
@@ -40,6 +40,26 @@
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = builtins.readFile ./dotconfig/hypr/hyprland.lua;
+  };
+
+  # Librewolf configuration
+  programs.librewolf = {
+    enable = true;
+    nativeMessagingHosts = [ pkgs.keepassxc ];
+
+    # Browser extensions
+    policies = {
+      ExtensionSettings = {
+        "addon@darkreader.org" = {              # Dark mode for all sites
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
+        };
+        "keepassxc-browser@keepassxc.org" = {   # KeepassXC browser integration
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
+        };
+      };
+    };
   };
 
   # Polkit authentication agent
