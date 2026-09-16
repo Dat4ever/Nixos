@@ -88,7 +88,6 @@
   home.file.".config/quickshell/Notifications.qml".source = ./dotconfig/quickshell/Notifications.qml;     # Notification daemon (themed popup)
   home.file.".config/quickshell/bar/Base.qml".source = ./dotconfig/quickshell/bar/Base.qml;               # Bar window + layout
   home.file.".config/opencode/opencode.jsonc".source = ./dotconfig/opencode/opencode.jsonc;               # OpenCode plugins
-  home.file.".config/opencode/tui.json".source = ./dotconfig/opencode/tui.json;                           # OpenCode TUI
   home.file.".config/quickshell/bar/widgets/ActiveWindow.qml".source = ./dotconfig/quickshell/bar/widgets/ActiveWindow.qml; # Bar widget: active window
   home.file.".config/quickshell/bar/widgets/Battery.qml".source = ./dotconfig/quickshell/bar/widgets/Battery.qml; # Bar widget: battery + brightness
   home.file.".config/quickshell/bar/widgets/Bluetooth.qml".source = ./dotconfig/quickshell/bar/widgets/Bluetooth.qml; # Bar widget: bluetooth

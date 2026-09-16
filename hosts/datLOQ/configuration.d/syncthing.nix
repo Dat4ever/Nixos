@@ -13,7 +13,7 @@
     settings = {
       devices = {
         datLOQ = {
-          id = "H4O7YKO-VQPLG6L-KY2LB6C-GKDRDLX-2JQPYWG-ZBRPDZW-BUFZGCX-XHVRKQH";
+          id = "BTNKID5-DYPWOOQ-EYT4L62-WBEDC7B-RIPCW37-EMLLMPE-KXYJUBZ-VFURUA3";
           autoAcceptFolders = false;
         };
         SM-S931B = {
@@ -40,7 +40,7 @@
           versioning = {
             type = "trashcan";
             fsType = "basic";
-            cleanoutDays = 14;
+            cleanoutDays = 7;
           };
         };
 
@@ -52,7 +52,7 @@
           versioning = {
             type = "trashcan";
             fsType = "basic";
-            cleanoutDays = 14;
+            cleanoutDays = 7;
           };
         };
 
@@ -65,7 +65,7 @@
           versioning = {
             type = "trashcan";
             fsType = "basic";
-            cleanoutDays = 14;
+            cleanoutDays = 7;
           };
         };
 
@@ -77,7 +77,7 @@
           versioning = {
             type = "trashcan";
             fsType = "basic";
-            cleanoutDays = 14;
+            cleanoutDays = 7;
           };
         };
 
@@ -89,7 +89,7 @@
           versioning = {
             type = "trashcan";
             fsType = "basic";
-            cleanoutDays = 14;
+            cleanoutDays = 7;
           };
         };
       };

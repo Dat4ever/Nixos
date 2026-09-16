@@ -14,7 +14,7 @@
     playerctl 						# Media player control
     nwg-look 							# GTK settings GUI (wlroots)
     xdg-terminal-exec 		# Terminal launcher
-    imv 								# Image viewer
+    imv 								  # Image viewer
     (zathura.override { plugins = [ zathuraPkgs.zathura_pdf_mupdf zathuraPkgs.zathura_cb ]; })  # PDF, EPUB via mupdf; CBZ via cb plugin
 
     # Terminal & Development Tools & language servers
@@ -47,8 +47,6 @@
 
     # CLI / TUI Utilities
     udiskie               # Automounter for removable media
-    pastel 								# Color analysis CLI tool
-    pokeget-rs 						# Pokemon sprites in terminal
     steamcmd 							# Steam command-line client
     yt-dlp 								# Media downloader
     caligula 							# TUI disk imager
@@ -57,6 +55,6 @@
     bluetui 							# Bluetooth TUI
     wiremix 							# PipeWire TUI mixer
     btop                  # Resource monitor
-    opencode 							# AI terminal coding agent
+    opencode  		        # AI terminal coding agent
   ];
 }

@@ -166,11 +166,6 @@ BTOP_CONF="$HOME/.config/btop/btop.conf"
 mkdir -p "$HOME/.config/btop"
 render "$TEMPLATES_DIR/btop.conf" "$BTOP_CONF"
 
-# opencode (custom "current" theme, referenced by ~/.config/opencode/tui.json)
-OC_THEMES="$HOME/.config/opencode/themes"
-mkdir -p "$OC_THEMES"
-render "$TEMPLATES_DIR/opencode.colors.json" "$OC_THEMES/current.json"
-
 # Neovim
 NVIM_THEME="$HOME/.local/share/nvim/theme.lua"
 mkdir -p "$HOME/.local/share/nvim"
