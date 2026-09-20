@@ -11,20 +11,6 @@ a custom live theme switcher, and Syncthing sharing with my phone.
 | datLOQ | Active | `hosts/datLOQ/` | Daily driver (Lenovo LOQ, Intel + NVIDIA hybrid).                      |
 | datSV  | WIP    | `hosts/datSV/`  | Gitignored on purpose; flake output commented out until it is tracked. |
 
-### System modules (`configuration.d/`)
-
-| File | Purpose |
-|------|---------|
-| `general.nix` | Base system: locale (en/tr), TZ, systemd-boot, users, nix settings, weekly GC |
-| `gpu.nix` | Intel + NVIDIA hybrid graphics (open driver, PRIME offload, VAAPI, modeset) |
-| `services.nix` | PipeWire/JACK, Bluetooth, LY, Hyprland, Steam/gamescope, Podman, OpenSSH (keys only), CUPS, fwupd, flatpak |
-| `networking.nix` | NetworkManager + resolved, nftables, per-interface firewall (SSH, LocalSend, Syncthing, USB tether) |
-| `packages.nix` | System packages (allowUnfree) |
-| `gtkschemas-qt.nix` | gsettings schema compilation for GTK; Qt via the `qt` module (qt5ct/qt6ct + Kvantum) |
-| `syncthing.nix` | Syncthing as user `dat`, GUI on `127.0.0.1:8384` (password file outside the repo, bcrypt-hashed at activation), hardened systemd sandbox |
-| `tor.nix` | Tor client + transparent proxy, toggled with `start-tor` / `stop-tor` |
-| `nixld-appimage.nix` | `nix-ld` + AppImage binfmt so prebuilt binaries run |
-
 ## Fresh install
 
 > [!WARNING]
