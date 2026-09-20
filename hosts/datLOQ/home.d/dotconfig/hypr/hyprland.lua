@@ -1,0 +1,231 @@
+---- MONITORS ----
+hl.monitor({
+  output   = "eDP-1",
+  mode     = "1920x1080@144",
+  position = "0x0",
+  scale    = "1",
+})
+
+---- AUTOSTART ----
+hl.on("hyprland.start", function ()
+  hl.exec_cmd("hyprpaper")
+  hl.exec_cmd("env QS_NO_RELOAD_POPUP=1 qs")
+end)
+
+---- THEME STATE ----
+-- Written by theme-switch; lets the cursor and border colors follow the active theme across reboots.
+local themeColors = {}
+local themeFile = io.open(os.getenv("HOME") .. "/.local/state/theme/hyprland.colors", "r")
+if themeFile then
+  for line in themeFile:lines() do
+    local key, value = line:match("^([%w_]+)=(.*)$")
+    if key and value then themeColors[key] = value end
+  end
+  themeFile:close()
+end
+local function stripHash(s) return s:gsub("^#", "") end
+local themeColor00 = stripHash(themeColors["color00"] or "2e3440")
+local themeColor03 = stripHash(themeColors["color03"] or "4c566a")
+local themeColor07 = stripHash(themeColors["color07"] or "8fbcbb")
+local themeColor0D = stripHash(themeColors["color0D"] or "81a1c1")
+local cursorTheme = themeColors["cursor_theme"] or "Capitaine Cursors (Nord)"
+
+---- ENVIRONMENT VARIABLES ----
+-- Cursor (follows the active theme via the state file)
+hl.env("HYPRCURSOR_THEME", cursorTheme)
+hl.env("XCURSOR_THEME", cursorTheme)
+hl.env("XCURSOR_SIZE", "32")
+hl.env("HYPRCURSOR_SIZE", "32")
+
+----- PERMISSIONS -----
+
+---- LOOK AND FEEL ----
+hl.config({
+  general = {
+    gaps_in     = 4,
+    gaps_out    = 8,
+    border_size = 2,
+
+    ["col.active_border"] = {
+        colors = { "rgba(" .. themeColor0D .. "ee)", "rgba(" .. themeColor07 .. "ee)" },
+        angle = 45
+    },
+    ["col.inactive_border"] = "rgba(" .. themeColor03 .. "aa)",
+
+    resize_on_border = false,
+    allow_tearing    = false,
+    layout           = "dwindle",
+  },
+
+  decoration = {
+    rounding         = 4,
+    rounding_power   = 4,
+    active_opacity   = 1,
+    inactive_opacity = 0.9,
+
+    shadow = {
+      enabled      = true,
+      range        = 4,
+      render_power = 3,
+      color        = "rgba(" .. themeColor00 .. "ee)",
+    },
+
+    blur = {
+      enabled  = true,
+      size     = 8,
+      passes   = 3,
+      new_optimizations = true,
+      xray = false,
+      vibrancy = 0.1696,
+    },
+  },
+
+  animations = {
+    enabled = false,
+  },
+})
+
+hl.config({
+  dwindle = {
+    preserve_split = true,
+  },
+})
+
+hl.config({
+  master = {
+    new_status = "master",
+  },
+})
+
+hl.config({
+  scrolling = {
+    fullscreen_on_one_column = true,
+  },
+})
+
+----  MISC  ----
+hl.config({
+  misc = {
+    force_default_wallpaper   = 0,
+    disable_hyprland_logo     = true,
+    disable_splash_rendering = true,
+  },
+})
+
+---- INPUT ----
+hl.config({
+  input = {
+    --keyboard
+    kb_layout    = "tr,us",
+    kb_variant   = "",
+    kb_model     = "",
+    kb_options   = "grp:shift_caps_toggle",
+    kb_rules     = "",
+    repeat_delay = 256,
+    repeat_rate  = 32,
+    --mouse
+    follow_mouse = 1,
+    sensitivity  = 0.25,
+    --touchpad
+    touchpad = {
+      natural_scroll = false,
+    },
+  },
+})
+
+hl.gesture({
+  fingers   = 3,
+  direction = "horizontal",
+  action    = "workspace"
+})
+
+---- MY PROGRAMS ----
+local terminal    = "kitty"
+local fileManager = "kitty -e yazi"
+local menu        = "rofi -show drun"
+local browser     = "librewolf"
+local themeMenu   = "theme-rofi"
+
+---- KEYBINDINGS ----
+local mainMod = "SUPER"
+hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(themeMenu))
+hl.bind(mainMod .. " + X", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mainMod .. " + Z", hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+-- Move focus with mainMod + arrow keys
+hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+
+-- Switch workspaces with mainMod + [1-5]
+-- Move active window to a workspace with mainMod + SHIFT + [1-5]
+for i = 1, 5 do
+    hl.bind(mainMod .. " + " .. i,               hl.dsp.focus({ workspace = i}))
+    hl.bind(mainMod .. " + SHIFT + " .. i,        hl.dsp.window.move({ workspace = i }))
+end
+
+-- Example special workspace (scratchpad)
+hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+
+-- Scroll through existing workspaces with mainMod + scroll
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
+
+-- Move/resize windows with mainMod + LMB/RMB and dragging
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- Take a screenshot (with mainMod + Home or mainMod + SHIFT + Home)
+hl.bind(mainMod .. " + HOME", hl.dsp.exec_cmd([[mkdir -p ~/Media/Pictures/screenshots && grim -g "$(slurp -d)" ~/Media/Pictures/screenshots/$(date +'%Y%m%d_%H%M%S').png]]))
+hl.bind("SUPER + SHIFT + Home", hl.dsp.exec_cmd([[mkdir -p ~/Media/Pictures/screenshots && grim ~/Media/Pictures/screenshots/$(date +'%Y%m%d_%H%M%S').png]]))
+
+-- Laptop multimedia keys for volume and LCD brightness
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
+hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
+hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
+
+-- Requires playerctl
+hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+
+---- WINDOWS AND WORKSPACES ----
+hl.window_rule({
+  name  = "suppress-maximize-events",
+  match = { class = ".*" },
+  suppress_event = "maximize",
+})
+
+hl.window_rule({
+  name  = "fix-xwayland-drags",
+  match = {
+    class      = "^$",
+    title      = "^$",
+    xwayland   = true,
+    float      = true,
+    fullscreen = false,
+    pin        = false,
+  },
+
+  no_focus = true,
+})
+
+-- Hyprland-run windowrule
+hl.window_rule({
+  name  = "move-hyprland-run",
+  match = { class = "hyprland-run" },
+  move  = "20 monitor_h-120",
+  float = true,
+})
