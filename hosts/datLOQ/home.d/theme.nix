@@ -126,7 +126,7 @@ let
     dontUnpack = true;
     installPhase = ''
       mkdir -p "$out/share/themes" "$out/share/Kvantum"
-      cp -r ${../../../extras/gtk/Nordic} "$out/share/themes/Nordic"
+      cp -r ${../../../extras/gtk/Squared-nord} "$out/share/themes/Squared-nord"
       cp -r ${../../../extras/gtk/Gruvbox-Dark} "$out/share/themes/Gruvbox-Dark"
       cp -r ${../../../extras/gtk/Everforest} "$out/share/themes/Everforest"
       cp -r ${../../../extras/kvantum/Nordic} "$out/share/Kvantum/Nordic"
