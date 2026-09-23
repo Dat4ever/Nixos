@@ -14,7 +14,7 @@ configuration {
 /* Global defaults; colorXX variables come from the imported theme */
 * {
   background-color: transparent;
-  text-color: @color04;
+  text-color: @colorforeground2;
 }
 
 window {
@@ -23,8 +23,8 @@ window {
   anchor: center;
   border-radius: 4px;
   border: 2px;
-  border-color: @color0D;
-  background-color: @color00;
+  border-color: @coloraccent;
+  background-color: @colorbackground1;
   padding: 14px;
 }
 
@@ -34,21 +34,21 @@ mainbox {
 }
 
 inputbar {
-  background-color: @color01;
+  background-color: @colorbackground2;
   padding: 10px 14px;
   border-radius: 4px;
   children: [ prompt, entry ];
 }
 
 prompt {
-  text-color: @color0C;
+  text-color: @colorbrightcyan;
   margin: 0px 8px 0px 0px;
 }
 
 entry {
-  text-color: @color06;
+  text-color: @colorforeground3;
   placeholder: "Search...";
-  placeholder-color: @color03;
+  placeholder-color: @colormuted;
 }
 
 listview {
@@ -71,6 +71,6 @@ element-text {
 }
 
 element selected.normal {
-  background-color: @color07;
-  text-color: @color00;
+  background-color: @coloraccent2;
+  text-color: @colorbackground1;
 }

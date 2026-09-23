@@ -2,12 +2,12 @@
 
 @-moz-document url-prefix("about:") {
   :root {
-    background-color: __color00__ !important;
-    color: __color05__ !important;
+    background-color: __colorbackground1__ !important;
+    color: __colorforeground1__ !important;
   }
 
   a {
-    color: __color0D__ !important;
+    color: __coloraccent__ !important;
   }
 }
 
@@ -18,24 +18,24 @@
   .activity-stream,
   #root,
   .search-wrapper .search-handoff-button {
-    background-color: __color00__ !important;
-    color: __color05__ !important;
+    background-color: __colorbackground1__ !important;
+    color: __colorforeground1__ !important;
   }
 
   .search-wrapper input,
   .search-wrapper .search-handoff-button,
   .search-handoff-button {
-    color: __color05__ !important;
+    color: __colorforeground3__ !important;
   }
 
   .top-site-outer .tile,
   .top-site-outer .top-site-icon,
   .top-site-outer .site-icon {
-    background-color: __color01__ !important;
-    color: __color05__ !important;
+    background-color: __colorbackground2__ !important;
+    color: __colorforeground3__ !important;
   }
 
   .top-site-outer .title {
-    color: __color05__ !important;
+    color: __colorforeground3__ !important;
   }
 }

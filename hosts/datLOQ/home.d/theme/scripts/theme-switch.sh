@@ -37,12 +37,18 @@ if [[ "$IF_CHANGED" == "1" && -f "$HASH_FILE" && "$(cat "$HASH_FILE" 2>/dev/null
   exit 0
 fi
 
-# Render a template file, substituting the __colorXX__ placeholders. Writes to a temp file and moves it into place, so a failed render never leaves a broken/partial config behind (rofi/quickshell keep working).
+# Render a template file, substituting the __colorXX__ placeholders. Writes to a temp file and moves it into place.
 render() {
   local template="$1" output="$2" tmp
   local sedargs=() var
-  for var in color00 color01 color02 color03 color04 color05 color06 color07 \
-             color08 color09 color0A color0B color0C color0D color0E color0F; do
+  for var in colorblack colorred colorgreen coloryellow colorblue colormagenta \
+             colorcyan colorwhite colorbrightblack colorbrightred colorbrightgreen \
+             colorbrightyellow colorbrightblue colorbrightmagenta colorbrightcyan \
+             colorbrightwhite \
+             colorbackground1 colorbackground2 colorbackground3 colormuted \
+             colorforeground1 colorforeground2 colorforeground3 \
+             coloraccent coloraccent2 coloraccent3 colororange \
+             btop_theme; do
     sedargs+=( -e "s|__${var}__|${!var}|g" )
   done
   tmp="$(mktemp "${output}.tmp.XXXXXX")" || return 1
@@ -70,8 +76,6 @@ kill_wait() {
 KITTY_COLORS="$HOME/.config/kitty/colors.conf"
 mkdir -p "$HOME/.config/kitty"
 render "$TEMPLATES_DIR/kitty.colors.conf" "$KITTY_COLORS"
-
-# Live-reload every kitty instances
 if command -v kitten >/dev/null 2>&1 && hyprctl version >/dev/null 2>&1; then
   for _kitty_pid in $(pgrep kitty); do
     kitten @ --to "unix:@kitty-$_kitty_pid" set-colors --all --configured "$KITTY_COLORS" >/dev/null 2>&1 || true
@@ -95,8 +99,6 @@ render "$TEMPLATES_DIR/yazi.theme.toml" "$YAZI_THEME"
 
 # yazi syntect
 render "$TEMPLATES_DIR/yazi.tmTheme" "$HOME/.config/yazi/syntect.tmTheme"
-
-# yazi hot-reload
 if command -v kitten >/dev/null 2>&1; then
   for _kitty_pid in $(pgrep kitty); do
     _sock="unix:@kitty-$_kitty_pid"
@@ -106,12 +108,10 @@ if command -v kitten >/dev/null 2>&1; then
   done
 fi
 
-# opencode (renders `current.json` as an optional custom theme; tui.json selects the `system` theme)
+# opencode
 OPENCODE_THEME="$HOME/.config/opencode/themes/current.json"
 mkdir -p "$HOME/.config/opencode/themes"
 render "$TEMPLATES_DIR/opencode.theme.json" "$OPENCODE_THEME"
-
-# Running opencode TUIs re-scan theme files and re-read the terminal palette (used by the `system` theme) on SIGUSR2. Only a bare TUI invocation (no subcommand/args) handles the signal, so signal just those.
 for _oc_pid in $(pgrep -f 'opencode' 2>/dev/null || true); do
   [[ -r "/proc/$_oc_pid/cmdline" ]] || continue
   _oc_args=()
@@ -157,7 +157,6 @@ for c in qt6ct qt5ct; do
 [Appearance]
 style=kvantum
 standard_dialogs=default
-
 [Fonts]
 fixed="CommitMono Nerd Font,12"
 general="Geist,12"
@@ -209,14 +208,16 @@ EOF
   fi
 fi
 if command -v hyprctl >/dev/null 2>&1 && hyprctl version >/dev/null 2>&1; then
-  LW_WS="$(hyprctl clients -j | jq -r '.[] | select(.class == "librewolf") | .workspace.id' | head -1 | tr -d '[:space:]' || true)"
-  kill_wait librewolf
-  if [[ -n "$LW_WS" ]]; then
-    setsid nohup hyprctl dispatch "hl.dsp.exec_cmd('[workspace $LW_WS silent] librewolf')" </dev/null >/dev/null 2>&1 &
-  else
-    setsid nohup librewolf </dev/null >/dev/null 2>&1 &
+  if pgrep -x librewolf >/dev/null 2>&1 || pgrep -f '/librewolf' >/dev/null 2>&1; then
+    LW_WS="$(hyprctl clients -j | jq -r '.[] | select(.class == "librewolf") | .workspace.id' | head -1 | tr -d '[:space:]' || true)"
+    kill_wait librewolf
+    if [[ -n "$LW_WS" ]]; then
+      setsid nohup hyprctl dispatch "hl.dsp.exec_cmd('[workspace $LW_WS silent] librewolf')" </dev/null >/dev/null 2>&1 &
+    else
+      setsid nohup librewolf </dev/null >/dev/null 2>&1 &
+    fi
+    disown 2>/dev/null || true
   fi
-  disown 2>/dev/null || true
 fi
 
 # Wallpaper
@@ -238,23 +239,23 @@ fi
 # Hyprland state
 HYPR_STATE="$HOME/.local/state/theme/hyprland.colors"
 mkdir -p "$(dirname "$HYPR_STATE")"
-c00="${color00#\#}"
-c03="${color03#\#}"
-c07="${color07#\#}"
-c0D="${color0D#\#}"
+cbg="${colorbackground1#\#}"
+cmut="${colormuted#\#}"
+cac="${coloraccent#\#}"
+cac2="${coloraccent2#\#}"
 cat > "$HYPR_STATE" <<EOF
-color00=$c00
-color03=$c03
-color07=$c07
-color0D=$c0D
+colorbackground1=$cbg
+colormuted=$cmut
+coloraccent=$cac
+coloraccent2=$cac2
 cursor_theme=${cursor_theme:-Capitaine Cursors (Nord)}
 EOF
 
 # Live-apply borders/shadow/cursor to the running compositor
 if command -v hyprctl >/dev/null 2>&1; then
-  hyprctl eval "hl.config({general={['col.active_border']={colors={'rgba(${c0D}ee)','rgba(${c07}ee)'},angle=45}}})" >/dev/null 2>&1 || true
-  hyprctl eval "hl.config({general={['col.inactive_border']='rgba(${c03}aa)'}})" >/dev/null 2>&1 || true
-  hyprctl eval "hl.config({decoration={shadow={color='rgba(${c00}ee)'}}})" >/dev/null 2>&1 || true
+  hyprctl eval "hl.config({general={['col.active_border']={colors={'rgba(${cac}ee)','rgba(${cac2}ee)'},angle=45}}})" >/dev/null 2>&1 || true
+  hyprctl eval "hl.config({general={['col.inactive_border']='rgba(${cmut}aa)'}})" >/dev/null 2>&1 || true
+  hyprctl eval "hl.config({decoration={shadow={color='rgba(${cbg}ee)'}}})" >/dev/null 2>&1 || true
   hyprctl setcursor "${cursor_theme:-Capitaine Cursors (Nord)}" 32 >/dev/null 2>&1 || true
 fi
 

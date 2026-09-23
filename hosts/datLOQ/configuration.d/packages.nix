@@ -22,5 +22,8 @@
     unzip 								# .zip extraction
     unrar 								# .rar extraction
     p7zip 								# .7z extraction
+
+    # Custom packages
+    (callPackage ../../../extras/pkgs/olta {})  # Olta Web UI — local video/audio downloader (rofi -drun entry)
   ];
 }

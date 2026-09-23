@@ -100,7 +100,7 @@ Item {
     id: textDisplay
     anchors.centerIn: parent
     text: bluetoothWidget.btIcon + " " + bluetoothWidget.btStatus
-    color: Colors.color0D
+    color: Colors.coloraccent
     font.family: Colors.fontName
     font.pixelSize: 14
     font.bold: true
@@ -113,6 +113,6 @@ Item {
     width: parent.width
     height: 2
     radius: 1
-    color: Colors.color0D
+    color: Colors.coloraccent
   }
 }

@@ -95,7 +95,7 @@ Item {
     font.family: Colors.fontName
     font.pixelSize: 14
     font.bold: true
-    color: Colors.color0B
+    color: Colors.colorbrightgreen
 
     text: {
       if (volumeWidget.isMuted) {
@@ -120,6 +120,6 @@ Item {
     width: parent.width
     height: 2
     radius: 1
-    color: Colors.color0B
+    color: Colors.colorbrightgreen
   }
 }

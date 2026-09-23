@@ -1,16 +1,16 @@
 -- Neovim theme colors
-local bg      = "__color00__"
-local bg2     = "__color01__"
-local bg3     = "__color02__"
-local fg      = "__color05__"
-local fg2     = "__color04__"
-local muted   = "__color03__"
-local accent  = "__color0D__"
-local cyan    = "__color0C__"
-local green   = "__color0B__"
-local yellow  = "__color0A__"
-local red     = "__color08__"
-local magenta = "__color0E__"
+local bg      = "__colorbackground1__"
+local bg2     = "__colorbackground2__"
+local bg3     = "__colorbackground3__"
+local fg      = "__colorforeground1__"
+local fg2     = "__colorforeground2__"
+local muted   = "__colormuted__"
+local accent  = "__coloraccent__"
+local cyan    = "__colorbrightcyan__"
+local green   = "__colorbrightgreen__"
+local yellow  = "__colorbrightyellow__"
+local red     = "__colorred__"
+local magenta = "__colorbrightmagenta__"
 
 -- Highlight groups
 vim.api.nvim_set_hl(0, "StatusModeNormal",  { bg = accent,  fg = bg, bold = true })

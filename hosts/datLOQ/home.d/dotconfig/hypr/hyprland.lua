@@ -24,16 +24,19 @@ if themeFile then
   themeFile:close()
 end
 local function stripHash(s) return s:gsub("^#", "") end
-local themeColor00 = stripHash(themeColors["color00"] or "2e3440")
-local themeColor03 = stripHash(themeColors["color03"] or "4c566a")
-local themeColor07 = stripHash(themeColors["color07"] or "8fbcbb")
-local themeColor0D = stripHash(themeColors["color0D"] or "81a1c1")
-local cursorTheme = themeColors["cursor_theme"] or "Capitaine Cursors (Nord)"
+local colorbackground1 = themeColors["colorbackground1"] and stripHash(themeColors["colorbackground1"])
+local colormuted  = themeColors["colormuted"] and stripHash(themeColors["colormuted"])
+local coloraccent = themeColors["coloraccent"] and stripHash(themeColors["coloraccent"])
+local coloraccent2 = themeColors["coloraccent2"] and stripHash(themeColors["coloraccent2"])
+local cursorTheme = themeColors["cursor_theme"]
+local themeOk = colorbackground1 and colormuted and coloraccent and coloraccent2 and cursorTheme
 
 ---- ENVIRONMENT VARIABLES ----
 -- Cursor (follows the active theme via the state file)
-hl.env("HYPRCURSOR_THEME", cursorTheme)
-hl.env("XCURSOR_THEME", cursorTheme)
+if cursorTheme then
+  hl.env("HYPRCURSOR_THEME", cursorTheme)
+  hl.env("XCURSOR_THEME", cursorTheme)
+end
 hl.env("XCURSOR_SIZE", "32")
 hl.env("HYPRCURSOR_SIZE", "32")
 
@@ -45,12 +48,6 @@ hl.config({
     gaps_in     = 4,
     gaps_out    = 8,
     border_size = 2,
-
-    ["col.active_border"] = {
-        colors = { "rgba(" .. themeColor0D .. "ee)", "rgba(" .. themeColor07 .. "ee)" },
-        angle = 45
-    },
-    ["col.inactive_border"] = "rgba(" .. themeColor03 .. "aa)",
 
     resize_on_border = false,
     allow_tearing    = false,
@@ -67,7 +64,6 @@ hl.config({
       enabled      = true,
       range        = 4,
       render_power = 3,
-      color        = "rgba(" .. themeColor00 .. "ee)",
     },
 
     blur = {
@@ -84,6 +80,24 @@ hl.config({
     enabled = false,
   },
 })
+
+-- Theme-derived styling (borders + shadow); only when theme-switch state exists
+if themeOk then
+  hl.config({
+    general = {
+      ["col.active_border"] = {
+          colors = { "rgba(" .. coloraccent .. "ee)", "rgba(" .. coloraccent2 .. "ee)" },
+          angle = 45
+      },
+      ["col.inactive_border"] = "rgba(" .. colormuted .. "aa)",
+    },
+    decoration = {
+      shadow = {
+        color = "rgba(" .. colorbackground1 .. "ee)",
+      },
+    },
+  })
+end
 
 hl.config({
   dwindle = {
@@ -151,7 +165,7 @@ local mainMod = "SUPER"
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(themeMenu))
 hl.bind(mainMod .. " + X", hl.dsp.window.float({ action = "toggle" }))

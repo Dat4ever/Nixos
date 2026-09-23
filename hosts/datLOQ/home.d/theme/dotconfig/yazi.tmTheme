@@ -8,93 +8,93 @@
     <dict>
       <key>settings</key>
       <dict>
-        <key>background</key><string>__color00__</string>
-        <key>foreground</key><string>__color05__</string>
-        <key>caret</key><string>__color0D__</string>
-        <key>selection</key><string>__color02__</string>
-        <key>lineHighlight</key><string>__color01__</string>
-        <key>invisibles</key><string>__color03__</string>
+        <key>background</key><string>__colorbackground1__</string>
+        <key>foreground</key><string>__colorforeground1__</string>
+        <key>caret</key><string>__coloraccent__</string>
+        <key>selection</key><string>__colorbackground3__</string>
+        <key>lineHighlight</key><string>__colorbackground2__</string>
+        <key>invisibles</key><string>__colormuted__</string>
       </dict>
     </dict>
     <dict>
       <key>name</key><string>Comment</string>
       <key>scope</key><string>comment</string>
-      <key>settings</key><dict><key>foreground</key><string>__color03__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colormuted__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>String</string>
       <key>scope</key><string>string</string>
-      <key>settings</key><dict><key>foreground</key><string>__color0B__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorbrightgreen__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Number</string>
       <key>scope</key><string>constant.numeric</string>
-      <key>settings</key><dict><key>foreground</key><string>__color0E__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorbrightmagenta__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Constant</string>
       <key>scope</key><string>constant.language</string>
-      <key>settings</key><dict><key>foreground</key><string>__color0E__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorbrightmagenta__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Escape</string>
       <key>scope</key><string>constant.character.escape</string>
-      <key>settings</key><dict><key>foreground</key><string>__color0C__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorbrightcyan__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Keyword</string>
       <key>scope</key><string>keyword</string>
-      <key>settings</key><dict><key>foreground</key><string>__color0D__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__coloraccent__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Operator</string>
       <key>scope</key><string>keyword.operator</string>
-      <key>settings</key><dict><key>foreground</key><string>__color04__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorforeground2__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Storage</string>
       <key>scope</key><string>storage</string>
-      <key>settings</key><dict><key>foreground</key><string>__color0F__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__coloraccent3__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Function</string>
       <key>scope</key><string>entity.name.function, support.function</string>
-      <key>settings</key><dict><key>foreground</key><string>__color0C__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorbrightcyan__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Type</string>
       <key>scope</key><string>entity.name.class, entity.name.type, support.type, support.class</string>
-      <key>settings</key><dict><key>foreground</key><string>__color07__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__coloraccent2__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Variable</string>
       <key>scope</key><string>variable</string>
-      <key>settings</key><dict><key>foreground</key><string>__color05__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorforeground1__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Parameter</string>
       <key>scope</key><string>variable.parameter</string>
-      <key>settings</key><dict><key>foreground</key><string>__color04__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorforeground2__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Punctuation</string>
       <key>scope</key><string>punctuation</string>
-      <key>settings</key><dict><key>foreground</key><string>__color04__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorforeground2__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Tag</string>
       <key>scope</key><string>tag</string>
-      <key>settings</key><dict><key>foreground</key><string>__color08__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorred__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Markup heading</string>
       <key>scope</key><string>markup.heading, markup.bold</string>
-      <key>settings</key><dict><key>foreground</key><string>__color0A__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorbrightyellow__</string></dict>
     </dict>
     <dict>
       <key>name</key><string>Invalid</string>
       <key>scope</key><string>invalid</string>
-      <key>settings</key><dict><key>foreground</key><string>__color00__</string><key>background</key><string>__color08__</string></dict>
+      <key>settings</key><dict><key>foreground</key><string>__colorbackground1__</string><key>background</key><string>__colorred__</string></dict>
     </dict>
   </array>
 </dict>

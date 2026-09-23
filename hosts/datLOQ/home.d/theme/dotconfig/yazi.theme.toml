@@ -1,158 +1,158 @@
 [mgr]
-cwd = { fg = "__color0C__" }
-find_keyword = { fg = "__color0B__", bold = true }
-find_position = { fg = "__color0E__" }
-marker_selected = { fg = "__color0A__" }
-marker_copied = { fg = "__color0B__" }
-marker_cut = { fg = "__color08__" }
-count_copied = { fg = "__color00__", bg = "__color0B__" }
-count_cut = { fg = "__color00__", bg = "__color08__" }
-count_selected = { fg = "__color00__", bg = "__color0A__" }
-border_style = { fg = "__color04__" }
+cwd = { fg = "__colorbrightcyan__" }
+find_keyword = { fg = "__colorbrightgreen__", bold = true }
+find_position = { fg = "__colorbrightmagenta__" }
+marker_selected = { fg = "__colorbrightyellow__" }
+marker_copied = { fg = "__colorbrightgreen__" }
+marker_cut = { fg = "__colorred__" }
+count_copied = { fg = "__colorbackground1__", bg = "__colorbrightgreen__" }
+count_cut = { fg = "__colorbackground1__", bg = "__colorred__" }
+count_selected = { fg = "__colorbackground1__", bg = "__colorbrightyellow__" }
+border_style = { fg = "__colorforeground2__" }
 syntect_theme = "~/.config/yazi/syntect.tmTheme"
 
 [indicator]
-current = { bg = "__color02__", bold = true }
-preview = { bg = "__color02__", bold = true }
+current = { bg = "__colorbackground3__", bold = true }
+preview = { bg = "__colorbackground3__", bold = true }
 
 [tabs]
-active = { fg = "__color00__", bg = "__color0D__", bold = true }
-inactive = { fg = "__color0D__", bg = "__color01__" }
+active = { fg = "__colorbackground1__", bg = "__coloraccent__", bold = true }
+inactive = { fg = "__coloraccent__", bg = "__colorbackground2__" }
 
 [mode]
-normal_main = { fg = "__color00__", bg = "__color0D__", bold = true }
-normal_alt = { fg = "__color0D__", bg = "__color00__" }
-select_main = { fg = "__color00__", bg = "__color0B__", bold = true }
-select_alt = { fg = "__color0B__", bg = "__color00__" }
-unset_main = { fg = "__color00__", bg = "__color0F__", bold = true }
-unset_alt = { fg = "__color0F__", bg = "__color00__" }
+normal_main = { fg = "__colorbackground1__", bg = "__coloraccent__", bold = true }
+normal_alt = { fg = "__coloraccent__", bg = "__colorbackground1__" }
+select_main = { fg = "__colorbackground1__", bg = "__colorbrightgreen__", bold = true }
+select_alt = { fg = "__colorbrightgreen__", bg = "__colorbackground1__" }
+unset_main = { fg = "__colorbackground1__", bg = "__coloraccent3__", bold = true }
+unset_alt = { fg = "__coloraccent3__", bg = "__colorbackground1__" }
 
 [status]
-perm_type = { fg = "__color0D__" }
-perm_read = { fg = "__color0A__" }
-perm_write = { fg = "__color08__" }
-perm_exec = { fg = "__color0B__" }
-perm_sep = { fg = "__color0C__" }
-progress_label = { fg = "__color05__", bold = true }
-progress_normal = { fg = "__color0B__" }
-progress_error = { fg = "__color08__", bold = true }
+perm_type = { fg = "__coloraccent__" }
+perm_read = { fg = "__colorbrightyellow__" }
+perm_write = { fg = "__colorred__" }
+perm_exec = { fg = "__colorbrightgreen__" }
+perm_sep = { fg = "__colorbrightcyan__" }
+progress_label = { fg = "__colorforeground1__", bold = true }
+progress_normal = { fg = "__colorbrightgreen__" }
+progress_error = { fg = "__colorred__", bold = true }
 
 [which]
-mask = { bg = "__color02__" }
-cand = { fg = "__color0C__" }
-rest = { fg = "__color0F__" }
-desc = { fg = "__color05__" }
-separator_style = { fg = "__color04__" }
+mask = { bg = "__colorbackground3__" }
+cand = { fg = "__colorbrightcyan__" }
+rest = { fg = "__coloraccent3__" }
+desc = { fg = "__colorforeground1__" }
+separator_style = { fg = "__colorforeground2__" }
 
 [confirm]
-border = { fg = "__color0D__" }
-title = { fg = "__color05__" }
-body = { fg = "__color05__" }
-list = { fg = "__color05__" }
-btn_yes = { fg = "__color0B__", bold = true }
-btn_no = { fg = "__color08__", bold = true }
+border = { fg = "__coloraccent__" }
+title = { fg = "__colorforeground1__" }
+body = { fg = "__colorforeground1__" }
+list = { fg = "__colorforeground1__" }
+btn_yes = { fg = "__colorbrightgreen__", bold = true }
+btn_no = { fg = "__colorred__", bold = true }
 
 [spot]
-border = { fg = "__color0D__" }
-title = { fg = "__color05__" }
-tbl_col = { bg = "__color02__" }
-tbl_cell = { fg = "__color05__" }
+border = { fg = "__coloraccent__" }
+title = { fg = "__colorforeground1__" }
+tbl_col = { bg = "__colorbackground3__" }
+tbl_cell = { fg = "__colorforeground1__" }
 
 [notify]
-title_info = { fg = "__color0C__" }
-title_warn = { fg = "__color0A__" }
-title_error = { fg = "__color08__", bold = true }
+title_info = { fg = "__colorbrightcyan__" }
+title_warn = { fg = "__colorbrightyellow__" }
+title_error = { fg = "__colorred__", bold = true }
 
 [pick]
-border = { fg = "__color0D__" }
-active = { fg = "__color0E__" }
-inactive = { fg = "__color05__" }
+border = { fg = "__coloraccent__" }
+active = { fg = "__colorbrightmagenta__" }
+inactive = { fg = "__colorforeground1__" }
 
 [input]
-border = { fg = "__color0D__" }
-title = { fg = "__color05__" }
-value = { fg = "__color05__" }
-selected = { bg = "__color03__" }
+border = { fg = "__coloraccent__" }
+title = { fg = "__colorforeground1__" }
+value = { fg = "__colorforeground1__" }
+selected = { bg = "__colormuted__" }
 
 [cmp]
-border = { fg = "__color0D__" }
-active = { fg = "__color0E__", bg = "__color03__" }
-inactive = { fg = "__color05__" }
+border = { fg = "__coloraccent__" }
+active = { fg = "__colorbrightmagenta__", bg = "__colormuted__" }
+inactive = { fg = "__colorforeground1__" }
 
 [tasks]
-border = { fg = "__color0D__" }
-title = { fg = "__color05__" }
-hovered = { fg = "__color05__", bg = "__color03__" }
+border = { fg = "__coloraccent__" }
+title = { fg = "__colorforeground1__" }
+hovered = { fg = "__colorforeground1__", bg = "__colormuted__" }
 
 [help]
-border = { fg = "__color0D__" }
-chord = { fg = "__color0E__" }
-action = { fg = "__color0C__" }
-hovered = { fg = "__color05__", bg = "__color03__" }
+border = { fg = "__coloraccent__" }
+chord = { fg = "__colorbrightmagenta__" }
+action = { fg = "__colorbrightcyan__" }
+hovered = { fg = "__colorforeground1__", bg = "__colormuted__" }
 
 [filetype]
 rules = [
-  { mime = "image/*", fg = "__color0C__" },
-  { mime = "video/*", fg = "__color0A__" },
-  { mime = "audio/*", fg = "__color0A__" },
-  { mime = "inode/x-empty", fg = "__color0C__" },
-  { mime = "application/zip", fg = "__color0E__" },
-  { mime = "application/gzip", fg = "__color0E__" },
-  { mime = "application/tar", fg = "__color0E__" },
-  { mime = "application/bzip", fg = "__color0E__" },
-  { mime = "application/bzip2", fg = "__color0E__" },
-  { mime = "application/7z-compressed", fg = "__color0E__" },
-  { mime = "application/rar", fg = "__color0E__" },
-  { mime = "application/xz", fg = "__color0E__" },
-  { mime = "application/doc", fg = "__color0B__" },
-  { mime = "application/pdf", fg = "__color0B__" },
-  { mime = "application/rtf", fg = "__color0B__" },
-  { mime = "application/vnd.*", fg = "__color0B__" },
-  { url = "*/", fg = "__color0D__", bold = true },
-  { url = "*", fg = "__color05__" },
+  { mime = "image/*", fg = "__colorbrightcyan__" },
+  { mime = "video/*", fg = "__colorbrightyellow__" },
+  { mime = "audio/*", fg = "__colorbrightyellow__" },
+  { mime = "inode/x-empty", fg = "__colorbrightcyan__" },
+  { mime = "application/zip", fg = "__colorbrightmagenta__" },
+  { mime = "application/gzip", fg = "__colorbrightmagenta__" },
+  { mime = "application/tar", fg = "__colorbrightmagenta__" },
+  { mime = "application/bzip", fg = "__colorbrightmagenta__" },
+  { mime = "application/bzip2", fg = "__colorbrightmagenta__" },
+  { mime = "application/7z-compressed", fg = "__colorbrightmagenta__" },
+  { mime = "application/rar", fg = "__colorbrightmagenta__" },
+  { mime = "application/xz", fg = "__colorbrightmagenta__" },
+  { mime = "application/doc", fg = "__colorbrightgreen__" },
+  { mime = "application/pdf", fg = "__colorbrightgreen__" },
+  { mime = "application/rtf", fg = "__colorbrightgreen__" },
+  { mime = "application/vnd.*", fg = "__colorbrightgreen__" },
+  { url = "*/", fg = "__coloraccent__", bold = true },
+  { url = "*", fg = "__colorforeground1__" },
 ]
 
 prepend_conds = [
-  { if = "orphan", text = "", fg = "__color05__" },
-  { if = "link", text = "", fg = "__color04__" },
-  { if = "block", text = "", fg = "__color0A__" },
-  { if = "char", text = "", fg = "__color0A__" },
-  { if = "fifo", text = "", fg = "__color0A__" },
-  { if = "sock", text = "", fg = "__color0A__" },
-  { if = "sticky", text = "", fg = "__color0A__" },
-  { if = "dummy", text = "", fg = "__color08__" },
-  { if = "dir", text = "", fg = "__color0D__" },
-  { if = "exec", text = "", fg = "__color0B__" },
-  { if = "!dir", text = "", fg = "__color05__" },
+  { if = "orphan", text = "", fg = "__colorforeground1__" },
+  { if = "link", text = "", fg = "__colorforeground2__" },
+  { if = "block", text = "", fg = "__colorbrightyellow__" },
+  { if = "char", text = "", fg = "__colorbrightyellow__" },
+  { if = "fifo", text = "", fg = "__colorbrightyellow__" },
+  { if = "sock", text = "", fg = "__colorbrightyellow__" },
+  { if = "sticky", text = "", fg = "__colorbrightyellow__" },
+  { if = "dummy", text = "", fg = "__colorred__" },
+  { if = "dir", text = "", fg = "__coloraccent__" },
+  { if = "exec", text = "", fg = "__colorbrightgreen__" },
+  { if = "!dir", text = "", fg = "__colorforeground1__" },
 ]
 [icon]
 prepend_dirs = [
-  { name = ".config", text = "", fg = "__color09__" },
-  { name = ".git", text = "", fg = "__color0C__" },
-  { name = ".npm", text = "", fg = "__color0D__" },
-  { name = "Media", text = "", fg = "__color0C__" },
-  { name = "Desktop", text = "", fg = "__color0C__" },
-  { name = "Documents", text = "", fg = "__color0C__" },
-  { name = "Downloads", text = "", fg = "__color0C__" },
-  { name = "Games", text = "󰊴", fg = "__color0C__" },
-  { name = "Books", text = "", fg = "__color0C__" },
-  { name = "Music", text = "", fg = "__color0C__" },
-  { name = "Nixos", text = "", fg = "__color0C__" },
-  { name = "Pictures", text = "", fg = "__color0C__" },
-  { name = "Projects", text = "", fg = "__color0C__" },
-  { name = "Videos", text = "", fg = "__color0C__" },
+  { name = ".config", text = "", fg = "__colororange__" },
+  { name = ".git", text = "", fg = "__colorbrightcyan__" },
+  { name = ".npm", text = "", fg = "__coloraccent__" },
+  { name = "Media", text = "", fg = "__colorbrightcyan__" },
+  { name = "Desktop", text = "", fg = "__colorbrightcyan__" },
+  { name = "Documents", text = "", fg = "__colorbrightcyan__" },
+  { name = "Downloads", text = "", fg = "__colorbrightcyan__" },
+  { name = "Games", text = "󰊴", fg = "__colorbrightcyan__" },
+  { name = "Books", text = "", fg = "__colorbrightcyan__" },
+  { name = "Music", text = "", fg = "__colorbrightcyan__" },
+  { name = "Nixos", text = "", fg = "__colorbrightcyan__" },
+  { name = "Pictures", text = "", fg = "__colorbrightcyan__" },
+  { name = "Projects", text = "", fg = "__colorbrightcyan__" },
+  { name = "Videos", text = "", fg = "__colorbrightcyan__" },
 ]
 
 prepend_conds = [
-  { if = "orphan", text = "", fg = "__color05__" },
-  { if = "link", text = "", fg = "__color04__" },
-  { if = "block", text = "", fg = "__color0A__" },
-  { if = "char", text = "", fg = "__color0A__" },
-  { if = "fifo", text = "", fg = "__color0A__" },
-  { if = "sock", text = "", fg = "__color0A__" },
-  { if = "sticky", text = "", fg = "__color0A__" },
-  { if = "dummy", text = "", fg = "__color08__" },
-  { if = "dir", text = "", fg = "__color0D__" },
-  { if = "exec", text = "", fg = "__color0B__" },
-  { if = "!dir", text = "", fg = "__color05__" },
+  { if = "orphan", text = "", fg = "__colorforeground1__" },
+  { if = "link", text = "", fg = "__colorforeground2__" },
+  { if = "block", text = "", fg = "__colorbrightyellow__" },
+  { if = "char", text = "", fg = "__colorbrightyellow__" },
+  { if = "fifo", text = "", fg = "__colorbrightyellow__" },
+  { if = "sock", text = "", fg = "__colorbrightyellow__" },
+  { if = "sticky", text = "", fg = "__colorbrightyellow__" },
+  { if = "dummy", text = "", fg = "__colorred__" },
+  { if = "dir", text = "", fg = "__coloraccent__" },
+  { if = "exec", text = "", fg = "__colorbrightgreen__" },
+  { if = "!dir", text = "", fg = "__colorforeground1__" },
 ]

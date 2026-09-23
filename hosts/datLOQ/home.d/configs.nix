@@ -50,13 +50,17 @@
     # Browser extensions
     policies = {
       ExtensionSettings = {
-        "addon@darkreader.org" = {              # Dark mode for all sites
+        "addon@darkreader.org" = { # DarkReader
           installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
         };
-        "keepassxc-browser@keepassxc.org" = {   # KeepassXC browser integration
+        "keepassxc-browser@keepassxc.org" = { # KeepassXC browser integration
           installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
+        };
+        "jid1-MnnxcxisBPnSXQ@jetpack" = { # Privacy Badger
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
         };
       };
     };
@@ -84,11 +88,11 @@
   home.file.".config/nvim".source = ./dotconfig/nvim; # Neovim editor config
   home.file.".config/kitty/kitty.conf".source = ./dotconfig/kitty/kitty.conf; # Kitty terminal config
   home.file.".config/rofi/config.rasi".source = ./dotconfig/rofi/config.rasi; # Rofi launcher config
-  home.file.".config/quickshell/shell.qml".source = ./dotconfig/quickshell/shell.qml;                     # Quickshell bar main shell
-  home.file.".config/quickshell/Notifications.qml".source = ./dotconfig/quickshell/Notifications.qml;     # Notification daemon (themed popup)
-  home.file.".config/quickshell/bar/Base.qml".source = ./dotconfig/quickshell/bar/Base.qml;               # Bar window + layout
-  home.file.".config/opencode/opencode.jsonc".source = ./dotconfig/opencode/opencode.jsonc;               # OpenCode plugins
-  home.file.".config/opencode/tui.json".source = ./dotconfig/opencode/tui.json;                           # OpenCode TUI config (theme selection)
+  home.file.".config/quickshell/shell.qml".source = ./dotconfig/quickshell/shell.qml; # Quickshell bar main shell
+  home.file.".config/quickshell/Notifications.qml".source = ./dotconfig/quickshell/Notifications.qml; # Notification daemon (themed popup)
+  home.file.".config/quickshell/bar/Base.qml".source = ./dotconfig/quickshell/bar/Base.qml; # Bar window + layout
+  home.file.".config/opencode/opencode.jsonc".source = ./dotconfig/opencode/opencode.jsonc; # OpenCode plugins
+  home.file.".config/opencode/tui.json".source = ./dotconfig/opencode/tui.json; # OpenCode TUI config (theme selection)
   home.file.".config/quickshell/bar/widgets/ActiveWindow.qml".source = ./dotconfig/quickshell/bar/widgets/ActiveWindow.qml; # Bar widget: active window
   home.file.".config/quickshell/bar/widgets/Battery.qml".source = ./dotconfig/quickshell/bar/widgets/Battery.qml; # Bar widget: battery + brightness
   home.file.".config/quickshell/bar/widgets/Bluetooth.qml".source = ./dotconfig/quickshell/bar/widgets/Bluetooth.qml; # Bar widget: bluetooth

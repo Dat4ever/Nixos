@@ -3,7 +3,7 @@ import "../.."
 
 Text {
     text: "│"
-    color: Colors.color03
+    color: Colors.colormuted
     font.family: Colors.fontName
     font.pixelSize: 16
     leftPadding: 12

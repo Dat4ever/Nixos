@@ -22,35 +22,13 @@
       ]; 
     })
 
-    # Terminal & Development Tools & language servers
+    # Terminal / CLI / TUI Utilities
     neovim 							  # Text editor
-    tmux 								  # Terminal multiplexer
     ripgrep 							# Fast grep
     gcc 									# C/C++ compiler
     gnumake 							# C Build automation tool
     rustc 								# Rust compiler
     cargo 								# Rust package manager
-    vim-language-server   # Vim LSP 'vimls'
-    lua-language-server 	# Lua LSP 'lua_ls'
-    rust-analyzer         # Rust LSP 'rust_analyzer'
-    clang-tools           # C/C++ LSP 'clangd'
-    nixd                  # Nix LSP 'nixd'
-    bash-language-server  # Bash LSP 'bashls'
-    pyright               # Python LSP 'pyright'
-    gopls                 # Go LSP 'gopls'
-    jdt-language-server   # Java LSP 'jdtls'
-
-    # GUI Applications
-    keepassxc             # password manager
-    lutgen-studio         # Colorscheme applier
-    vlc 									# Media player
-    mpv 									# Lightweight media player
-    libreoffice-stable    # Office programs
-    qbittorrent 					# Torrent client
-    localsend 						# Local network file sharing
-    opencode  		        # AI coding agent
-
-    # CLI / TUI Utilities
     udiskie               # Automounter for removable media
     steamcmd 							# Steam command-line client
     yt-dlp 								# Media downloader
@@ -61,6 +39,27 @@
     wiremix 							# PipeWire TUI mixer
     btop                  # Resource monitor
     pastel                # CLI tool for color
-    whale                 # Deepseek AI coding agent
+    opencode  		        # AI coding agent
+    python3Packages.huggingface-hub  # Huggingface AI hub
+
+    # GUI Applications
+    keepassxc             # password manager
+    lutgen-studio         # Colorscheme applier
+    vlc 									# Media player
+    mpv 									# Lightweight media player
+    libreoffice-stable    # Office programs
+    qbittorrent 					# Torrent client
+    localsend 						# Local network file sharing
+
+    # Language Servers
+    vim-language-server   # Vim LSP 'vimls'
+    lua-language-server 	# Lua LSP 'lua_ls'
+    rust-analyzer         # Rust LSP 'rust_analyzer'
+    clang-tools           # C/C++ LSP 'clangd'
+    nixd                  # Nix LSP 'nixd'
+    bash-language-server  # Bash LSP 'bashls'
+    pyright               # Python LSP 'pyright'
+    gopls                 # Go LSP 'gopls'
+    jdt-language-server   # Java LSP 'jdtls'
   ];
 }

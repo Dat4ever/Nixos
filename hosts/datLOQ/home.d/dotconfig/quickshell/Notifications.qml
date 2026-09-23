@@ -45,10 +45,10 @@ PanelWindow {
 
         width: parent.width
         height: layout.implicitHeight + 20
-        color: Colors.color01
+        color: Colors.colorbackground2
         radius: 4
         border.width: 1
-        border.color: isCritical ? Colors.color08 : Colors.color0D
+        border.color: isCritical ? Colors.colorred : Colors.coloraccent
 
         Column {
           id: layout
@@ -61,7 +61,7 @@ PanelWindow {
           Text {
             width: parent.width
             text: card.notif.appName
-            color: Colors.color03
+            color: Colors.colormuted
             font.family: Colors.fontName
             font.pixelSize: 11
             elide: Text.ElideRight
@@ -70,7 +70,7 @@ PanelWindow {
           Text {
             width: parent.width
             text: card.notif.summary
-            color: Colors.color05
+            color: Colors.colorforeground1
             font.family: Colors.fontName
             font.pixelSize: 13
             font.bold: true
@@ -81,7 +81,7 @@ PanelWindow {
             width: parent.width
             visible: card.notif.body !== ""
             text: card.notif.body
-            color: Colors.color04
+            color: Colors.colorforeground2
             font.family: Colors.fontName
             font.pixelSize: 12
             wrapMode: Text.Wrap
@@ -97,7 +97,7 @@ PanelWindow {
                 id: actionBtn
                 required property var modelData
                 text: modelData.text
-                color: Colors.color0C
+                color: Colors.colorbrightcyan
                 font.family: Colors.fontName
                 font.pixelSize: 12
                 font.underline: true

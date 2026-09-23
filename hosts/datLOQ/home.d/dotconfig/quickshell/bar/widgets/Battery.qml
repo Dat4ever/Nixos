@@ -110,7 +110,7 @@ Item {
     font.family: Colors.fontName
     font.pixelSize: 14
     font.bold: true
-    color: Colors.color0A
+    color: Colors.colorbrightyellow
 
     text: {
       if (batteryWidget.showBrightness) {
@@ -136,6 +136,6 @@ Item {
     width: parent.width
     height: 2
     radius: 1
-    color: Colors.color0A
+    color: Colors.colorbrightyellow
   }
 }

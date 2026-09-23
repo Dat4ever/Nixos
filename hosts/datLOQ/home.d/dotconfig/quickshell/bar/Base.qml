@@ -29,7 +29,7 @@ PanelWindow {
     id: barBackground
     anchors.fill: parent
     radius: 0
-    color: Colors.color01
+    color: Colors.colorbackground2
 
     Item {
       id: leftCluster
